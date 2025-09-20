@@ -757,269 +757,418 @@ questions[55]={number:56,type:'TIU',text:`Dalam sebuah pertandingan bola basket,
 N – S – J – F, sehingga ada 1 cara.`,explainDesc:'',explainImages:[{src:'56.png',caption:'Graf'}]};
 
 /* ---- TIU 57–65 (gambar .jpg) ---- */
-questions[56]={number:57,type:'TIU',text:`(Gambar .jpg) Transformasi 1→2; pilih untuk (4).`,image:{src:'57.jpg',caption:'Soal 57'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Dari gambar 1 ke gambar 2, objek diputar 135° berlawanan jarum jam dan dicerminkan vertikal. \n\nKemudian perhatikan objek yang ditandai dengan warna merah \n\nDari gambar 1 ke gambar 2, objek tersebut tidak berubah.\n\nSehingga dengan pola yang sama, opsi yang tepat untuk mengisi gambar ketiga adalah opsi B.`,explainDesc:'',explainImages:[{src:'571.jpg',caption:'Langkah 1'}]};
-questions[57]={number:58,type:'TIU',text:`(Gambar .jpg) Deret panah mengelilingi lingkaran.`,image:{src:'58.jpg',caption:'Soal 58'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Opsi C punya empat panah mengarah ke lingkaran.`,explainDesc:'',explainImages:[{src:'581.jpg',caption:'Analisis panah'}]};
-questions[58]={number:59,type:'TIU',text:`(Gambar .jpg) Pola 4 objek berbeda tiap kotak; tentukan gambar ke-4.`,image:{src:'59.jpg',caption:'Soal 59'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explainImages:[{src:'591.png',caption:'Objek 1'}]};
-questions[59]={number:60,type:'TIU',text:`(Gambar .jpg) Lengkapi pola garis per baris/kolom.`,image:{src:'60.jpg',caption:'Soal 60'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Baris 1 +2 garis per kolom.`,explainDesc:'',explainImages:[{src:'60-1.jpg',caption:'Pola baris 1'},{src:'602.jpg',caption:'Aplikasi'}]};
-questions[60]={number:61,type:'TIU',text:`(Gambar .jpg) Jumlah garis tiap kotak konstan.`,image:{src:'61.jpg',caption:'Soal 61'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:3,explain:`Setiap kotak total 9 garis.`,explainDesc:'',explainImages:[{src:'611.jpg',caption:'Hitung garis'}]};
-questions[61]={number:62,type:'TIU',text:`(Gambar .jpg) Rotasi: garis hitam 45° CCW; panah putih 45° CW.`,image:{src:'62.jpg',caption:'Soal 62'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Aturan rotasi berlawanan.`,explainDesc:'',explainImages:[{src:'621.jpg',caption:'Skema rotasi'}]};
-questions[62]={number:63,type:'TIU',text:`(Gambar .jpg) Kotak hitam 2 langkah CW; lingkaran 1 langkah CW (bisa tertutup).`,image:{src:'63.jpg',caption:'Soal 63'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Lingkaran tak tampak jika tertutup kotak.`,explainDesc:'',explainImages:[{src:'631.jpg',caption:'Lintasan elemen'}]};
-questions[63]={number:64,type:'TIU',text:`(Gambar .jpg) Kotak hitam geser satu langkah & menutupi kotak dilalui.`,image:{src:'64.jpg',caption:'Soal 64'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Gunakan pola baris 1 & 2.`,explainDesc:'',explainImages:[{src:'641.jpg',caption:'Penutupan'}]};
-questions[64]={number:65,type:'TIU',text:`(Gambar .jpg) Kolom 3 = gabungan kolom 1 & 2 (aturan bit).`,image:{src:'65.jpg',caption:'Soal 65'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:3,explain:`Hitam⊕Hitam=Putih; lainnya menyesuaikan.`,explainDesc:'',explainImages:[{src:'651.jpg',caption:'Aturan gabungan'}]};
+questions[56]={number:57,type:'TIU',text:`(Gambar .jpg) `,image:{src:'57.jpg',caption:'Soal 57'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Dari gambar 1 ke gambar 2, objek diputar 135° berlawanan jarum jam dan dicerminkan vertikal. \n\nKemudian perhatikan objek yang ditandai dengan warna merah \n\nDari gambar 1 ke gambar 2, objek tersebut tidak berubah.\n\nSehingga dengan pola yang sama, opsi yang tepat untuk mengisi gambar ketiga adalah opsi B.`,explainDesc:'',explainImages:[{src:'571.jpg',caption:'Langkah 1'}]};
+questions[57]={number:58,type:'TIU',text:`(Gambar .jpg) `,image:{src:'58.jpg',caption:'Soal 58'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Opsi C punya empat panah mengarah ke lingkaran.`,explainDesc:'',explainImages:[{src:'581.jpg',caption:'Analisis panah'}]};
+questions[58]={number:59,type:'TIU',text:`(Gambar .jpg) `,image:{src:'59.jpg',caption:'Soal 59'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explainImages:[{src:'591.png',caption:'Objek 1'}]};
+questions[59]={number:60,type:'TIU',text:`(Gambar .jpg) `,image:{src:'60.jpg',caption:'Soal 60'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`• Pola pada baris pertama :
+
+ - Pola objek bertambah dua garis setiap kolomnya.
+
+Menggunakan aturan ini untuk mengisi kotak yang kosong pada baris kedua kolom kedua dan baris ketiga kolom kedua, kita dapat melihat bahwa jawaban yang benar adalah C, karena setelah menambah dua garis dari baris kedua kolom pertama dan baris ketiga kolom pertama, hasilnya yang sesuai dengan pola ada pada jawaban C.`,explainDesc:'',explainImages:[{src:'601.jpg',caption:'Pola baris 1'}]};
+questions[60]={number:61,type:'TIU',text:`(Gambar .jpg) `,image:{src:'61.jpg',caption:'Soal 61'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:3,explain:`Untuk memahami pola, kita menghitung jumlah garis dalam setiap kotak. Dalam setiap kotak, jumlah garisnya adalah 9. Dengan pola ini, yaitu jumlah garis selalu 9 dalam setiap kotak, kita dapat menentukan bahwa kotak kosong di baris ketiga kolom ketiga juga harus memiliki 9 garis. Oleh karena itu, jawaban yang benar adalah D.
+Jawaban: D`,explainDesc:'',explainImages:[{src:'611.jpg',caption:'Hitung garis'}]};
+questions[61]={number:62,type:'TIU',text:`(Gambar .jpg) `,image:{src:'62.jpg',caption:'Soal 62'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`jawaban B.
+Jawaban B`,explainDesc:'',explainImages:[{src:'621.jpg',caption:'* Pola objek garis hitam berputar berlawanan arah jarum jam sebanyak 45°.\n\n- Pola semua objek panah putih berputar searah jarum jam sebanyak 45°.\n\nMenggunakan aturan ini untuk mengisi kotak yang kosong pada baris kedua kolom kedua dan baris ketiga kolom kedua, kita dapat melihat bahwa jawaban yang benar adalah B, karena setelah merotasiakan objek-objek dari baris kedua kolom pertama dan baris ketiga kolom pertama, hasilnya yang sesuai dengan pola ada pada jawaban B.\n\n'}]};
+questions[62]={number:63,type:'TIU',text:`(Gambar .jpg) `,image:{src:'63.jpg',caption:'Soal 63'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Perhatikan pola objek tersebut tiap baris. Perhatikan kotak hitam bergerak 2 langkah searah jarum jam. Sedangkan lingkaran bergerak 1 langkah searah jarum jam. Jika lingkaran tidak terlihat maka tertup oleh kotak hitam. Sehingga gambar yang tepat untuk melengkapi bagian rumpang tersebut adalah sebagai berikut:`,explainDesc:'',explainImages:[{src:'631.jpg',caption:'Lintasan elemen'}]};
+questions[63]={number:64,type:'TIU',text:`(Gambar .jpg) `,image:{src:'64.jpg',caption:'Soal 64'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:``,explainDesc:'',explainImages:[{src:'641.jpg',caption:'Pada baris pertama, kotak hitam akan bergeser satu langkah dan akan menutupi kotak yang dilaluinya. Pola yang sama juga terjadi pada baris kedua. Maka, dengan menggunakan pola yang sama untuk melengkapi baris ketiga kolom ketiga opsi yang tepat adalah'},{src:'642.jpg'}]};
+questions[64]={number:65,type:'TIU',text:`(Gambar .jpg)  `,image:{src:'65.jpg',caption:'Soal 65'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:3,explain:`Hitam⊕Hitam=Putih; lainnya menyesuaikan.`,explainDesc:'',explainImages:[{src:'651.jpg',caption:'• Baris 1 dan baris 2 memiliki pola kolom ketiga merupakan gabungan dari kolom pertama dan kedua. Dengan ketentuan:\n\n- Kotak hitam bertemu kotak putih menjadi hitam\n\n- Kotak putih bertemu kotak hitam menjadi hitam\n\n- Kotak hitam bertemu kotak hitam menjadi putih\n\n- Kotak putih bertemu kotak putih menjadi putih.\n\n• Dengan menggunakan pola yang sama maka gambar yang tepat untuk mengisi baris ketiga kolom ketiga adalah\n\n'}]};
 
 /* ---- TKP 66–110 (tetap seperti versi sebelumnya; poin 1–5 per opsi) ---- */
-questions[65]={number:66,type:'TIU',text:`(Gambar .jpg) Transformasi 1→2; pilih untuk (4).`,image:{src:'57.jpg',caption:'Soal 57'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Putar 135° CCW + cermin vertikal; penanda tetap.`,explainDesc:'',explainImages:[{src:'57-1.jpg',caption:'Langkah 1'},{src:'57-2.jpg',caption:'Langkah 2'},{src:'57-3.jpg',caption:'Langkah 3'},{src:'57-4.jpg',caption:'Langkah 4'}]};
-questions[66]={number:67,type:'TIU',text:`(Gambar .jpg) Deret panah mengelilingi lingkaran.`,image:{src:'58.jpg',caption:'Soal 58'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Opsi C punya empat panah mengarah ke lingkaran.`,explainDesc:'',explainImages:[{src:'58-1.jpg',caption:'Analisis panah'}]};
-questions[67]={number:68,type:'TIU',text:`(Gambar .jpg) Pola 4 objek berbeda tiap kotak; tentukan gambar ke-4.`,image:{src:'59.jpg',caption:'Soal 59'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Ikuti perpindahan & perubahan sisi.`,explainDesc:'',explainImages:[{src:'59-1.jpg',caption:'Objek 1'},{src:'59-2.jpg',caption:'Objek 2'}]};
-questions[68]={number:69,type:'TIU',text:`(Gambar .jpg) Lengkapi pola garis per baris/kolom.`,image:{src:'60.jpg',caption:'Soal 60'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Baris 1 +2 garis per kolom.`,explainDesc:'',explainImages:[{src:'60-1.jpg',caption:'Pola baris 1'},{src:'60-2.jpg',caption:'Aplikasi'}]};
-questions[69]={number:70,type:'TIU',text:`(Gambar .jpg) Jumlah garis tiap kotak konstan.`,image:{src:'61.jpg',caption:'Soal 61'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:3,explain:`Setiap kotak total 9 garis.`,explainDesc:'',explainImages:[{src:'61-1.jpg',caption:'Hitung garis'}]};
-questions[70]={number:71,type:'TIU',text:`(Gambar .jpg) Rotasi: garis hitam 45° CCW; panah putih 45° CW.`,image:{src:'62.jpg',caption:'Soal 62'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Aturan rotasi berlawanan.`,explainDesc:'',explainImages:[{src:'62-1.jpg',caption:'Skema rotasi'}]};
-questions[71]={number:72,type:'TIU',text:`(Gambar .jpg) Kotak hitam 2 langkah CW; lingkaran 1 langkah CW (bisa tertutup).`,image:{src:'63.jpg',caption:'Soal 63'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Lingkaran tak tampak jika tertutup kotak.`,explainDesc:'',explainImages:[{src:'63-1.jpg',caption:'Lintasan elemen'}]};
-questions[72]={number:73,type:'TIU',text:`(Gambar .jpg) Kotak hitam geser satu langkah & menutupi kotak dilalui.`,image:{src:'64.jpg',caption:'Soal 64'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Gunakan pola baris 1 & 2.`,explainDesc:'',explainImages:[{src:'64-1.jpg',caption:'Penutupan'}]};
-questions[73]={number:74,type:'TIU',text:`(Gambar .jpg) Kolom 3 = gabungan kolom 1 & 2 (aturan bit).`,image:{src:'65.jpg',caption:'Soal 65'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:3,explain:`Hitam⊕Hitam=Putih; lainnya menyesuaikan.`,explainDesc:'',explainImages:[{src:'65-1.jpg',caption:'Aturan gabungan'}]};
+questions[65]={number:66,type:'TKP',text:`Sebagai kepala RT, Anda mengadakan kegiatan gotong royong untuk membersihkan lingkungan. Namun, seorang warga menolak ikut serta karena merasa lingkungan sekitar rumahnya sudah bersih. Sikap warga ini membuat beberapa warga lain merasa kesal dan mulai mempertanyakan tanggung jawabnya sebagai anggota masyarakat. Apa langkah terbaik yang akan Anda ambil? (Sosial Budaya)`,choices:[
+  {text:'Mengabaikan warga tersebut dan melanjutkan gotong royong dengan warga lain agar kegiatan tetap berjalan lancar.',score:2},
+  {text:'Mengajak warga tersebut berbicara secara personal untuk menjelaskan pentingnya gotong royong demi kebersihan lingkungan secara keseluruhan.',score:5},
+  {text:'Membahas penolakan warga tersebut dalam forum RT agar semua warga bisa mendiskusikan masalah ini secara terbuka.',score:4},
+  {text:'Memberikan tugas khusus kepada warga tersebut yang tidak langsung berhubungan dengan gotong royong, seperti mendata kebutuhan kebersihan warga.',score:3},
+  {text:'Membiarkan warga tersebut tidak ikut serta karena setiap orang memiliki hak untuk memutuskan partisipasinya.',score:1}
+],explain:'Pilihan terbaik adalah B karena mengajak warga berbicara secara personal untuk menjelaskan pentingnya gotong royong menunjukkan sikap Empati dan Harmonis serta membantu membangun kesadaran akan tanggung jawab bersama tanpa mempermalukan warga di depan orang lain sehingga mendapat skor 5. C juga baik karena membahas masalah ini dalam forum RT memungkinkan penyelesaian secara kolektif dan transparan, meskipun berisiko memperburuk hubungan jika tidak dikelola dengan baik sehingga mendapat skor 4. D cukup baik karena memberikan tugas khusus kepada warga yang enggan ikut menunjukkan upaya inklusif tetapi solusi ini tidak langsung mendorong keterlibatannya dalam gotong royong sehingga mendapat skor 3. A kurang tepat karena mengabaikan warga tersebut dapat menyelesaikan kegiatan gotong royong tetapi berpotensi memperburuk hubungan antarwarga sehingga mendapat skor 2. E adalah pilihan paling tidak tepat karena membiarkan warga tidak ikut serta tanpa upaya untuk menyadarkan tanggung jawab sosial menunjukkan sikap pasif yang dapat memengaruhi solidaritas komunitas, sehingga mendapat skor 1.',explainDesc:''};
+
+questions[66]={number:67,type:'TKP',text:`Sebagai Ketua RT, Anda mendapati seorang warga yang seharusnya menjalankan tugas ronda pekan ini tidak dapat hadir karena anaknya sedang sakit. Namun, beberapa warga yang bertugas merasa warga tersebut tetap harus ikut ronda karena jadwal sudah ditentukan sebelumnya. Sikap Anda sebagai Ketua RT adalah… (Sosial Budaya)`,choices:[
+  {text:'Saya akan meminta warga tersebut untuk tetap ikut ronda meskipun hanya beberapa jam, agar tidak dianggap mengabaikan tanggung jawabnya.',score:2},
+  {text:'Saya akan menjelaskan kepada warga bahwa keadaan darurat seperti ini perlu dimaklumi dan berdiskusi dengan warga lain untuk menyiasati kekosongan petugas.',score:5},
+  {text:'Saya akan memberikan teguran kepada warga tersebut karena tidak melaksanakan tugas sesuai jadwal, meskipun ada alasan pribadi.',score:1},
+  {text:'Saya akan mendiskusikan solusi dengan warga yang ronda agar jadwal bisa diatur ulang tanpa memperpanjang konflik.',score:4},
+  {text:'Saya akan membiarkan warga menyelesaikan masalah ini sendiri tanpa ikut campur sebagai Ketua RT.',score:3}
+],explain:'Pilihan terbaik adalah B karena menjelaskan kepada warga bahwa keadaan darurat seperti ini perlu dimaklumi dan berdiskusi untuk menyiasati kekosongan mencerminkan sikap Empati, Harmonis, dan Kolaboratif dalam menjaga hubungan baik antarwarga tanpa mengabaikan tanggung jawab keamanan, sehingga mendapat skor 5. D juga baik karena mendiskusikan solusi dengan warga yang ronda menunjukkan sikap Bijaksana dan mencari jalan tengah, meskipun memerlukan waktu lebih lama untuk mencapai kesepakatan, sehingga mendapat skor 4. E kurang tepat karena membiarkan warga menyelesaikan masalah sendiri mencerminkan sikap pasif dan mengabaikan tanggung jawab sebagai Ketua RT sehingga mendapat skor 3. A kurang tepat karena meminta warga tetap ronda meskipun dalam keadaan darurat menunjukkan kurangnya sensitivitas terhadap situasi pribadi warga, sehingga mendapat skor 2. C adalah pilihan paling tidak tepat karena memberikan teguran dalam situasi darurat menunjukkan kurangnya empati dan bisa memperburuk hubungan antarwarga, sehingga mendapat skor 1.',explainDesc:''};
+
+questions[67]={number:68,type:'TKP',text:`Anda adalah seorang mahasiswa, yang terlibat dalam sebuah kelompok studi yang terdiri dari anggota dengan minat dan pandangan yang beragam. Untuk menciptakan kolaborasi yang efektif dalam kelompok studi, sikap terbaik yang dapat Anda ambil adalah… (Sosial Budaya)`,choices:[
+  {text:'Memfokuskan diskusi pada topik yang dapat disepakati bersama oleh semua anggota kelompok.',score:2},
+  {text:'Mencari cara untuk mendukung pandangan anggota lain tanpa mengabaikan pandangan Anda sendiri.',score:1},
+  {text:'Menyusun strategi kolaboratif yang memastikan semua ide dipertimbangkan secara adil.',score:4},
+  {text:'Membuka ruang untuk berbagi pendapat dan menghargai kontribusi setiap anggota kelompok.',score:5},
+  {text:'Mendorong anggota kelompok untuk berpartisipasi dalam topik yang sesuai dengan keahlian mereka.',score:3}
+],explain:'Pendekatan terbaik dalam menciptakan kolaborasi efektif adalah dengan membuka ruang bagi semua anggota kelompok untuk berbagi pendapat dan menghargai kontribusi setiap anggota D. Ini penting untuk memastikan setiap suara didengar dan memperkuat kerja sama tim. Menyusun strategi kolaboratif yang mempertimbangkan semua ide C juga mendukung integrasi berbagai perspektif, meski membutuhkan waktu lebih lama. Mendorong anggota untuk fokus pada topik yang sesuai dengan keahlian mereka E dapat efektif, namun berisiko mengabaikan potensi kontribusi dari topik lain. Memfokuskan diskusi pada kesepakatan bersama A dapat meminimalkan konflik tetapi mungkin mengabaikan ide-ide penting yang lebih kontroversial. Mendukung pandangan lain tanpa mengabaikan pandangan sendiri B bisa mengurangi ketegangan, tetapi mungkin kurang efektif dalam mengintegrasikan ide secara menyeluruh.',explainDesc:''};
+
+questions[68]={number:69,type:'TKP',text:`Seorang tetangga mengalami musibah kebakaran yang merusak sebagian rumahnya. Dia dikenal sebagai pribadi yang jarang berinteraksi dengan warga sekitar. Tindakan Anda adalah… (Sosial Budaya)`,choices:[
+  {text:'Memberikan saran untuk bersabar dan menawarkan dukungan jika diperlukan.',score:2},
+  {text:'Menawarkan bantuan secara pribadi, baik moral maupun materi.',score:3},
+  {text:'Mengajak tetangga tersebut untuk lebih aktif dalam pertemuan warga.',score:1},
+  {text:'Mengorganisir warga untuk memberikan bantuan dan menggalang dana.',score:5},
+  {text:'Menghubungi pihak berwenang untuk membantu memberikan solusi.',score:4}
+],explain:'Dalam situasi tersebut, D adalah pilihan terbaik karena menunjukkan inisiatif untuk mengorganisir warga, yang mencerminkan kepedulian sosial dan jiwa kepemimpinan. Hal ini tidak hanya membantu tetangga yang sedang dalam kesulitan tetapi juga memperkuat solidaritas di lingkungan tersebut. E juga merupakan tindakan yang baik karena dengan melibatkan pihak berwenang, Anda membantu tetangga mendapatkan bantuan yang lebih terstruktur dan profesional. C menunjukkan upaya untuk membangun hubungan sosial yang lebih baik dengan tetangga tersebut, meskipun dampaknya mungkin lebih bersifat jangka panjang daripada bantuan langsung. B adalah tindakan yang baik, namun menawarkan bantuan secara pribadi mungkin tidak seefektif menggalang komunitas atau melibatkan pihak berwenang. A adalah pilihan yang paling kurang efektif, meskipun bersimpati namun tidak menawarkan solusi konkret atau tindakan nyata untuk membantu tetangga yang sedang dalam kesulitan.',explainDesc:''};
+
+questions[69]={number:70,type:'TKP',text:`Sebagai seorang pegawai baru di sebuah perusahaan, Anda tinggal di sebuah apartemen sederhana. Namun, gaji pertama Anda belum cukup untuk membayar uang sewa apartemen yang jatuh tempo hari ini. Apa tindakan Anda? (Sosial Budaya)`,choices:[
+  {text:'Membayar sebagian uang sewa dengan uang yang Anda miliki dan berjanji melunasi sisanya setelah gaji berikutnya diterima.',score:5},
+  {text:'Mengajukan permohonan kepada pemilik apartemen untuk menunda pembayaran sewa hingga gaji Anda mencukupi.',score:4},
+  {text:'Meminjam uang kepada teman terdekat untuk sementara waktu sambil mencari solusi jangka panjang.',score:3},
+  {text:'Memutuskan untuk tidak membayar tepat waktu karena yakin pemilik apartemen akan memakluminya.',score:2},
+  {text:'Meninggalkan apartemen dan mencari tempat tinggal lain yang tidak memerlukan pembayaran segera.',score:1}
+],explain:'Pilihan terbaik adalah A karena membayar sebagian uang sewa dengan uang yang Anda miliki dan berjanji melunasi sisanya menunjukkan sikap Profesional dan Bertanggung Jawab dalam mengelola kewajiban, serta menjaga hubungan baik dengan pemilik apartemen sehingga mendapat skor 5. B juga baik karena mengajukan permohonan penundaan pembayaran menunjukkan sikap Transparan dan Berkomunikasi dengan baik meskipun tidak menyelesaikan sebagian kewajiban Anda saat ini sehingga mendapat skor 4. C cukup baik karena meminjam uang kepada teman mencerminkan upaya mencari solusi tetapi berisiko menciptakan ketergantungan finansial sehingga mendapat skor 3. D kurang tepat karena tidak membayar tepat waktu tanpa komunikasi menunjukkan sikap pasif dan kurang menghargai tanggung jawab sehingga mendapat skor 2. E adalah pilihan paling tidak tepat karena meninggalkan apartemen tanpa menyelesaikan masalah menunjukkan sikap tidak bertanggung jawab sehingga mendapat skor 1.',explainDesc:''};
+
+questions[70]={number:71,type:'TKP',text:`Sebagai seorang ASN, Anda bekerja di lingkungan yang beragam, dan seorang rekan sering mengajak Anda untuk mengikuti tradisi keagamaannya. Bagaimana sikap Anda dalam menghadapi situasi ini? (Sosial Budaya)`,choices:[
+  {text:'Menghindari situasi dengan fokus penuh pada tugas dan kewajiban sebagai ASN.',score:2},
+  {text:'Menghormati keyakinan rekan tanpa mengorbankan prinsip dan nilai kepercayaan Anda.',score:5},
+  {text:'Menyampaikan pandangan Anda secara jelas namun memilih untuk menghindari pembicaraan lebih lanjut.',score:3},
+  {text:'Melibatkan atasan untuk mencari solusi yang menghormati keberagaman di tempat kerja.',score:4},
+  {text:'Menyesuaikan diri dengan tradisi tersebut demi menjaga hubungan kerja yang baik.',score:1}
+],explain:'Jawaban yang tepat adalah opsi B, Menghormati keyakinan rekan tanpa mengorbankan prinsip dan nilai kepercayaan Anda, karena langkah ini mencerminkan sikap toleransi dan penghormatan terhadap keberagaman, sesuai dengan nilai BerAKHLAK ASN, khususnya sikap Harmonis. Opsi D, melibatkan atasan adalah langkah positif namun lebih cocok jika situasi sudah sulit diselesaikan secara mandiri. Opsi A, fokus pada tugas menunjukkan profesionalisme tetapi tidak secara aktif menyelesaikan isu keberagaman. Opsi C, menghindari pembicaraan cenderung pasif dan kurang solutif. Opsi E, menyesuaikan diri dengan tradisi tersebut dapat dianggap mengorbankan prinsip pribadi tanpa menunjukkan keberanian bersikap. Oleh karena itu, jawaban paling tepat adalah B.',explainDesc:''};
+
+questions[71]={number:72,type:'TKP',text:`Sebagai seorang dosen, Anda ditugaskan untuk merancang metode pengajaran yang dapat meningkatkan penghargaan terhadap keberagaman budaya di kalangan mahasiswa. Pendekatan apa yang akan Anda pilih? (Sosial Budaya)`,choices:[
+  {text:'Mengadakan diskusi kelas di mana mahasiswa dapat berbagi pengalaman budaya masing-masing.',score:2},
+  {text:'Menyampaikan materi yang mencakup berbagai budaya untuk mendorong interaksi dan dialog.',score:5},
+  {text:'Menyoroti budaya yang dominan di lingkungan kampus agar mahasiswa lebih mudah memahami.',score:1},
+  {text:'Menampilkan budaya berbeda secara berkala dalam materi kuliah guna memperluas wawasan.',score:4},
+  {text:'Menyiapkan materi yang bersifat netral untuk memastikan kenyamanan seluruh mahasiswa.',score:3}
+],explain:'Pilihan terbaik adalah B karena menyampaikan materi yang mencakup berbagai budaya untuk mendorong interaksi dan dialog mencerminkan sikap Harmonis dan Kolaboratif dalam nilai BerAKHLAK, sehingga menjadi pendekatan paling efektif untuk meningkatkan penghargaan terhadap keragaman. D juga baik karena menampilkan budaya berbeda secara berkala dapat memperluas wawasan mahasiswa, meski membutuhkan waktu lebih lama. A cukup baik dengan memberi ruang mahasiswa berbagi pengalaman, namun hasilnya bisa kurang seragam. E kurang tepat karena materi netral tidak memberikan pemahaman mendalam, dan C adalah pilihan paling tidak tepat karena menyoroti budaya dominan mengabaikan inklusivitas.',explainDesc:''};
+
+questions[72]={number:73,type:'TKP',text:`Sebagai ketua OSIS, Anda mengetahui bahwa salah satu anggota telah melanggar aturan penting organisasi. Anggota tersebut, yang merupakan teman dekat Anda, meminta Anda untuk tidak melaporkan masalah ini. Apa yang akan Anda lakukan? (Jejaring Kerja)`,choices:[
+  {text:'Mengajak teman tersebut berdiskusi dan mendorongnya untuk mengakui kesalahan secara sukarela.',score:4},
+  {text:'Menutup mata terhadap pelanggaran tersebut demi menjaga hubungan pertemanan.',score:1},
+  {text:'Melaporkan pelanggaran ini langsung kepada pembina OSIS tanpa memberitahunya.',score:3},
+  {text:'Mengingatkan teman tersebut bahwa perbuatannya bertentangan dengan prinsip organisasi dan membantu mencari solusi terbaik.',score:5},
+  {text:'Membiarkan masalah ini berlalu dengan harapan tidak ada yang menyadari pelanggaran tersebut.',score:2}
+],explain:'Pilihan terbaik adalah D karena mengingatkan teman bahwa perbuatannya bertentangan dengan prinsip organisasi dan membantu mencari solusi terbaik menunjukkan sikap Profesional dan Akuntabel dalam menjaga integritas organisasi tanpa mengabaikan hubungan pertemanan sehingga mendapat skor 5. A juga baik karena mengajak teman berdiskusi dan mendorongnya mengakui kesalahan secara sukarela mencerminkan sikap Harmonis dan Kolaboratif, meskipun keberhasilannya bergantung pada respons teman sehingga mendapat skor 4. C cukup baik karena melaporkan langsung kepada pembina menunjukkan ketegasan tetapi kurang memberi kesempatan pada teman untuk memperbaiki diri sehingga mendapat skor 3. E kurang tepat karena membiarkan masalah berlalu menunjukkan sikap pasif dan mengabaikan tanggung jawab sehingga mendapat skor 2. B adalah pilihan paling tidak tepat karena menutup mata demi pertemanan menunjukkan kurangnya Akuntabilitas dan Profesionalisme sehingga mendapat skor 1.',explainDesc:''};
+
+questions[73]={number:74,type:'TKP',text:`Sebagai ketua departemen, Anda memiliki seorang anggota tim yang memiliki kinerja individu sangat baik. Namun, ia cenderung bekerja sendiri dan enggan berkoordinasi dengan anggota tim lainnya, yang mengganggu kelancaran kerja tim secara keseluruhan. Apa yang Anda lakukan untuk menyelesaikan situasi ini? (Jejaring Kerja)`,choices:[
+  {text:'Membiarkannya bekerja sendiri karena hasil pekerjaannya sudah memuaskan.',score:1},
+  {text:'Mengapresiasi kinerjanya secara individu, tetapi menegaskan pentingnya kerja tim dan membimbingnya untuk lebih kolaboratif.',score:4},
+  {text:'Mengurangi tugasnya dan membagi tanggung jawabnya ke anggota lain agar tim tetap seimbang.',score:3},
+  {text:'Memberikan tugas khusus yang tidak memerlukan interaksi dengan anggota tim lain.',score:2},
+  {text:'Mengapresiasi kinerjanya sambil menegaskan pentingnya kerja tim dan secara aktif melatihnya untuk berkoordinasi lebih baik.',score:5}
+],explain:'Pilihan terbaik adalah E karena mengapresiasi kinerjanya sambil menegaskan pentingnya kerja tim dan secara aktif melatihnya untuk berkoordinasi lebih baik mencerminkan nilai Harmonis dalam membangun kerja sama yang efektif di tim serta nilai Profesional dengan mendukung pengembangan individu tanpa mengorbankan dinamika tim. Ini adalah langkah yang seimbang dan bertanggung jawab sebagai pemimpin sehingga mendapat skor 5. B juga baik karena menunjukkan penghargaan terhadap kinerja individu dan menggambarkan nilai Adaptif meskipun pendekatannya kurang menyelesaikan akar masalah sehingga mendapat skor 4. C cukup baik karena mengurangi tugas dan membagi tanggung jawab membantu menjaga keseimbangan dalam tim, namun kurang mencerminkan nilai Kolaboratif sehingga mendapat skor 3. D kurang tepat karena memberikan tugas khusus yang tidak melibatkan tim berisiko memperkuat pola kerja individualis dan mengabaikan nilai Harmonis sehingga mendapat skor 2. A adalah pilihan paling tidak tepat karena membiarkan anggota tim bekerja sendiri menunjukkan kurangnya Akuntabilitas dalam mengelola tim sehingga mendapat skor 1.',explainDesc:''};
 
 /* Contoh 75–78 tetap */
-questions[74]={number:75,type:'TKP',text:`Keluhan jalan rusak; koordinasi lemah. Langkah terbaik?`,choices:[{text:'Rapat koordinasi lintas instansi, bagi tanggung jawab',score:5},{text:'PU perbaikan sementara sambil koordinasi',score:4},{text:'Minta warga bersabar',score:1},{text:'Eskalasi ke pusat',score:3},{text:'Serahkan ke pemkot',score:2}],explain:'Koordinasi lintas instansi paling efektif.',explainDesc:''};
-questions[75]={number:76,type:'TKP',text:`ASN baru ingin perluas jejaring.`,choices:[{text:'Minta rekomendasi Kadis',score:2},{text:'Mentoring internasional',score:1},{text:'Pelatihan nasional',score:3},{text:'Konferensi kesehatan nasional',score:4},{text:'Kelompok kerja lintas sektor',score:5}],explain:'Kolaborasi lintas sektor relevan.',explainDesc:''};
-questions[76]={number:77,type:'TKP',text:`Rekan merasa idenya diambil.`,choices:[{text:'Biarkan saja',score:1},{text:'Tarik pengembangan ide',score:2},{text:'Maaf + ingatkan rekan',score:3},{text:'Maaf + jelaskan niat murni',score:5},{text:'Maaf tulus',score:4}],explain:'Maaf + klarifikasi pulihkan trust.',explainDesc:''};
-questions[77]={number:78,type:'TKP',text:`Proyek terhambat karena data terlambat.`,choices:[{text:'Biarkan tertunda',score:1},{text:'Lapor pimpinan',score:2},{text:'Motivasi tim sambil menunggu',score:3},{text:'Selesaikan tanpa data',score:4},{text:'Hubungi dinas terkait percepat data',score:5}],explain:'Komunikasi proaktif.',explainDesc:''};
+questions[74]={number:75,type:
+'TKP',text:`Sebagai kepala RT, Anda mengadakan kegiatan gotong royong untuk membersihkan lingkungan. Namun, seorang warga menolak ikut serta karena merasa lingkungan sekitar rumahnya sudah bersih. Sikap warga ini membuat beberapa warga lain merasa kesal dan mulai mempertanyakan tanggung jawabnya sebagai anggota masyarakat. Apa langkah terbaik yang akan Anda ambil? (Sosial Budaya)`
+,choices:[    { text: 'Mengabaikan warga tersebut dan melanjutkan gotong royong dengan warga lain agar kegiatan tetap berjalan lancar.', score: 2 },
+    { text: 'Mengajak warga tersebut berbicara secara personal untuk menjelaskan pentingnya gotong royong demi kebersihan lingkungan secara keseluruhan.', score: 5 },
+    { text: 'Membahas penolakan warga tersebut dalam forum RT agar semua warga bisa mendiskusikan masalah ini secara terbuka.', score: 4 },
+    { text: 'Memberikan tugas khusus kepada warga tersebut yang tidak langsung berhubungan dengan gotong royong, seperti mendata kebutuhan kebersihan warga.', score: 3 },
+    { text: 'Membiarkan warga tersebut tidak ikut serta karena setiap orang memiliki hak untuk memutuskan partisipasinya.', score: 1 }
+  ],explain:'Pilihan terbaik adalah B karena mengajak warga berbicara secara personal untuk menjelaskan pentingnya gotong royong menunjukkan sikap Empati dan Harmonis serta membantu membangun kesadaran akan tanggung jawab bersama tanpa mempermalukan warga di depan orang lain sehingga mendapat skor 5. C juga baik karena membahas masalah ini dalam forum RT memungkinkan penyelesaian secara kolektif dan transparan, meskipun berisiko memperburuk hubungan jika tidak dikelola dengan baik sehingga mendapat skor 4. D cukup baik karena memberikan tugas khusus kepada warga yang enggan ikut menunjukkan upaya inklusif tetapi solusi ini tidak langsung mendorong keterlibatannya dalam gotong royong sehingga mendapat skor 3. A kurang tepat karena mengabaikan warga tersebut dapat menyelesaikan kegiatan gotong royong tetapi berpotensi memperburuk hubungan antarwarga sehingga mendapat skor 2. E adalah pilihan paling tidak tepat karena membiarkan warga tidak ikut serta tanpa upaya untuk menyadarkan tanggung jawab sosial menunjukkan sikap pasif yang dapat memengaruhi solidaritas komunitas, sehingga mendapat skor 1.',explainDesc:''};
+questions[75]={number:76,type:'TKP',text:`Sebagai ASN baru di Dinas Kesehatan, Anda ingin memperluas jejaring kerja untuk mendukung tugas dan karier Anda. Tindakan yang tepat adalah… (Jejaring Kerja)`,choices:[
+  {text:'Menghubungi Kepala Dinas untuk meminta rekomendasi dan pengenalan kepada para ahli kesehatan.',score:2},
+  {text:'Mengikuti program mentoring internasional untuk memperluas jejaring global.',score:1},
+  {text:'Mengajukan diri dalam pelatihan nasional yang melibatkan para ahli kesehatan.',score:3},
+  {text:'Menghadiri konferensi kesehatan nasional untuk berinteraksi dengan praktisi dan peneliti.',score:4},
+  {text:'Membentuk kelompok kerja lintas sektor untuk kolaborasi dalam masalah kesehatan.',score:5}
+],explain:`Pilihan terbaik adalah E karena membentuk kelompok kerja lintas sektor mencerminkan inisiatif proaktif dan kolaboratif, sehingga peluang jejaring langsung relevan dengan tugas kesehatan lokal.`};
 
-/* TKP 79–110 (versi sebelumnya lengkap) */
-questions[78]={number:79,type:'TKP',text:`Acara diskusi kampus disponsori organisasi radikal. Tindakan? (Anti Radikalisme)`,choices:[
-  {text:'Menghindari acara & melapor ke pihak berwenang kampus',score:5},
-  {text:'Tetap ikut tapi hanya mendengarkan pasif',score:2},
-  {text:'Memberi masukan agar sponsor lebih netral ke depan',score:4},
-  {text:'Tetap hadir untuk tahu isi diskusi',score:3},
-  {text:'Abaikan info sponsor dan hadir seperti biasa',score:1}
-],explain:'Hindari acara & laporkan menunjukkan kewaspadaan dan tanggung jawab; opsi lain berisiko mendukung.',explainDesc:''};
-/* ... potongan 80–110 tetap sesuai sebelumnya ... */
-questions[79]={number:80,type:'TKP',text:`Diundang jadi pembicara diskusi radikalisme pada akhir pekan waktu belajar. (Anti Radikalisme)`,choices:[
-  {text:'Tetap menjadi pembicara meski mengorbankan waktu belajar/istirahat',score:5},
-  {text:'Meminta izin mengurangi tugas agar bisa hadir',score:1},
-  {text:'Hadir sebagai peserta untuk mendapat wawasan',score:3},
-  {text:'Merekam presentasi & kirim jika tak bisa hadir',score:4},
-  {text:'Diskusi dengan dosen untuk penyesuaian tanggung jawab kuliah',score:2}
-],explain:'Komitmen penuh sebagai pembicara adalah kontribusi tertinggi; alternatif D cukup, lainnya kurang kuat.',explainDesc:''};
-questions[80]={number:81,type:'TKP',text:`Seminar eksternal condong ideologi radikal. (Anti Radikalisme)`,choices:[
-  {text:'Diam saja selama acara',score:1},
-  {text:'Mengingatkan panitia agar hentikan materi radikal',score:5},
-  {text:'Ikut diskusi memahami pandangan mereka',score:2},
-  {text:'Meninggalkan seminar sebagai penolakan',score:3},
-  {text:'Melaporkan ke pihak berwenang instansi setelah acara',score:4}
-],explain:'Tindakan langsung menghentikan penyebaran lebih efektif; laporan menyusul juga baik.',explainDesc:''};
-questions[81]={number:82,type:'TKP',text:`Pegawai mengajak ceramah pilihannya saat jam kerja. (Anti Radikalisme)`,choices:[
-  {text:'Membiarkan karena kebebasan beragama',score:1},
-  {text:'Mengingatkan secara pribadi untuk menghormati keberagaman',score:5},
-  {text:'Melaporkan ke personalia',score:4},
-  {text:'Pengarahan umum ke semua pegawai',score:3},
-  {text:'Instruksikan rekan lain menghindarinya',score:2}
-],explain:'Teguran pribadi menghormati martabat & keberagaman; formalitas dapat menyusul jika berulang.',explainDesc:''};
-questions[82]={number:83,type:'TKP',text:`Debat pilpres mengganggu suasana kerja. (Anti Radikalisme)`,choices:[
-  {text:'Ingatkan untuk jaga netralitas di tempat kerja',score:5},
-  {text:'Laporkan ke atasan untuk arahan',score:4},
-  {text:'Ikut berdiskusi untuk meredakan',score:2},
-  {text:'Abaikan karena tiap orang punya pandangan',score:1},
-  {text:'Ajak dialog santai di luar jam kerja',score:3}
-],explain:'Profesional: jaga netralitas; eskalasi bila perlu.',explainDesc:''};
-questions[83]={number:84,type:'TKP',text:`Diskusi online banyak propaganda radikal. (Anti Radikalisme)`,choices:[
-  {text:'Mengurangi waktu diskusi online',score:1},
-  {text:'Mengasah literasi digital untuk evaluasi kritis',score:5},
-  {text:'Prioritaskan media sosial untuk hiburan saja',score:2},
-  {text:'Berpartisipasi aktif dengan sikap terbuka',score:3},
-  {text:'Pengecekan fakta dari berbagai sumber',score:4}
-],explain:'Peningkatan literasi digital paling berdampak; fact-check penting tetapi hanya salah satu alat.',explainDesc:''};
-questions[84]={number:85,type:'TKP',text:`Siswa baru di sekolah multikultur. (Anti Radikalisme)`,choices:[
-  {text:'Kelompok belajar dengan teman seagama',score:2},
-  {text:'Fokus budaya sendiri',score:1},
-  {text:'Membuka diri memahami perbedaan',score:5},
-  {text:'Hanya ikut kegiatan sesuai minat pribadi',score:3},
-  {text:'Menghadiri acara budaya sekolah',score:4}
-],explain:'Sikap inklusif & memahami perbedaan adalah inti toleransi.',explainDesc:''};
-questions[85]={number:86,type:'TKP',text:`Kepala sekolah menyelenggarakan pelatihan TIK. (TIK)`,choices:[
-  {text:'Pelatihan umum agar mudah diikuti',score:4},
-  {text:'Serahkan penuh ke tim IT',score:1},
-  {text:'Pilih pelatihan relevan sesuai kebutuhan guru',score:5},
-  {text:'Minta guru mencari materi sendiri dulu',score:3},
-  {text:'Susun materi dari pengalaman pribadi',score:2}
-],explain:'Kesesuaian kebutuhan = efektivitas tertinggi.',explainDesc:''};
-questions[86]={number:87,type:'TKP',text:`Tim sibuk kampanye; pesan di luar jam kerja sering datang. (TIK)`,choices:[
-  {text:'Batasi komunikasi di jam resmi saja',score:2},
-  {text:'Ingatkan rekan secara pribadi',score:4},
-  {text:'Tetap respons demi kelancaran',score:3},
-  {text:'Dorong komunikasi luar jam kerja',score:1},
-  {text:'Rapat pola komunikasi efektif',score:5}
-],explain:'Atur pola bersama mencegah burnout & menjaga kolaborasi.',explainDesc:''};
-questions[87]={number:88,type:'TKP',text:`Tugas kelompok pakai aplikasi data; kamu sudah menguasai. (TIK)`,choices:[
-  {text:'Mengajari rekan menggunakan aplikasi',score:5},
-  {text:'Pakai keahlian sendiri agar cepat selesai',score:4},
-  {text:'Sarankan tetap pakai aplikasi & bantu rekan',score:3},
-  {text:'Selesaikan sendiri lalu laporkan',score:1},
-  {text:'Usul metode lain agar cepat',score:2}
-],explain:'Transfer skill meningkatkan kapasitas tim.',explainDesc:''};
-questions[88]={number:89,type:'TKP',text:`Input data sangat penting. (TIK)`,choices:[
-  {text:'Input santai',score:1},
-  {text:'Ajak rekan untuk cek silang',score:4},
-  {text:'Cek berulang demi kesesuaian data asli',score:5},
-  {text:'Minta waktu tambahan',score:3},
-  {text:'Tunggu waktu ideal agar fokus',score:2}
-],explain:'Akurasi prioritas; kolaborasi membantu, tapi verifikasi pribadi wajib.',explainDesc:''};
-questions[89]={number:90,type:'TKP',text:`Kembangkan aplikasi lintas perusahaan. (TIK)`,choices:[
-  {text:'Undang perwakilan berbagai perusahaan (kebutuhan)',score:5},
-  {text:'Fitur berdasarkan pengalaman internal',score:1},
-  {text:'Fokus teknologi terbaru saja',score:2},
-  {text:'Percepat pengembangan sambil jaga keberlanjutan',score:4},
-  {text:'Prioritaskan efisiensi, jaga keamanan',score:3}
-],explain:'Co-design dengan pemangku kepentingan memastikan relevansi.',explainDesc:''};
-questions[90]={number:91,type:'TKP',text:`Magang di Dukcapil diminta bantu warga mendaftar aplikasi. (TIK)`,choices:[
-  {text:'Mengaku belum paham',score:1},
-  {text:'Minta izin cek cara aplikasi dulu',score:4},
-  {text:'Minta bantuan rekan berpengalaman',score:5},
-  {text:'Coba bantu meski belum paham',score:2},
-  {text:'Minta warga kembali lain waktu',score:3}
-],explain:'Pastikan layanan benar & cepat dengan bantuan ahli.',explainDesc:''};
-questions[91]={number:92,type:'TKP',text:`Pengaruh paling bermanfaat medsos bagi Anda? (TIK)`,choices:[
-  {text:'Menjalin komunikasi dengan sahabat lama',score:2},
-  {text:'Menambah pendapatan',score:4},
-  {text:'Cari info sesuai kesenangan pribadi',score:3},
-  {text:'Selalu dapat berita terkini',score:1},
-  {text:'Peroleh pengetahuan & keterampilan baru',score:5}
-],explain:'Pengembangan keterampilan memberi dampak terbesar.',explainDesc:''};
-questions[92]={number:93,type:'TKP',text:`Keluarga pasien keluhkan layanan rekan. (Profesionalisme)`,choices:[
-  {text:'Jelaskan karena tekanan kerja',score:3},
-  {text:'Dengarkan empatik & catat untuk tindak lanjut',score:5},
-  {text:'Bela rekan di depan keluarga',score:1},
-  {text:'Arahkan keluarga bicara ke atasan',score:4},
-  {text:'Janji ambil tindakan langsung tanpa koordinasi',score:2}
-],explain:'Empati + tindak lanjut adalah standar profesional.',explainDesc:''};
-questions[93]={number:94,type:'TKP',text:`Laporan tahunan vs acara penghargaan; data terlambat. (Profesionalisme)`,choices:[
-  {text:'Prioritaskan laporan & verifikasi data terlambat',score:5},
-  {text:'Tim yang selesaikan; Anda hadiri acara',score:2},
-  {text:'Hadiri acara & minta perpanjangan tenggat',score:3},
-  {text:'Susun laporan pakai data tersedia saja',score:4},
-  {text:'Abaikan acara & fokus laporan saja',score:1}
-],explain:'Kualitas & akuntabilitas laporan adalah prioritas utama.',explainDesc:''};
-questions[94]={number:95,type:'TKP',text:`Wakil ketua OSIS diminta sambutan mendadak. (Profesionalisme)`,choices:[
-  {text:'Sambutan spontan',score:2},
-  {text:'Minta waktu tambahan siapkan poin',score:3},
-  {text:'Menolak karena tidak siap',score:1},
-  {text:'Minta ketua OSIS sambut daring',score:4},
-  {text:'Gunakan pengalaman & pengetahuan acara untuk sambutan singkat meyakinkan',score:5}
-],explain:'Ambil peran dengan materi ringkas dan relevan.',explainDesc:''};
-questions[95]={number:96,type:'TKP',text:`Suka divisi pelayanan, tapi ditempatkan di administrasi. (Profesionalisme)`,choices:[
-  {text:'Dedikasi penuh di administrasi bangun pengalaman',score:4},
-  {text:'Optimalkan kinerja adm sambil belajar skill pelayanan',score:5},
-  {text:'Cari info karier & syarat pindah divisi',score:3},
-  {text:'Fokus tingkatkan kualifikasi pendidikan',score:2},
-  {text:'Jaga motivasi sambil menunggu kesempatan',score:1}
-],explain:'Belajar lintas fungsi menyiapkan transisi yang sehat.',explainDesc:''};
-questions[96]={number:97,type:'TKP',text:`Rapat prioritas mendadak berbenturan acara keluarga. (Profesionalisme)`,choices:[
-  {text:'Tolak rapat karena acara keluarga',score:1},
-  {text:'Minta rekan menggantikan memimpin rapat',score:4},
-  {text:'Izin keluarga terlambat demi memimpin rapat',score:5},
-  {text:'Pimpin rapat tapi fokus terganggu',score:2},
-  {text:'Tawarkan penjadwalan ulang',score:3}
-],explain:'Tanggung jawab utama tetap dijalankan sembari menjaga komitmen keluarga.',explainDesc:''};
-questions[97]={number:98,type:'TKP',text:`Pastikan produk memenuhi harapan pelanggan. (Profesionalisme)`,choices:[
-  {text:'Diskusi rutin dengan pelanggan untuk pahami harapan/standar',score:5},
-  {text:'Andalkan evaluasi setelah peluncuran',score:3},
-  {text:'Fokus aspek yang tim anggap penting',score:1},
-  {text:'Riset pasar mendalam',score:4},
-  {text:'Simulasi pelanggan oleh tim',score:2}
-],explain:'Keterlibatan langsung & berkelanjutan dengan pelanggan paling efektif.',explainDesc:''};
-questions[98]={number:99,type:'TKP',text:`Gantikan atasan pimpin rapat koordinasi lintas bidang. (Profesionalisme)`,choices:[
-  {text:'Putuskan sesuai kebiasaan atasan',score:4},
-  {text:'Ambil keputusan sesuai kebijakan resmi instansi',score:5},
-  {text:'Tampung usulan & putuskan berdasar preferensi pribadi',score:1},
-  {text:'Putuskan saat rapat, bisa direvisi atasan',score:3},
-  {text:'Telepon atasan minta arahan',score:2}
-],explain:'Mandiri namun berbasis kebijakan menjaga legitimasi.',explainDesc:''};
-questions[99]={number:100,type:'TKP',text:`Ingin tingkatkan skill & pengetahuan di bidang teknologi. (Profesionalisme)`,choices:[
-  {text:'Invest waktu & biaya ikut kursus online relevan',score:5},
-  {text:'Tunda pelatihan sampai lebih siap',score:1},
-  {text:'Belajar mandiri via buku/artikel',score:2},
-  {text:'Gabung komunitas profesional',score:4},
-  {text:'Evaluasi skill dibutuhkan & fokus kembangkan',score:3}
-],explain:'Belajar terstruktur + praktik mempercepat kemajuan.',explainDesc:''};
+/* ===================== 77 ===================== */
+questions[76]={number:77,type:'TKP',text:`Dalam sebuah forum diskusi proyek, Anda mengembangkan ide yang sebelumnya sudah disampaikan oleh rekan kerja, tapi kurang mendapat perhatian. Rekan merasa idenya diambil. Tindakan Anda adalah… (Jejaring Kerja)`,choices:[
+  {text:'Tidak mengambil tindakan karena situasi seperti ini biasa terjadi.',score:1},
+  {text:'Menarik kembali pengembangan ide Anda dan meminta tim untuk mengabaikannya demi menjaga hubungan.',score:2},
+  {text:'Meminta maaf kepada rekan kerja dan mengingatkannya agar tidak berlebihan.',score:3},
+  {text:'Meminta maaf sambil menjelaskan bahwa niat Anda murni untuk kemajuan proyek, tanpa maksud mencuri ide.',score:5},
+  {text:'Meminta maaf secara tulus tanpa memberikan penjelasan tambahan.',score:4}
+],explain:`Pilihan terbaik adalah D karena meminta maaf sambil menjelaskan niat baik menunjukkan profesionalisme dan kolaborasi.`};
 
-questions[100]={number:101,type:'TKP',text:`Guru di desa bantu masyarakat memilah informasi akurat. (Profesionalisme)`,choices:[
-  {text:'Seminar pentingnya periksa sumber',score:4},
-  {text:'Kampanye medsos verifikasi info',score:3},
-  {text:'Kerja sama pemerintah luncurkan program literasi informasi',score:5},
-  {text:'Materi edukasi via cetak & online',score:2},
-  {text:'Selebaran ke rumah warga',score:1}
-],explain:'Program formal & berkelanjutan skalanya lebih luas.',explainDesc:''};
+/* ===================== 78 ===================== */
+questions[77]={number:78,type:'TKP',text:`Sebagai kepala di instansi pemerintah, proyek kerja sama terhambat karena keterlambatan data dari dinas terkait. Apa langkah terbaik Anda? (Jejaring Kerja)`,choices:[
+  {text:'Membiarkan proyek tertunda sambil menunggu data.',score:1},
+  {text:'Menyampaikan laporan kepada pimpinan tentang keterlambatan.',score:2},
+  {text:'Memotivasi tim untuk tetap fokus sambil menunggu data.',score:3},
+  {text:'Meminta tim menyelesaikan proyek tanpa data terkait.',score:4},
+  {text:'Menghubungi dinas terkait secara langsung untuk mempercepat pengiriman data sambil memberikan dukungan moril.',score:5}
+],explain:`Pilihan terbaik adalah E karena menunjukkan kepemimpinan proaktif dan komunikasi efektif.`};
 
-questions[101]={number:102,type:'TKP',text:`Rekan coba akses dokumen rahasia tanpa tugas terkait. (Profesionalisme)`,choices:[
-  {text:'Laporkan ke atasan demi jaga keamanan data',score:5},
-  {text:'Ingatkan pribadi tentang kebijakan keamanan',score:4},
-  {text:'Pantau dulu sebelum bertindak',score:3},
-  {text:'Biarkan karena tidak berniat buruk',score:2},
-  {text:'Diskusikan dengan rekan lain',score:1}
-],explain:'Keamanan informasi prioritas; jalur formal diperlukan.',explainDesc:''};
+/* ===================== 79 ===================== */
+questions[78]={number:79,type:'TKP',text:`Anda ingin berpartisipasi dalam sebuah acara diskusi di kampus Anda untuk mengisi waktu luang. Namun, setelah mencari tahu lebih lanjut, Anda menyadari bahwa diskusi tersebut disponsori oleh organisasi radikal. Apa yang akan Anda lakukan? (Anti Radikalisme)`,choices:[
+  {text:'Menghindari acara tersebut dan melaporkan informasi terkait kepada pihak berwenang di kampus.',score:5},
+  {text:'Tetap mengikuti acara tetapi hanya mendengarkan tanpa ikut terlibat aktif.',score:2},
+  {text:'Memberikan masukan kepada penyelenggara untuk mempertimbangkan sponsor yang lebih netral di masa depan.',score:4},
+  {text:'Tetap ikut hadir karena ingin mengetahui lebih banyak tentang isi diskusi tersebut.',score:3},
+  {text:'Mengabaikan informasi tentang sponsor dan menghadiri acara seperti biasa.',score:1}
+],explain:`Pilihan terbaik adalah A karena waspada dan bertanggung jawab.`};
 
-questions[102]={number:103,type:'TKP',text:`Konflik dua anggota tim beda departemen. (Profesionalisme)`,choices:[
-  {text:'Biarkan mereka selesaikan sendiri',score:1},
-  {text:'Minta mereka saling menghindar',score:2},
-  {text:'Mediasi: fasilitasi berbagi perspektif & solusi bersama',score:5},
-  {text:'Tindakan disipliner ke pihak dianggap sebab',score:4},
-  {text:'Ganti anggota yang konflik',score:3}
-],explain:'Mediasi menyasar akar masalah dan menjaga kerja sama.',explainDesc:''};
+/* ===================== 80 ===================== */
+questions[79]={number:80,type:'TKP',text:`Anda adalah seorang mahasiswa yang tertarik memberikan kontribusi positif menghadapi ancaman radikalisme. Suatu hari, Anda diundang menjadi pembicara diskusi tentang radikalisme yang berlangsung di akhir pekan, waktu yang biasa Anda gunakan untuk belajar. Apa yang Anda lakukan? (Anti Radikalisme)`,choices:[
+  {text:'Tetap menjadi pembicara meskipun mengorbankan waktu belajar dan istirahat.',score:5},
+  {text:'Meminta izin untuk mengurangi tugas agar bisa hadir di konferensi.',score:1},
+  {text:'Mengikuti konferensi untuk mendapatkan wawasan meskipun hanya sebagai peserta.',score:3},
+  {text:'Merekam presentasi dan mengirimkannya jika tidak bisa hadir langsung.',score:4},
+  {text:'Berdiskusi dengan dosen untuk menyesuaikan tanggung jawab kuliah agar bisa hadir.',score:2}
+],explain:`Pilihan A menunjukkan komitmen penuh dalam peran sebagai pembicara.`};
 
-questions[103]={number:104,type:'TKP',text:`Fasilitas kerja kurang; anggaran terbatas. (Pelayanan Publik)`,choices:[
-  {text:'Ajukan proposal bantuan ke pemda/lembaga, bertahap',score:5},
-  {text:'Pakai sebagian anggaran operasional lain',score:2},
-  {text:'Maksimalkan fasilitas ada secara inovatif',score:4},
-  {text:'Alihkan ke bagian anggaran cari solusi',score:3},
-  {text:'Tunda hingga anggaran berikutnya',score:1}
-],explain:'Solusi proaktif & realistis, dampak berkelanjutan.',explainDesc:''};
+/* ===================== 81 ===================== */
+questions[80]={number:81,type:'TKP',text:`Anda seorang pegawai pemerintah yang menghadiri seminar dari organisasi eksternal. Di tengah acara, materi yang disampaikan condong ke ideologi radikal. Apa langkah terbaik Anda? (Anti Radikalisme)`,choices:[
+  {text:'Diam saja selama acara.',score:1},
+  {text:'Mengingatkan panitia secara langsung agar menghentikan materi radikal.',score:5},
+  {text:'Ikut berdiskusi dengan peserta lain untuk memahami pandangan mereka.',score:2},
+  {text:'Meninggalkan seminar untuk menunjukkan ketidaksetujuan.',score:3},
+  {text:'Melaporkan kepada pihak berwenang di instansi setelah acara selesai.',score:4}
+],explain:`Opsi B menunjukkan sikap berani dan proaktif untuk menghentikan penyebaran ideologi radikal.`};
 
-questions[104]={number:105,type:'TKP',text:`Warga lansia butuh akses ramah saat ke loket; fasilitas belum ada. (Pelayanan Publik)`,choices:[
-  {text:'Minta maaf & jelaskan belum tersedia',score:2},
-  {text:'Minta maaf & dampingi langsung ke loket',score:5},
-  {text:'Minta maaf & sarankan isi kotak saran',score:3},
-  {text:'Minta maaf & laporkan kebutuhan jalur akses ke pimpinan',score:4},
-  {text:'Sarankan ke gedung lain yang ada fasilitas',score:1}
-],explain:'Pelayanan langsung + empati sambil dorong perbaikan.',explainDesc:''};
+/* ===================== 82 ===================== */
+questions[81]={number:82,type:'TKP',text:`Anda sebagai kepala bagian instansi melihat seorang pegawai sering mengajak rekan kerja untuk ikut ceramah agama pilihannya di jam kerja. Apa yang akan Anda lakukan? (Anti Radikalisme)`,choices:[
+  {text:'Membiarkan pegawai tersebut karena itu hak kebebasan beragama.',score:1},
+  {text:'Mengingatkan secara pribadi agar menghormati keberagaman.',score:5},
+  {text:'Melaporkan perilaku ke bagian personalia.',score:4},
+  {text:'Memberikan pengarahan umum kepada semua pegawai.',score:3},
+  {text:'Menginstruksikan rekan lain untuk menghindari pegawai tersebut.',score:2}
+],explain:`Pilihan B menjaga keberagaman tanpa mempermalukan pegawai.`};
 
-questions[105]={number:106,type:'TKP',text:`Anak magang dianggap tidak berkontribusi & hendak diucilkan. (Jejaring Kerja)`,choices:[
-  {text:'Biarkan; biar belajar tantangan',score:2},
-  {text:'Ingatkan senior agar tidak mengucilkan',score:4},
-  {text:'Beri tugas tambahan untuk buktikan kontribusi',score:3},
-  {text:'Ajak bicara pahami kesulitan & bimbing',score:5},
-  {text:'Sarankan fokus kerja saja, abaikan komentar',score:1}
-],explain:'Pendampingan personal menumbuhkan kapasitas & trust.',explainDesc:''};
+/* ===================== 83 ===================== */
+questions[82]={number:83,type:'TKP',text:`Anda menyadari suasana kerja terganggu karena rekan kerja berdebat sengit soal pemilihan presiden. Bagaimana sikap Anda? (Anti Radikalisme)`,choices:[
+  {text:'Mengingatkan rekan untuk menjaga netralitas di tempat kerja.',score:5},
+  {text:'Melaporkan situasi ke atasan agar diberi arahan.',score:4},
+  {text:'Ikut berdiskusi untuk meredakan ketegangan.',score:2},
+  {text:'Mengabaikan situasi karena semua punya pandangan masing-masing.',score:1},
+  {text:'Mengajak rekan untuk berdialog santai di luar jam kerja.',score:3}
+],explain:`Sikap profesional menjaga netralitas.`};
 
-questions[106]={number:107,type:'TKP',text:`Pasien minta penjelasan rinci diagnosis & perawatan. (Pelayanan Publik)`,choices:[
-  {text:'Bahasa medis teknis rinci',score:1},
-  {text:'Ilustrasi visual kompleks',score:4},
-  {text:'Bahasa mudah dipahami, hindari istilah sulit',score:5},
-  {text:'Sarankan cari info di internet',score:2},
-  {text:'Jelaskan cepat & singkat lalu Q&A',score:3}
-],explain:'Komunikasi jelas & inklusif adalah kunci.',explainDesc:''};
+/* ===================== 84 ===================== */
+questions[83]={number:84,type:'TKP',text:`Anda sering ikut diskusi online isu sosial–politik dan menyadari banyak informasi propaganda radikal. Apa tindakan terbaik? (Anti Radikalisme)`,choices:[
+  {text:'Mengurangi waktu diskusi online.',score:1},
+  {text:'Mengasah literasi digital untuk kritis mengevaluasi informasi.',score:5},
+  {text:'Memprioritaskan media sosial untuk hiburan saja.',score:2},
+  {text:'Berpartisipasi aktif dengan sikap terbuka.',score:3},
+  {text:'Melakukan pengecekan fakta dari berbagai sumber.',score:4}
+],explain:`Peningkatan literasi digital paling berdampak.`};
 
-questions[107]={number:108,type:'TKP',text:`Pegawai baru di pelayanan publik. (Pelayanan Publik)`,choices:[
-  {text:'Pahami prosedur dengan bertanya ke rekan berpengalaman',score:5},
-  {text:'Tetap ikuti prosedur meski masyarakat bingung',score:1},
-  {text:'Berikan info dasar & arahkan ke bagian lain jika sulit',score:3},
-  {text:'Catat pertanyaan untuk dipelajari sebelum menjawab',score:4},
-  {text:'Minta masyarakat bersabar karena masih belajar',score:2}
-],explain:'Pastikan informasi akurat dengan belajar aktif dari yang berpengalaman.',explainDesc:''};
+/* ===================== 85 ===================== */
+questions[84]={number:85,type:'TKP',text:`Anda siswa baru di sekolah yang multikultur. Apa tindakan terbaik untuk menghargai toleransi? (Anti Radikalisme)`,choices:[
+  {text:'Membentuk kelompok belajar dengan teman-teman seagama.',score:2},
+  {text:'Fokus mempelajari budaya sendiri.',score:1},
+  {text:'Membuka diri memahami perbedaan adat dan agama.',score:5},
+  {text:'Hanya ikut kegiatan sesuai minat pribadi.',score:3},
+  {text:'Menghadiri acara budaya di sekolah.',score:4}
+],explain:`Sikap inklusif dan menghormati perbedaan.`};
 
-questions[108]={number:109,type:'TKP',text:`Online shop ingin pelayanan efektif & efisien. (Pelayanan Publik)`,choices:[
-  {text:'Chatbot & otomatis; sedia opsi agen manusia',score:2},
-  {text:'Berbagai saluran komunikasi mudah diakses',score:5},
-  {text:'Pengiriman lebih cepat berbiaya tambahan',score:4},
-  {text:'Fokus produk standar efisien',score:1},
-  {text:'Kebijakan retur pro-pelanggan & berkelanjutan',score:3}
-],explain:'Akses kanal yang luas = responsif & inklusif.',explainDesc:''};
+/* ===================== 86 ===================== */
+questions[85]={number:86,type:'TKP',text:`Anda kepala sekolah menyelenggarakan pelatihan teknologi. Sikap terbaik? (TIK)`,choices:[
+  {text:'Mengadakan pelatihan umum agar mudah diikuti.',score:4},
+  {text:'Menyerahkan pelatihan penuh ke tim IT.',score:1},
+  {text:'Memilih pelatihan relevan sesuai kebutuhan guru.',score:5},
+  {text:'Meminta guru mencari sendiri materi sebelum pelatihan.',score:3},
+  {text:'Menyusun materi mandiri dari pengalaman pribadi.',score:2}
+],explain:`Kesesuaian kebutuhan = efektivitas tertinggi.`};
 
-questions[109]={number:110,type:'TKP',text:`Pemilih tidak ada di DPT & kesal di TPS. (Pelayanan Publik)`,choices:[
-  {text:'Jelaskan DPT bukan kewenangan Anda; minta pulang',score:1},
-  {text:'Minta lapor ke panitia desa/kecamatan',score:4},
-  {text:'Minta maaf & jelaskan prosedur agar tetap bisa memilih bila memenuhi syarat',score:5},
-  {text:'Isi formulir khusus & info pendaftaran ulang',score:3},
-  {text:'Minta menunggu sampai pemilu selesai',score:2}
-],explain:'Empati + prosedur solusi langsung di TPS adalah layanan terbaik.',explainDesc:''};
+/* ===================== 87 ===================== */
+questions[86]={number:87,type:'TKP',text:`Anda manajer pemasaran, tim Anda sibuk kampanye. Rekan sering kirim permintaan di luar jam kerja. Apa sikap Anda? (TIK)`,choices:[
+  {text:'Membatasi komunikasi di jam resmi saja.',score:2},
+  {text:'Mengingatkan rekan secara pribadi.',score:4},
+  {text:'Tetap merespons pesan demi kelancaran.',score:3},
+  {text:'Mendorong komunikasi luar jam kerja agar tugas selesai.',score:1},
+  {text:'Mengadakan rapat untuk pola komunikasi efektif.',score:5}
+],explain:`Atur pola bersama mencegah burnout & jaga kolaborasi.`};
+
+/* ===================== 88 ===================== */
+questions[87]={number:88,type:'TKP',text:`Anda dapat tugas kelompok pakai aplikasi data. Anda sudah menguasai aplikasi, tapi rekan belum. Apa sikap Anda? (TIK)`,choices:[
+  {text:'Mengajari rekan cara memakai aplikasi.',score:5},
+  {text:'Menggunakan keahlian sendiri untuk cepat menyelesaikan.',score:4},
+  {text:'Menyarankan tetap gunakan aplikasi, sambil membantu rekan.',score:3},
+  {text:'Menyelesaikan sendiri tugas lalu melaporkan.',score:1},
+  {text:'Mengusulkan metode kerja lain agar cepat.',score:2}
+],explain:`Kolaborasi dan transfer keterampilan.`};
+
+/* ===================== 89 ===================== */
+questions[88]={number:89,type:'TKP',text:`Anda admin IT diminta input data penting sekali tanpa perbaikan. Apa yang Anda lakukan? (TIK)`,choices:[
+  {text:'Menginput sambil santai.',score:1},
+  {text:'Mengajak rekan membantu mengecek input.',score:4},
+  {text:'Mengecek berulang kali agar sesuai data asli.',score:5},
+  {text:'Meminta waktu tambahan.',score:3},
+  {text:'Menunggu waktu ideal agar fokus.',score:2}
+],explain:`Akurasi adalah prioritas.`};
+
+/* ===================== 90 ===================== */
+questions[89]={number:90,type:'TKP',text:`Perusahaan ingin mengembangkan aplikasi lintas perusahaan. Apa langkah terbaik? (TIK)`,choices:[
+  {text:'Mengundang perwakilan berbagai perusahaan untuk memastikan kebutuhan.',score:5},
+  {text:'Kembangkan fitur berdasar pengalaman internal.',score:1},
+  {text:'Fokus ke teknologi terbaru tanpa riset tambahan.',score:2},
+  {text:'Percepat pengembangan aplikasi sambil jaga keberlanjutan.',score:4},
+  {text:'Prioritaskan efisiensi, tetap jaga keamanan.',score:3}
+],explain:`Co-design dengan pemangku kepentingan.`};
+
+/* ===================== 91 ===================== */
+questions[90]={number:91,type:'TKP',text:`Anda magang di Dukcapil, diminta bantu warga daftar aplikasi. Apa langkah Anda? (TIK)`,choices:[
+  {text:'Menjelaskan Anda belum paham aplikasi.',score:1},
+  {text:'Meminta izin mengecek cara aplikasi.',score:4},
+  {text:'Meminta bantuan rekan yang lebih berpengalaman.',score:5},
+  {text:'Mencoba sendiri membantu warga meski belum paham.',score:2},
+  {text:'Meminta warga datang lain waktu.',score:3}
+],explain:`Pastikan layanan cepat dan tepat dengan bantuan ahli.`};
+
+/* ===================== 92 ===================== */
+questions[91]={number:92,type:'TKP',text:`Apa pengaruh paling bermanfaat dari media sosial bagi Anda? (TIK)`,choices:[
+  {text:'Menjalin komunikasi dengan sahabat lama.',score:2},
+  {text:'Menambah pendapatan tambahan.',score:4},
+  {text:'Mencari informasi sesuai kesenangan pribadi.',score:3},
+  {text:'Selalu mendapat berita terkini.',score:1},
+  {text:'Memperoleh pengetahuan baru dan keterampilan pribadi.',score:5}
+],explain:`Pengembangan keterampilan paling berdampak.`};
+
+/* ===================== 93 ===================== */
+questions[92]={number:93,type:'TKP',text:`Anda perawat, keluarga pasien mengeluhkan pelayanan rekan kerja Anda. Apa langkah terbaik? (Profesionalisme)`,choices:[
+  {text:'Menjelaskan kepada keluarga bahwa itu karena tekanan kerja.',score:3},
+  {text:'Mendengarkan keluhan dengan empati dan mencatat untuk tindak lanjut.',score:5},
+  {text:'Membela rekan Anda di depan keluarga.',score:1},
+  {text:'Mengarahkan keluarga bicara ke atasan.',score:4},
+  {text:'Berjanji akan mengambil tindakan langsung tanpa koordinasi.',score:2}
+],explain:`Empati dan tindak lanjut adalah standar profesional.`};
+
+/* ===================== 94 ===================== */
+questions[93]={number:94,type:'TKP',text:`Sebagai kepala departemen, Anda diberi tanggung jawab menyusun laporan penting tahunan. Namun beberapa data terlambat masuk dan tenggat waktu laporan bertepatan dengan acara penghargaan penting yang mengundang Anda. Apa langkah terbaik yang akan Anda ambil? (Profesionalisme)`,choices:[
+  {text:'Memprioritaskan laporan tahunan dengan tetap memastikan data yang terlambat diverifikasi sebelum disusun.',score:5},
+  {text:'Meminta anggota tim menyelesaikan laporan sementara Anda menghadiri acara penghargaan.',score:2},
+  {text:'Menghadiri acara penghargaan dan menyampaikan permohonan perpanjangan tenggat kepada atasan.',score:3},
+  {text:'Menyusun laporan dengan data yang tersedia tanpa menunggu data terlambat agar selesai tepat waktu.',score:4},
+  {text:'Mengabaikan acara penghargaan dan hanya fokus laporan bersama tim.',score:1}
+],explain:`Profesional, akurat, dan akuntabel.`};
+
+/* ===================== 95 ===================== */
+questions[94]={number:95,type:'TKP',text:`Sebagai wakil ketua OSIS, Anda tiba-tiba diminta memberikan sambutan di acara besar karena ketua OSIS berhalangan hadir. Anda tidak sempat menyiapkan teks sambutan. Apa langkah terbaik Anda? (Profesionalisme)`,choices:[
+  {text:'Memberikan sambutan spontan agar acara tetap berjalan.',score:2},
+  {text:'Meminta waktu tambahan untuk menyiapkan poin-poin penting.',score:3},
+  {text:'Menolak sambutan karena merasa tidak siap.',score:1},
+  {text:'Menghubungi ketua OSIS untuk dimintakan sambutan secara daring.',score:4},
+  {text:'Menggunakan pengalaman dan pengetahuan tentang acara untuk menyampaikan sambutan singkat relevan dan meyakinkan.',score:5}
+],explain:`Ambil peran dengan materi ringkas relevan.`};
+
+/* ===================== 96 ===================== */
+questions[95]={number:96,type:'TKP',text:`Anda senang bekerja di divisi pelayanan, tetapi masih minim pengalaman sehingga harus bekerja di administrasi. Apa langkah terbaik Anda? (Profesionalisme)`,choices:[
+  {text:'Bekerja dengan dedikasi penuh di administrasi untuk membangun pengalaman.',score:4},
+  {text:'Mengoptimalkan kinerja di administrasi sambil belajar keterampilan relevan dengan divisi pelayanan.',score:5},
+  {text:'Mencari informasi karier dan persyaratan pindah divisi pelayanan.',score:3},
+  {text:'Meningkatkan kualifikasi pendidikan relevan untuk mempercepat pindah divisi.',score:2},
+  {text:'Menjaga motivasi sambil menunggu kesempatan pindah.',score:1}
+],explain:`Proaktif belajar keterampilan relevan sambil berkinerja baik.`};
+
+/* ===================== 97 ===================== */
+questions[96]={number:97,type:'TKP',text:`Anda adalah seorang pegawai di instansi pemerintahan. Anda telah merencanakan untuk menghadiri acara penting keluarga yang sudah lama dijadwalkan. Namun, sehari sebelum acara, atasan meminta Anda untuk memimpin rapat mendadak terkait proyek prioritas yang tidak bisa ditunda. Apa langkah terbaik yang akan Anda ambil? (Profesionalisme)`,choices:[
+  {text:'Menginformasikan kepada atasan bahwa Anda tidak bisa menghadiri rapat karena ada acara keluarga.',score:1},
+  {text:'Meminta rekan lain menggantikan memimpin rapat agar Anda tetap bisa menghadiri acara keluarga.',score:4},
+  {text:'Meminta izin keluarga untuk terlambat menghadiri acara agar dapat memimpin rapat dan tetap menyelesaikan tanggung jawab.',score:5},
+  {text:'Memimpin rapat sesuai permintaan atasan, tetapi dengan fokus yang terganggu karena memikirkan acara keluarga.',score:2},
+  {text:'Menjelaskan situasi kepada atasan dan menawarkan solusi lain, seperti menjadwalkan ulang rapat ke waktu yang memungkinkan.',score:3}
+],explain:`Menjaga tanggung jawab kerja tanpa mengabaikan keluarga sepenuhnya.`};
+
+/* ===================== 98 ===================== */
+questions[97]={number:98,type:'TKP',text:`Dalam proyek pengembangan produk, Anda ingin memastikan bahwa produk yang dikembangkan memenuhi harapan dan standar kinerja pelanggan. Sikap terbaik yang harus Anda ambil adalah… (Profesionalisme)`,choices:[
+  {text:'Mengadakan diskusi rutin dengan pelanggan untuk memahami secara mendalam harapan dan standar.',score:5},
+  {text:'Mengandalkan evaluasi awal pelanggan setelah peluncuran produk.',score:3},
+  {text:'Memfokuskan pada beberapa aspek utama yang menurut tim paling penting.',score:1},
+  {text:'Melakukan riset pasar mendalam untuk mengantisipasi harapan pelanggan dan menyesuaikan produk.',score:4},
+  {text:'Melibatkan tim dalam simulasi pelanggan untuk memastikan produk sesuai standar.',score:2}
+],explain:`Komunikasi langsung dan rutin dengan pelanggan adalah yang paling efektif.`};
+
+/* ===================== 99 ===================== */
+questions[98]={number:99,type:'TKP',text:`Anda ditunjuk untuk menggantikan atasan dalam memimpin rapat koordinasi lintas bidang di instansi pemerintahan karena atasan sedang dinas luar kota. Dalam rapat tersebut, beberapa bidang mengajukan usulan program prioritas untuk bulan mendatang. Apa langkah terbaik yang akan Anda ambil? (Profesionalisme)`,choices:[
+  {text:'Menetapkan keputusan terhadap usulan-usulan tersebut sesuai dengan kebiasaan yang diterapkan oleh atasan.',score:4},
+  {text:'Mengambil keputusan terkait usulan-usulan tersebut sesuai dengan kebijakan yang berlaku di instansi.',score:5},
+  {text:'Menampung usulan-usulan tersebut dan akan mengumumkan keputusan yang sesuai dengan preferensi pribadi.',score:1},
+  {text:'Mengambil keputusan mengenai usulan-usulan saat rapat, sambil tetap memberikan peluang untuk revisi dari atasan.',score:3},
+  {text:'Menghubungi atasan melalui telepon dan meminta arahan terkait usulan-usulan yang diajukan bidang.',score:2}
+],explain:`Keputusan mandiri namun berbasis kebijakan resmi.`};
+
+/* ===================== 100 ===================== */
+questions[99]={number:100,type:'TKP',text:`Anda adalah seorang pekerja di bidang teknologi yang ingin meningkatkan keterampilan dan pengetahuan Anda. Tindakan Anda adalah… (Profesionalisme)`,choices:[
+  {text:'Menginvestasikan waktu dan uang untuk mengikuti kursus online yang relevan dengan pekerjaan Anda.',score:5},
+  {text:'Menunda pelatihan sampai Anda merasa lebih siap dan percaya diri.',score:1},
+  {text:'Membaca buku-buku dan artikel-artikel terkait industri untuk belajar secara mandiri.',score:2},
+  {text:'Bergabung dengan komunitas profesional di bidang Anda untuk berdiskusi dan berbagi pengalaman.',score:4},
+  {text:'Mengevaluasi keterampilan dan pengetahuan yang paling dibutuhkan dalam pekerjaan Anda dan fokus untuk mengembangkannya.',score:3}
+],explain:`Belajar terstruktur dan relevan mempercepat kemajuan.`};
+
+/* ===================== 101 ===================== */
+questions[100]={number:101,type:'TKP',text:`Anda adalah seorang guru di desa, Anda ingin membantu masyarakat memilah dan memilih informasi yang akurat untuk mencegah kerancuan dan keraguan di kalangan masyarakat. Tindakan terbaik yang Anda lakukan adalah… (Profesionalisme)`,choices:[
+  {text:'Memberikan seminar tentang pentingnya memeriksa sumber informasi.',score:4},
+  {text:'Mengadakan kampanye media sosial untuk edukasi verifikasi informasi.',score:3},
+  {text:'Bekerja sama dengan lembaga pemerintah meluncurkan program literasi informasi.',score:5},
+  {text:'Membuat materi edukasi yang disebarkan melalui media cetak dan online.',score:2},
+  {text:'Menyebarkan selebaran ke rumah warga tentang cara memeriksa informasi.',score:1}
+],explain:`Program formal dan berkelanjutan lebih berdampak.`};
+
+/* ===================== 102 ===================== */
+questions[101]={number:102,type:'TKP',text:`Sebagai pegawai pemerintahan, Anda mengetahui seorang rekan mencoba mengakses dokumen rahasia yang tidak berkaitan dengan tugasnya. Rekan tersebut mengaku hanya ingin memperluas wawasan. Tindakan Anda? (Profesionalisme)`,choices:[
+  {text:'Melaporkan tindakan tersebut kepada atasan untuk memastikan kebijakan keamanan data tetap terjaga.',score:5},
+  {text:'Mengingatkan rekan tersebut secara pribadi tentang kebijakan keamanan data.',score:4},
+  {text:'Memantau tindakannya terlebih dahulu sebelum memutuskan langkah lanjutan.',score:3},
+  {text:'Membiarkan rekan tersebut karena yakin ia tidak memiliki niat buruk.',score:2},
+  {text:'Mendiskusikan masalah ini dengan rekan lain untuk mendapatkan pendapat sebelum bertindak.',score:1}
+],explain:`Keamanan informasi adalah prioritas.`};
+
+/* ===================== 103 ===================== */
+questions[102]={number:103,type:'TKP',text:`Anda seorang manajer tim yang menghadapi konflik antara dua anggota tim dari departemen berbeda. Konflik ini memengaruhi kerja sama tim dan kinerja secara keseluruhan. Langkah terbaik Anda? (Profesionalisme)`,choices:[
+  {text:'Mempercayai bahwa anggota tim pasti bisa menyelesaikan konflik sendiri.',score:1},
+  {text:'Meminta anggota tim untuk saling menghindar dan fokus pada tugas individu.',score:2},
+  {text:'Mengadakan pertemuan mediasi untuk memungkinkan kedua pihak berbagi perspektif dan mencari solusi bersama.',score:5},
+  {text:'Mengambil tindakan disipliner terhadap anggota tim yang dianggap penyebab konflik.',score:4},
+  {text:'Menggantikan anggota tim yang terlibat konflik dengan orang lain yang lebih kooperatif.',score:3}
+],explain:`Mediasi menyasar akar masalah dan menjaga kerja sama.`};
+
+/* ===================== 104 ===================== */
+questions[103]={number:104,type:'TKP',text:`Sebagai seorang kepala bagian di instansi pemerintahan, Anda menghadapi tantangan kurangnya anggaran untuk memperbarui fasilitas kerja bagi pegawai di unit Anda. Anda ingin mencari solusi yang tepat berdampak positif bagi produktivitas pegawai. Dalam situasi ini, langkah apa yang sebaiknya Anda ambil? (Pelayanan Publik)`,choices:[
+  {text:'Mengajukan proposal bantuan dana kepada pemerintah daerah atau lembaga terkait untuk pembaruan fasilitas secara bertahap.',score:5},
+  {text:'Menggunakan sebagian anggaran operasional yang ada meskipun mengurangi alokasi untuk program lain.',score:2},
+  {text:'Mengajak pegawai memaksimalkan fasilitas yang tersedia dengan pendekatan inovatif dan efisien.',score:4},
+  {text:'Mengalihkan tanggung jawab pembaruan fasilitas kepada bagian anggaran dan meminta mereka untuk mencari jalan keluar.',score:3},
+  {text:'Menunda pembaruan fasilitas hingga alokasi anggaran berikutnya tersedia.',score:1}
+],explain:`Solusi proaktif dan realistis.`};
+
+/* ===================== 105 ===================== */
+questions[104]={number:105,type:'TKP',text:`Anda adalah seorang petugas layanan di kantor pemerintahan. Seorang warga lansia menanyakan jalur akses ramah lansia untuk menuju loket pelayanan, namun kantor Anda belum memiliki fasilitas tersebut. Apa tindakan Anda? (Pelayanan Publik)`,choices:[
+  {text:'Meminta maaf dan menjelaskan bahwa jalur akses ramah lansia belum tersedia.',score:2},
+  {text:'Meminta maaf dan menawarkan bantuan langsung untuk mendampingi warga ke loket pelayanan.',score:5},
+  {text:'Meminta maaf dan menyarankan untuk menulis keluhan di kotak saran yang tersedia.',score:3},
+  {text:'Meminta maaf dan melaporkan kebutuhan jalur akses ramah lansia kepada pimpinan untuk prioritas perbaikan.',score:4},
+  {text:'Meminta maaf dan menyarankan untuk pergi ke gedung lain yang memiliki fasilitas tersebut.',score:1}
+],explain:`Solusi langsung plus dorongan perbaikan.`};
+
+/* ===================== 106 ===================== */
+questions[105]={number:106,type:'TKP',text:`Anda seorang senior di instansi pemerintahan yang membimbing seorang anak magang. Namun beberapa rekan senior merasa anak magang tersebut tidak memberikan kontribusi signifikan dan ingin mengucilkannya. Apa langkah terbaik yang Anda ambil? (Jejaring Kerja)`,choices:[
+  {text:'Membiarkan situasi berjalan karena anak magang perlu belajar menghadapi tantangan.',score:2},
+  {text:'Mengingatkan rekan senior untuk tidak mengucilkan anak magang.',score:4},
+  {text:'Memberikan tugas tambahan kepada anak magang untuk menunjukkan kontribusinya.',score:3},
+  {text:'Mengajak anak magang berbicara untuk memahami kesulitannya lalu memberi bimbingan.',score:5},
+  {text:'Menyarankan anak magang untuk fokus pada pekerjaannya tanpa memikirkan pendapat rekan senior.',score:1}
+],explain:`Pendampingan personal menumbuhkan kapasitas dan kepercayaan diri.`};
+
+/* ===================== 107 ===================== */
+questions[106]={number:107,type:'TKP',text:`Anda bekerja di sebuah klinik medis. Seorang pasien meminta penjelasan rinci tentang langkah diagnosa dan perawatan. Cara terbaik untuk menjelaskan adalah… (Pelayanan Publik)`,choices:[
+  {text:'Menggunakan bahasa medis teknis secara rinci.',score:1},
+  {text:'Menggunakan ilustrasi visual yang kompleks.',score:4},
+  {text:'Berbicara dengan bahasa yang mudah dipahami dan menghindari istilah medis sulit.',score:5},
+  {text:'Menyarankan pasien mencari informasi di internet.',score:2},
+  {text:'Menjelaskan dengan cepat dan singkat lalu memberi kesempatan bertanya.',score:3}
+],explain:`Komunikasi jelas, empatik, dan inklusif.`};
+
+/* ===================== 108 ===================== */
+questions[107]={number:108,type:'TKP',text:`Anda pegawai baru di kantor pelayanan publik. Dalam melayani masyarakat, apa langkah Anda? (Pelayanan Publik)`,choices:[
+  {text:'Memahami prosedur dengan bertanya kepada rekan kerja berpengalaman.',score:5},
+  {text:'Tetap mengikuti prosedur meskipun masyarakat bingung.',score:1},
+  {text:'Memberikan informasi dasar dan mengarahkan masyarakat ke bagian lain jika ada pertanyaan sulit.',score:3},
+  {text:'Mencatat pertanyaan masyarakat untuk dipelajari lebih lanjut sebelum menjawab.',score:4},
+  {text:'Meminta masyarakat bersabar karena Anda masih belajar.',score:2}
+],explain:`Belajar dari rekan berpengalaman memastikan layanan akurat.`};
+
+/* ===================== 109 ===================== */
+questions[108]={number:109,type:'TKP',text:`Anda adalah seorang pemilik online shop yang ingin menerapkan sistem pelayanan yang efektif dan efisien. Tindakan terbaik yang dapat Anda lakukan adalah… (Pelayanan Publik)`,choices:[
+  {text:'Mengoptimalkan penggunaan chatbot dan sistem otomatis untuk menjawab pertanyaan pelanggan dengan cepat, namun tetap menyediakan opsi untuk berbicara dengan agen manusia.',score:2},
+  {text:'Menyediakan berbagai saluran komunikasi yang mudah diakses bagi pelanggan untuk mengajukan pertanyaan atau menyampaikan keluhan.',score:5},
+  {text:'Menawarkan layanan pengiriman yang lebih cepat dengan biaya tambahan bagi pelanggan yang membutuhkan produk segera.',score:4},
+  {text:'Fokus pada produk standar yang efisien untuk diproses, tanpa mengurangi kualitas layanan.',score:1},
+  {text:'Menerapkan kebijakan pengembalian barang yang memberikan solusi terbaik bagi pelanggan, sambil tetap menjaga keberlanjutan operasional.',score:3}
+],explain:`Berbagai saluran komunikasi = responsif & inklusif.`};
+
+/* ===================== 110 ===================== */
+questions[109]={number:110,type:'TKP',text:`Sebagai seorang petugas pemilu, Anda sedang bertugas di TPS. Seorang pemilih datang dan mengeluh karena tidak terdaftar dalam daftar pemilih tetap (DPT), padahal ia merasa telah melakukan pendaftaran sebelumnya. Pemilih tersebut terlihat kesal dan menyalahkan Anda atas kesalahan ini. Apa langkah terbaik yang akan Anda ambil? (Pelayanan Publik)`,choices:[
+  {text:'Saya akan menjelaskan dengan tenang bahwa data DPT diatur oleh pihak terkait, dan menyarankan pemilih untuk pulang karena ia tidak dapat menggunakan hak pilihnya.',score:1},
+  {text:'Saya akan meminta pemilih untuk melapor ke pihak panitia pemilu di tingkat desa atau kecamatan untuk mengecek kembali status pendaftarannya.',score:4},
+  {text:'Saya akan meminta maaf atas ketidaknyamanan yang terjadi dan menjelaskan prosedur untuk memastikan pemilih tetap bisa memberikan suaranya jika memenuhi syarat.',score:5},
+  {text:'Saya akan meminta pemilih untuk mengisi formulir khusus sambil tetap memberikan informasi tambahan tentang pendaftaran ulang.',score:3},
+  {text:'Saya akan meminta pemilih untuk menunggu hingga pemilu selesai agar masalahnya dapat diselesaikan dengan lebih tenang.',score:2}
+],explain:`Empati dan solusi prosedural langsung di TPS.`};
+
 /* ====== STATE ====== */
 const answers = Array(TOTAL).fill(null);
 const saved   = Array(TOTAL).fill(false);
