@@ -144,6 +144,20 @@
   </style>
 </head>
 <body>
+<!-- ===== [BARU] Gerbang Kode Akses ===== -->
+  <section id="accessView" class="centerwrap">
+    <div class="intro" style="text-align:center">
+      <h1>Masukkan Kode Akses</h1>
+      <p class="muted">Ketik kode akses yang telah diberikan admin</p>
+      <form id="accessForm" style="margin-top:12px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap">
+        <input id="accessInput" type="password" inputmode="text" autocomplete="off"
+               placeholder="contoh: @157#" style="padding:10px 12px; border:1px solid var(--line); border-radius:10px; min-width:240px;">
+        <button type="submit" class="btn primary">Masuk</button>
+      </form>
+      <div id="accessError" class="muted" style="color:#dc2626; margin-top:8px"></div>
+    </div>
+  </section>
+  <!-- ===== [AKHIR BARU] Gerbang Kode Akses ===== -->
 
 <!-- Intro -->
 <section id="introView" class="centerwrap">
@@ -290,6 +304,7 @@
 </div>
 
 <script>
+
 /* ====== KONFIG (durasi tetap 100 menit → 1 jam 40 menit) ====== */
 const TOTAL = 110;
 const twkEnd = 30, tiuEnd = 65;
@@ -850,21 +865,21 @@ questions[73]={number:74,type:'TKP',text:`Sebagai ketua departemen, Anda memilik
 ],explain:'Pilihan terbaik adalah E karena mengapresiasi kinerjanya sambil menegaskan pentingnya kerja tim dan secara aktif melatihnya untuk berkoordinasi lebih baik mencerminkan nilai Harmonis dalam membangun kerja sama yang efektif di tim serta nilai Profesional dengan mendukung pengembangan individu tanpa mengorbankan dinamika tim. Ini adalah langkah yang seimbang dan bertanggung jawab sebagai pemimpin sehingga mendapat skor 5. B juga baik karena menunjukkan penghargaan terhadap kinerja individu dan menggambarkan nilai Adaptif meskipun pendekatannya kurang menyelesaikan akar masalah sehingga mendapat skor 4. C cukup baik karena mengurangi tugas dan membagi tanggung jawab membantu menjaga keseimbangan dalam tim, namun kurang mencerminkan nilai Kolaboratif sehingga mendapat skor 3. D kurang tepat karena memberikan tugas khusus yang tidak melibatkan tim berisiko memperkuat pola kerja individualis dan mengabaikan nilai Harmonis sehingga mendapat skor 2. A adalah pilihan paling tidak tepat karena membiarkan anggota tim bekerja sendiri menunjukkan kurangnya Akuntabilitas dalam mengelola tim sehingga mendapat skor 1.',explainDesc:''};
 
 /* Contoh 75–78 tetap */
-questions[74]={number:75,type:
-'TKP',text:`Sebagai kepala RT, Anda mengadakan kegiatan gotong royong untuk membersihkan lingkungan. Namun, seorang warga menolak ikut serta karena merasa lingkungan sekitar rumahnya sudah bersih. Sikap warga ini membuat beberapa warga lain merasa kesal dan mulai mempertanyakan tanggung jawabnya sebagai anggota masyarakat. Apa langkah terbaik yang akan Anda ambil? (Sosial Budaya)`
-,choices:[    { text: 'Mengabaikan warga tersebut dan melanjutkan gotong royong dengan warga lain agar kegiatan tetap berjalan lancar.', score: 2 },
-    { text: 'Mengajak warga tersebut berbicara secara personal untuk menjelaskan pentingnya gotong royong demi kebersihan lingkungan secara keseluruhan.', score: 5 },
-    { text: 'Membahas penolakan warga tersebut dalam forum RT agar semua warga bisa mendiskusikan masalah ini secara terbuka.', score: 4 },
-    { text: 'Memberikan tugas khusus kepada warga tersebut yang tidak langsung berhubungan dengan gotong royong, seperti mendata kebutuhan kebersihan warga.', score: 3 },
-    { text: 'Membiarkan warga tersebut tidak ikut serta karena setiap orang memiliki hak untuk memutuskan partisipasinya.', score: 1 }
-  ],explain:'Pilihan terbaik adalah B karena mengajak warga berbicara secara personal untuk menjelaskan pentingnya gotong royong menunjukkan sikap Empati dan Harmonis serta membantu membangun kesadaran akan tanggung jawab bersama tanpa mempermalukan warga di depan orang lain sehingga mendapat skor 5. C juga baik karena membahas masalah ini dalam forum RT memungkinkan penyelesaian secara kolektif dan transparan, meskipun berisiko memperburuk hubungan jika tidak dikelola dengan baik sehingga mendapat skor 4. D cukup baik karena memberikan tugas khusus kepada warga yang enggan ikut menunjukkan upaya inklusif tetapi solusi ini tidak langsung mendorong keterlibatannya dalam gotong royong sehingga mendapat skor 3. A kurang tepat karena mengabaikan warga tersebut dapat menyelesaikan kegiatan gotong royong tetapi berpotensi memperburuk hubungan antarwarga sehingga mendapat skor 2. E adalah pilihan paling tidak tepat karena membiarkan warga tidak ikut serta tanpa upaya untuk menyadarkan tanggung jawab sosial menunjukkan sikap pasif yang dapat memengaruhi solidaritas komunitas, sehingga mendapat skor 1.',explainDesc:''};
+questions[74]={number:75,type:'TKP',text:`Sebagai gubernur, Anda menerima banyak keluhan masyarakat terkait jalan utama yang rusak, namun perbaikan terhambat karena kurangnya koordinasi antarinstansi. Apa langkah terbaik yang akan Anda ambil? (Jejaring Kerja)`,choices:[
+  {text:'Saya mengundang semua instansi terkait untuk rapat koordinasi guna menentukan langkah konkrit bersama dan membagi tanggung jawab sesuai kewenangan masing-masing.',score:5},
+  {text:'Saya meminta dinas pekerjaan umum provinsi untuk mulai melakukan perbaikan sementara sambil terus menjalin koordinasi dengan instansi lainnya.',score:4},
+  {text:'Saya meminta masyarakat bersabar sambil menunggu keputusan dari instansi terkait.',score:1},
+  {text:'Saya menyampaikan keluhan masyarakat kepada pemerintah pusat agar mereka mengambil tindakan.',score:3},
+  {text:'Saya menyerahkan penyelesaian masalah kepada pemerintah kota karena jalan tersebut berada di wilayah mereka.',score:2}
+],explain:'Pilihan terbaik adalah A karena mengundang semua instansi terkait untuk rapat koordinasi menunjukkan sikap Proaktif, Kolaboratif, dan Akuntabel dalam menyelesaikan masalah secara terencana dan bersama-sama, sehingga mendapat skor 5. B juga baik karena memulai perbaikan sementara sambil terus menjalin koordinasi mencerminkan sikap Cepat Tanggap, meskipun solusi ini bersifat sementara dan membutuhkan alokasi sumber daya tambahan sehingga mendapat skor 4. D cukup baik karena melibatkan pemerintah pusat menunjukkan upaya eskalasi tetapi langkah ini memerlukan waktu lebih lama dan tidak mencerminkan inisiatif local sehingga mendapat skor 3. E kurang tepat karena menyerahkan penyelesaian kepada pemerintah kota menunjukkan kurangnya kepemimpinan sebagai gubernur sehingga mendapat skor 2. C adalah pilihan paling tidak tepat karena meminta masyarakat bersabar tanpa tindakan nyata menunjukkan sikap pasif sehingga mendapat skor 1.',explainDesc:''};
+
 questions[75]={number:76,type:'TKP',text:`Sebagai ASN baru di Dinas Kesehatan, Anda ingin memperluas jejaring kerja untuk mendukung tugas dan karier Anda. Tindakan yang tepat adalah… (Jejaring Kerja)`,choices:[
   {text:'Menghubungi Kepala Dinas untuk meminta rekomendasi dan pengenalan kepada para ahli kesehatan.',score:2},
   {text:'Mengikuti program mentoring internasional untuk memperluas jejaring global.',score:1},
   {text:'Mengajukan diri dalam pelatihan nasional yang melibatkan para ahli kesehatan.',score:3},
   {text:'Menghadiri konferensi kesehatan nasional untuk berinteraksi dengan praktisi dan peneliti.',score:4},
   {text:'Membentuk kelompok kerja lintas sektor untuk kolaborasi dalam masalah kesehatan.',score:5}
-],explain:`Pilihan terbaik adalah E karena membentuk kelompok kerja lintas sektor mencerminkan inisiatif proaktif dan kolaboratif, sehingga peluang jejaring langsung relevan dengan tugas kesehatan lokal.`};
+],explain:'Pilihan terbaik adalah E karena membentuk kelompok kerja lintas sektor mencerminkan inisiatif Proaktif dan Kolaboratif untuk menciptakan peluang jejaring kerja yang langsung relevan dengan tugas dan masalah kesehatan yang sedang dihadapi sehingga mendapat skor 5. D juga baik karena menghadiri konferensi kesehatan nasional memungkinkan interaksi langsung dengan praktisi dan peneliti untuk memperluas wawasan dan jejaring, meskipun interaksi mungkin bersifat sementara sehingga mendapat skor 4. C cukup baik karena mengikuti pelatihan nasional dapat menambah pengetahuan dan membangun jejaring tetapi peluangnya lebih terbatas pada peserta pelatihan, sehingga mendapat skor 3. A kurang tepat karena meminta rekomendasi kepada Kepala Dinas menunjukkan ketergantungan dan kurang inisiatif pribadi, sehingga mendapat skor 2. B adalah pilihan paling tidak tepat karena fokus pada jejaring global tidak selalu relevan dengan kebutuhan tugas lokal Anda sehingga mendapat skor 1.',explainDesc:''};
 
 /* ===================== 77 ===================== */
 questions[76]={number:77,type:'TKP',text:`Dalam sebuah forum diskusi proyek, Anda mengembangkan ide yang sebelumnya sudah disampaikan oleh rekan kerja, tapi kurang mendapat perhatian. Rekan merasa idenya diambil. Tindakan Anda adalah… (Jejaring Kerja)`,choices:[
@@ -1547,6 +1562,50 @@ swapGridBtn.addEventListener('click', ()=>{
 updateAllNumColors();
 hhEl.textContent='01'; mmEl.textContent='40'; ssEl.textContent='00';
 </script>
+ <script>
+  (() => {
+    const ACCESS_ENABLED = true; // set ke false jika ingin mematikan gerbang akses
+    const ACCESS_CODES   = ['dhika', 'prima', 'edgar', 'Tedy', 'candra', 'bayu'];
+    const norm = s => String(s || '').trim().toLowerCase();
+    const ALLOWED = new Set(ACCESS_CODES.map(norm));
+    const $ = id => document.getElementById(id);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!ACCESS_ENABLED) {
+        // Tampilkan tampilan normal
+        $('accessView')?.classList.add('hidden');
+        $('introView')?.classList.remove('hidden');
+        return;
+      }
+
+      // Saat gerbang aktif: tampilkan layar akses, sembunyikan yang lain
+      $('accessView')?.classList.remove('hidden');
+      $('introView')?.classList.add('hidden');
+      $('readingView')?.classList.add('hidden');
+      $('app')?.classList.add('hidden');
+
+      const form  = $('accessForm');
+      const input = $('accessInput');
+      const error = $('accessError');
+
+      form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        error.textContent = '';
+
+        const ok = ALLOWED.has(norm(input.value));
+        if (ok) {
+          $('accessView')?.classList.add('hidden');
+          $('introView')?.classList.remove('hidden');
+          // fokus ke tombol mulai biar langsung lanjut
+          setTimeout(() => $('startReadingBtn')?.focus(), 0);
+        } else {
+          error.textContent = 'Kode akses salah. Coba kode akses lainnya.';
+          input.select();
+          input.focus();
+        }
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
-
