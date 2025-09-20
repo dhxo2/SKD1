@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Tryout 110 Soal: TWK • TIU • TKP</title>
+  <style>
+    :root{
+      --bg:#ffffff; --ink:#111827; --muted:#6b7280;
+      --panel:#ffffff; --card:#ffffff; --line:#e5e7eb;
+      --red-solid:#dc2626; --green-solid:#16a34a; --yellow-solid:#f59e0b;
+      --primary:#0369a1;
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial; background:var(--bg); color:var(--ink)}
+
+    /* Intro & Reading */
+    .centerwrap{min-height:100vh; display:grid; place-items:center; padding:24px; background:linear-gradient(180deg,#fff,#f8fafc 60%)}
+    .intro,.reading{width:min(940px,92vw); background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px; box-shadow:0 12px 30px rgba(0,0,0,.06)}
+    .intro h1{margin:0 0 10px; font-size:26px}
+    .intro p{margin:8px 0; color:var(--muted)}
+    .list{margin:10px 0 0 18px; color:var(--muted)} .list li{margin:6px 0}
+    .cta{margin-top:16px; display:flex; gap:10px; flex-wrap:wrap}
+    .btn{border:1px solid var(--line); background:#fff; color:#111827; padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:600; box-shadow:0 1px 2px #0001}
+    .btn.primary{background:#0369a1; border-color:#0369a1; color:#fff}
+    .btn.warn{background:#f59e0b; border-color:#f59e0b; color:#111}
+    .btn.danger{background:#ef4444; border-color:#ef4444; color:#fff}
+    .btn.small{padding:8px 12px; font-size:14px}
+    .reading h2{margin:0 0 6px}
+    .read-timer{font-weight:800; font-size:40px; letter-spacing:.5px; margin:8px 0 10px}
+    .muted{color:var(--muted); font-size:14px}
+
+    /* App */
+    .app{display:none; grid-template-columns:260px 1fr; height:100vh}
+    .app.collapsed{grid-template-columns:1fr}
+    .sidebar{border-right:1px solid var(--line); background:var(--panel); padding:16px; overflow:auto; position:relative; transition:transform .2s ease}
+    .brand{font-weight:700; letter-spacing:.4px; margin:0 0 12px}
+    .legend{display:flex; gap:8px; flex-wrap:wrap; font-size:12px; color:var(--muted); margin-bottom:12px}
+    .badge{display:inline-flex; align-items:center; gap:6px}
+    .dot{width:12px; height:12px; border-radius:3px; display:inline-block; border:1px solid #0002}
+    .dot.red{background:var(--red-solid)} .dot.green{background:var(--green-solid)} .dot.yellow{background:var(--yellow-solid)}
+    .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px}
+    .num{border:1px solid var(--line); background:#fff; color:#666; padding:8px 0; text-align:center; border-radius:10px; cursor:pointer; user-select:none; transition:transform .1s, box-shadow .1s, border-color .2s}
+    .num:hover{transform:translateY(-1px); box-shadow:0 4px 16px #0001}
+    .num.red{background:var(--red-solid); color:#fff; border-color:var(--red-solid)}
+    .num.green{background:var(--green-solid); color:#fff; border-color:var(--green-solid)}
+    .num.yellow{background:var(--yellow-solid); color:#111; border-color:var(--yellow-solid)}
+
+    .main{position:relative; overflow:auto; background:#f8fafc}
+    .topbar{position:sticky; top:0; z-index:5; display:flex; align-items:flex-start; justify-content:space-between; padding:12px 20px; background:#ffffffd9; backdrop-filter:blur(6px); border-bottom:1px solid var(--line)}
+    .top-left{display:flex; align-items:center; gap:10px}
+    .top-right{display:flex; flex-direction:column; align-items:flex-end; gap:8px; position:relative}
+
+    /* TIMER ukuran diperkecil 40% */
+    .timer{display:flex; align-items:flex-end; gap:8px; padding:6px; border:2px solid #0ea5e9; border-radius:12px; background:#fff; box-shadow:0 1px 2px #0001}
+    .timer.warn{border-color:#ef4444}
+    .time-box{min-width:42px; padding:4px 8px; border:1px solid var(--line); border-radius:10px; text-align:center; line-height:1}
+    .time-box .value{display:block; font-weight:800; font-size:20px; letter-spacing:.5px}
+    .time-box .unit{font-size:9px; color:var(--muted); margin-top:4px}
+    .colon{font-weight:800; font-size:17px; line-height:1; padding-bottom:6px}
+
+    /* Tombol hamburger (3 garis) */
+    .hamburger{display:inline-flex; flex-direction:column; gap:4px; padding:8px; border:1px solid var(--line); border-radius:10px; background:#fff; cursor:pointer}
+    .hamburger span{width:20px; height:2px; background:#111827; display:block}
+    .hamburger:focus-visible{outline:2px solid #60a5fa; outline-offset:2px}
+
+    /* Tombol SWAP nomor (desktop only) */
+    .swap-btn{border:1px dashed #93c5fd; background:#f0f9ff; color:#0369a1; padding:6px 10px; border-radius:10px; font-weight:600; cursor:pointer}
+    @media (max-width:960px){ .swap-btn{display:none} }
+
+    .confirm-box{margin-top:6px; width:min(440px,90vw); border:1px solid var(--line); background:#fff; border-radius:12px; padding:14px; box-shadow:0 10px 30px rgba(0,0,0,.08); animation:slideDown .18s ease-out}
+    @keyframes slideDown{from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:translateY(0)}}
+    .confirm-title{font-weight:800; margin:0 0 6px}
+    .confirm-desc{font-size:14px; color:var(--muted); margin:0 0 10px}
+    .confirm-actions{display:flex; gap:8px; justify-content:flex-end}
+
+    .wrap{max-width:900px; margin:20px auto; padding:0 20px 80px}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:0 8px 24px #0000000d}
+    .section-chip{display:inline-block; font-size:12px; color:#0369a1; border:1px dashed #93c5fd; padding:4px 8px; border-radius:999px; margin-bottom:10px; background:#f0f9ff}
+    .qhead{font-size:18px; font-weight:700; margin:.2rem 0 1rem}
+    .media{margin-top:12px; display:grid; gap:12px}
+    .media figure{margin:0}
+    .media img{max-width:100%; display:block; border:1px solid var(--line); border-radius:12px}
+    .media figcaption{font-size:12px; color:var(--muted); margin-top:4px}
+    .choices{display:grid; gap:10px; margin-top:12px}
+    .choice{display:flex; gap:10px; align-items:flex-start; background:#fff; border:1px solid var(--line); padding:12px; border-radius:12px; cursor:pointer; transition:border-color .15s, background .15s}
+    .choice:hover{border-color:#60a5fa}
+    .choice input{margin-top:3px; accent-color:#0891b2}
+    .controls{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+
+    .extra-lines{margin-top:8px}
+    .extra-lines .blank{min-height:1.2em; border-bottom:1px dashed #e5e7eb; margin:6px 0}
+
+    .bottombar{position:fixed; right:20px; bottom:20px; display:flex; gap:10px; z-index:10}
+
+    .result{max-width:900px; margin:24px auto; padding:0 20px 60px}
+    .sumgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:16px 0 10px}
+    .box{background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:0 6px 18px #0000000a}
+    .box h3{margin:0 0 6px; font-size:14px; color:#0369a1}
+    .box .score{font-size:28px; font-weight:800}
+
+    .review-panel{margin-top:18px}
+    .review-head{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px}
+    .review-title{margin:0; font-size:18px}
+    .review-card .qline{margin:6px 0; color:var(--muted)}
+    .review-card .ok{color:#16a34a; font-weight:700}
+    .review-card .no{color:#ef4444; font-weight:700}
+    .review-media,.explain-media{margin-top:8px; display:grid; gap:10px; grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+    /* Override supaya gambar pembahasan tampil besar (ukuran asli, responsif) */
+.explain-media{
+  grid-template-columns: 1fr;     /* satu kolom penuh, bukan thumbnail grid */
+}
+.explain-media img{
+  width: auto;                     /* pakai lebar asli */
+  max-width: 100%;                 /* tapi tidak melebihi lebar kontainer */
+  height: auto;                    /* jaga rasio */
+}
+
+	.review-media figure,.explain-media figure{margin:0}
+    .review-media img,.explain-media img{width:100%; border:1px solid var(--line); border-radius:10px; display:block}
+    .review-media figcaption,.explain-media figcaption{font-size:12px; color:var(--muted); margin-top:4px}
+
+    .review-nav{display:flex; gap:10px; margin-top:14px}
+
+    .hidden{display:none}
+
+    /* Mode HP (≤960px) */
+    @media (max-width:960px){
+      .app{grid-template-columns:1fr}
+      .sidebar{
+        position:fixed; left:0; top:0; bottom:0;
+        width:min(86vw,320px); max-width:90vw;
+        transform:translateX(-100%);
+        z-index:20; box-shadow:2px 0 24px rgba(0,0,0,.2);
+      }
+      .app.mobile-open .sidebar{transform:translateX(0)}
+      .backdrop{
+        display:none; position:fixed; inset:0;
+        background:rgba(0,0,0,.35); z-index:15;
+      }
+      .app.mobile-open .backdrop{display:block}
+    }
+	
+  </style>
+</head>
+<body>
+
+<!-- Intro -->
+<section id="introView" class="centerwrap">
+  <div class="intro">
+    <h1>Simulasi SKD — 110 Soal (TWK • TIU • TKP)</h1>
+    <p>Durasi ujian: <strong>100 menit</strong> (timer <em>menit:detik:milidetik</em>). Sebelum mulai, Anda mendapat <strong>30 detik</strong> untuk membaca petunjuk.</p>
+    <p><strong>Cara pengerjaan singkat:</strong></p>
+    <ul class="list">
+      <li>TWK (1–30), TIU (31–65) → Benar = 5 poin, salah = 0 poin.</li>
+      <li>TKP (66–110) → Tidak ada jawaban salah; skor tiap opsi 1–5 poin.</li>
+      <li>Pilih jawaban, lalu klik <strong>Simpan & Lanjutkan</strong> agar tercatat (nomor menjadi <span style="color:#16a34a;font-weight:700">hijau</span>).</li>
+      <li>Klik <strong>Ragu-ragu</strong> untuk menandai (menjadi <span style="color:#f59e0b;font-weight:700">kuning</span>); jawaban tetap dihitung.</li>
+      <li><span style="color:#dc2626;font-weight:700">Merah</span> = belum tersimpan/terjawab.</li>
+      <li>Klik nomor di kiri untuk lompat ke soal.</li>
+      <li>Ketika waktu ujian ≤ 10 menit, timer berubah <span style="color:#ef4444;font-weight:700">merah</span>.</li>
+      <li>Klik <strong>Selesai</strong> → konfirmasi → hasil & pembahasan per nomor.</li>
+    </ul>
+    <div class="cta">
+      <button id="startReadingBtn" class="btn primary">Mulai (Baca 30 Detik)</button>
+    </div>
+  </div>
+</section>
+
+<!-- Reading 30s -->
+<section id="readingView" class="centerwrap hidden">
+  <div class="reading">
+    <h2>Waktu Membaca Petunjuk</h2>
+    <div id="readTimer" class="read-timer">00:30</div>
+    <p class="muted">Gunakan <strong>30 detik</strong> ini untuk memahami cara pengerjaan. Anda bisa <strong>mulai lebih cepat</strong> dengan tombol di bawah.</p>
+    <div class="cta"><button id="startExamBtn" class="btn primary">Mulai Sekarang</button></div>
+  </div>
+</section>
+
+<!-- App -->
+<div class="app" id="app">
+  <div id="backdrop" class="backdrop hidden" aria-hidden="true"></div>
+
+  <aside class="sidebar" aria-label="Daftar nomor soal">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px">
+      <div class="brand">Daftar Soal (1–110)</div>
+      <div style="display:flex; gap:8px; align-items:center">
+        <button id="swapGridBtn" class="swap-btn" title="Sembunyikan/tampilkan nomor">Swap Nomor</button>
+        <button id="hideSidebarBtn" class="hamburger" title="Sembunyikan daftar" aria-label="Sembunyikan daftar nomor">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="legend">
+      <span class="badge" id="legendBelum"><span class="dot red"></span> Belum</span>
+      <span class="badge" id="legendHijau"><span class="dot green"></span> Terjawab</span>
+      <span class="badge" id="legendRagu"><span class="dot yellow"></span> Ragu</span>
+    </div>
+    <div id="numGrid" class="grid" aria-label="Navigasi nomor soal"></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="top-left">
+        <button id="sidebarToggle" class="hamburger" aria-expanded="true" aria-controls="numGrid" aria-label="Tampilkan atau sembunyikan daftar nomor">
+          <span></span><span></span><span></span>
+        </button>
+        <div><strong>Tryout SKD</strong> • <span class="muted">TWK 1–30 • TIU 31–65 • TKP 66–110</span></div>
+      </div>
+      <div class="top-right">
+        <!-- SUSUNAN: [Selesai] tepat di sebelah kiri [Timer] -->
+        <div style="display:flex; align-items:center; gap:10px">
+          <button class="btn danger small" id="finishBtn" aria-expanded="false" aria-controls="finishConfirm">Selesai</button>
+          <!-- TIMER: Jam / Menit / Detik (ukuran 40% lebih kecil) -->
+          <div class="timer" id="timer" role="timer" aria-live="polite">
+            <div class="time-box"><span id="hh" class="value">01</span><div class="unit">Jam</div></div>
+            <div class="colon">:</div>
+            <div class="time-box"><span id="mm" class="value">40</span><div class="unit">Menit</div></div>
+            <div class="colon">:</div>
+            <div class="time-box"><span id="ss" class="value">00</span><div class="unit">Detik</div></div>
+          </div>
+        </div>
+
+        <div id="finishConfirm" class="confirm-box hidden" role="dialog" aria-labelledby="confirmTitle" aria-modal="false">
+          <h3 id="confirmTitle" class="confirm-title">Akhiri pengerjaan?</h3>
+          <p class="confirm-desc">Begitu kamu menekan <strong>“Ya, Saya Yakin”</strong>, semua jawaban akan dinilai dan hasil & pembahasan per nomor langsung ditampilkan.</p>
+          <div class="confirm-actions">
+            <button class="btn small" id="confirmNoBtn">Batal</button>
+            <button class="btn danger small" id="confirmYesBtn">Ya, Saya Yakin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div id="quizCard" class="card">
+        <div class="section-chip" id="sectionChip">Bagian: —</div>
+        <div id="qTitle" class="qhead">Soal #1</div>
+        <div id="qText" class="muted">Memuat soal…</div>
+        <div id="qExtra" class="extra-lines"></div>
+        <div id="media" class="media"></div>
+        <div id="choices" class="choices"></div>
+        <div class="controls">
+          <button class="btn warn" id="flagBtn">Ragu-ragu</button>
+          <button class="btn primary" id="saveNextBtn">Simpan & Lanjutkan</button>
+          <span class="muted" id="statusHint"></span>
+        </div>
+      </div>
+
+      <!-- Hasil + Pembahasan -->
+      <div id="resultView" class="hidden">
+        <div class="result">
+          <h2>Hasil</h2>
+          <div class="sumgrid">
+            <div class="box"><h3>Nilai TWK</h3><div class="score" id="scoreTWK">0</div></div>
+            <div class="box"><h3>Nilai TIU</h3><div class="score" id="scoreTIU">0</div></div>
+            <div class="box"><h3>Nilai TKP</h3><div class="score" id="scoreTKP">0</div></div>
+          </div>
+          <div class="box"><h3>Total</h3><div class="score" id="scoreTOTAL">0</div></div>
+          <div class="review-panel">
+            <div class="review-head">
+              <h3 class="review-title">Pembahasan per Nomor</h3>
+              <div class="muted">Klik nomor di kiri atau gunakan tombol navigasi di bawah.</div>
+            </div>
+            <div id="reviewCard" class="card review-card">
+              <div id="reviewHeader" class="qline"><strong>#—</strong> • —</div>
+              <div id="reviewQuestion" class="qline">—</div>
+              <div id="reviewAnswer" class="qline">—</div>
+              <div id="reviewKey" class="qline hidden">—</div>
+              <div id="reviewTKP" class="qline hidden">—</div>
+              <div id="reviewExplain" class="qline">Pembahasan: —</div>
+			  <div id="explainMedia" class="explain-media"></div>
+
+              <div class="review-nav">
+                <button id="reviewPrevBtn" class="btn">Sebelumnya</button>
+                <button id="reviewNextBtn" class="btn">Selanjutnya</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bottombar">
+      <button class="btn" id="prevBtn">Sebelumnya</button>
+      <button class="btn" id="nextBtn">Berikutnya</button>
+    </div>
+  </main>
+</div>
+
+<script>
+/* ====== KONFIG (durasi tetap 100 menit → 1 jam 40 menit) ====== */
+const TOTAL = 110;
+const twkEnd = 30, tiuEnd = 65;
+const READING_SEC = 30;
+const EXAM_SEC = 100 * 60; // 100 menit → format HH:MM:SS
+
+/* ====== DATA SOAL (paste-ready) ====== */
+const questions = [];
+
+/* ---- TWK 1–30 (diganti persis sesuai data yang kamu kirim) ---- */
+questions[0]={number:1,type:'TWK',text:`Sebelum era reformasi, petani Indonesia selalu menghasilkan padi yang melimpah dengan kualitas terbaik. Pada era tahun 1990 hingga 1995, Indonesia selalu mengekspor beras ke Vietnam. Tidak hanya itu, negara-negara di luar Asia Tenggara seperti negara bagian Afrika juga sering memperoleh bantuan beras dari Indonesia. Pada tahun 1994, Indonesia berhasil menduduki peringkat pertama sebagai penghasil beras terbanyak di kawasan Asia. Hal ini dikarenakan setiap jengkal tanah yang berbentuk sawah ditanami padi-padi dengan kualitas terbaik. Tidak hanya itu, persawahan dalam negeri selalu mengisi kebutuhan masyarakat dalam setahun penuh. Oleh karena hal tersebut, Indonesia dinobatkan sebagai negara swasembada pangan oleh dunia.\n\nIde pokok yang tepat berdasarkan wacana diatas adalah…`,choices:[
+  {text:'Indonesia negara penghasil beras terbaik'},
+  {text:'Indonesia pengekspor beras di dunia'},
+  {text:'Indonesia negara swasembada pangan'},
+  {text:'Beras terbaik berasal dari Indonesia'},
+  {text:'Indonesia penghasil beras yang melimpah'}
+],correctIndex:2,explain:`Ide pokok wacana adalah inti utama yang dibahas dalam teks. Berdasarkan teks di atas, fokus pembahasan adalah pencapaian Indonesia sebagai negara swasembada pangan, ditegaskan pada kalimat terakhir.`,explainDesc:''};
+
+questions[1]={number:2,type:'TWK',text:`Bacalah paragraf berikut dengan cermat!\nDi sebuah rapat penting, pimpinan perusahaan menyampaikan rencana pengembangan proyek besar yang akan dimulai tahun depan. Proyek tersebut diharapkan dapat meningkatkan efisiensi operasional dan meraih pangsa pasar yang lebih luas. Seluruh peserta rapat, yang terdiri dari manajer divisi, mengajukan pertanyaan yang mendetail tentang langkah-langkah implementasi. Namun, pimpinan menjelaskan bahwa rincian teknis masih dalam tahap penyusunan oleh tim khusus yang baru dibentuk.\n\nBerdasarkan paragraf di atas, tentukan inti kalimat dari kalimat terakhir!`,choices:[
+  {text:'Pimpinan menjelaskan rincian teknis'},
+  {text:'Pimpinan menjelaskan tim khusus yang baru dibentuk'},
+  {text:'Rincian teknis masih dalam tahap penyusunan'},
+  {text:'Tim khusus menyusun rincian teknis'},
+  {text:'Pimpinan menyusun rincian teknis'}
+],correctIndex:0,explain:`Induk kalimatnya “pimpinan menjelaskan”; bagian setelah “bahwa” adalah pelengkap. Inti S–P: pimpinan menjelaskan rincian teknis.`,explainDesc:''};
+
+questions[2]={number:3,type:'TWK',text:`Bacalah dan tentukan simpulan paragraf berikut!\nWalaupun dianggap sebagai gulma, eceng gondok juga mempunyai manfaat. Eceng gondok dapat dijadikan pelunasan usaha dalam bidang dasar kerajinan tangan. Bagian tumbuhan eceng gondok yang sudah dikeringkan ternyata bisa dimanfaatkan sebagai bahan baku pembuatan tas, koper, sandal, keranjang, tatakan gelas, tikar, dan sebagainya. Akhir-akhir ini eceng gondok juga banyak dimanfaatkan untuk mendukung industri mebel, yakni sebagai bahan pelapis rangka kursi yang harganya semakin melangit.\n\nSimpulan paragraf di atas adalah…`,choices:[
+  {text:'Eceng gondok dapat menggantikan rotan sebagai bahan baku yang lebih murah.'},
+  {text:'Eceng gondok memiliki berbagai manfaat, terutama dalam kerajinan tangan dan industri mebel'},
+  {text:'Eceng gondok sering dianggap sebagai gulma yang merusak lingkungan.'},
+  {text:'Eceng gondok bisa diolah menjadi berbagai macam produk kerajinan tangan.'},
+  {text:'Eceng gondok merupakan bahan baku utama dalam industri mebel.'}
+],correctIndex:1,explain:`Simpulan merangkum inti paragraf: manfaat eceng gondok terutama untuk kerajinan dan sebagai pelapis mebel.`,explainDesc:''};
+
+questions[3]={number:4,type:'TWK',text:`Pengelolaan sampah di Indonesia masih menjadi masalah yang belum sepenuhnya teratasi. Untuk mengurangi dampak lingkungan, pemerintah telah menerapkan kebijakan baru yang mendorong masyarakat untuk memilah sampah organik dan non-organik. Namun, kebijakan ini sering terhambat karena kurangnya fasilitas pendukung, seperti tempat pemrosesan pengolahan sampah di daerah dan pusat daur ulang. Dengan adanya fasilitas yang memadai, kebijakan ini diharapkan dapat mengurangi jumlah sampah yang semakin lama semakin bertambah, sehingga lingkungan menjadi lebih bersih dan sehat.\n\nBerdasarkan paragraf di atas, kesimpulan yang paling tepat adalah…`,choices:[
+  {text:'Kebijakan baru tentang sampah akan mengurangi sampah jika didukung oleh fasilitas yang memadai'},
+  {text:'Program daur ulang tidak akan berjalan efektif tanpa partisipasi masyarakat.'},
+  {text:'Pengelolaan sampah yang baik dapat mengurangi beban tempat pembuangan akhir.'},
+  {text:'Kurangnya fasilitas pengolahan sampah menjadi tantangan utama dalam pelaksanaan kebijakan.'},
+  {text:'Masyarakat sudah sadar pentingnya memilah sampah organik dan non-organik.'}
+],correctIndex:0,explain:`Inti paragraf: efektivitas kebijakan bergantung pada ketersediaan fasilitas pendukung yang memadai.`,explainDesc:''};
+
+questions[4]={number:5,type:'TWK',text:`Pondok Pesantren dewasa ini menjadi ... pilihan yang cukup baik dalam upaya pendidikan bagi anak. Sistem pendidikan agama yang secara khusus ... dengan pendidikan umum menjadi nilai jual yang cukup menjanjikan. Selain itu, para santri juga secara langsung akan terdidik disiplin dengan ... pembelajaran yang ada di pondok pesantren. Istilah yang tepat untuk melengkapi kalimat rumpang pada paragraf di atas ialah…`,choices:[
+  {text:'alternatif, diintegrasikan, pola'},
+  {text:'suprematif, reboisasi, konsep'},
+  {text:'komposisi, perubahan, akulturasi'},
+  {text:'kompetitif, toleransi, pluralis'},
+  {text:'kompetensi, intoleransi, hakiki'}
+],correctIndex:0,explain:`“alternatif – diintegrasikan – pola” paling sesuai dengan konteks pendidikan dan struktur kalimat.`,explainDesc:''};
+
+questions[5]={number:6,type:'TWK',text:`Cermati kalimat berikut!\nJika perusahaan BUMN dapat berkompetisi secara global, semakin banyak sumber daya manusia yang dibutuhkan dan bekerja di luar negeri.\n\nPerbaikan kata bentukan yang salah dalam kalimat tersebut adalah…`,choices:[
+  {text:'Kata perusahaan diganti usaha'},
+  {text:'Kata berkompetisi diganti berkompeten'},
+  {text:'Kata semakin diganti makin'},
+  {text:'Kata dibutuhkan diganti kebutuhan'},
+  {text:'Kata bekerja diganti dipekerjakan'}
+],correctIndex:4,explain:`Konteksnya tenaga kerja “dipekerjakan”, bukan “bekerja” secara mandiri. Pilihan lain sudah tepat.`,explainDesc:''};
+
+questions[6]={number:7,type:'TWK',text:`Pilihlah kalimat yang tidak baku berdasarkan kaidah bahasa Indonesia:`,choices:[
+  {text:'Penelitian ini berfokus pada pengaruh pendidikan terhadap perkembangan karakter siswa.'},
+  {text:'Mahasiswa diharapkan untuk dapat mengaplikasikan ilmunya secara efektif di masyarakat.'},
+  {text:'Perusahaan itu sedang memproses dokumen administratif sebelum memulai operasinya.'},
+  {text:'Dia mempresentasikan hasil risetnya di depan audiens dengan percaya diri.'},
+  {text:'Kami sedang mendiskusikan proyek baru yang kayaknya akan dimulai bulan depan.'}
+],correctIndex:4,explain:`“kayaknya” tidak baku; padanan bakunya “sepertinya”.`,explainDesc:''};
+
+questions[7]={number:8,type:'TWK',text:`Setiap tahun masyarakat Indonesia memperingati Hari Kemerdekaan dengan berbagai kegiatan seperti upacara bendera, lomba tradisional, hingga kerja bakti. Namun, perayaan ini di beberapa tempat hanya dianggap sebagai kegiatan seremonial tanpa memahami makna mendalamnya. Sebagai warga negara yang cinta tanah air, bagaimana seharusnya makna Hari Kemerdekaan diwujudkan dalam kehidupan sehari-hari?`,choices:[
+  {text:'Mengikuti perayaan Hari Kemerdekaan untuk memperkuat semangat kebersamaan di masyarakat.'},
+  {text:'Mengadakan lomba tradisional untuk melestarikan budaya sekaligus mempererat hubungan antarwarga.'},
+  {text:'Menanamkan rasa syukur atas perjuangan para pahlawan dengan menjaga persatuan bangsa.'},
+  {text:'Mengutamakan semangat kompetisi saat mengikuti perlombaan Hari Kemerdekaan.'},
+  {text:'Menggunakan momentum Hari Kemerdekaan untuk menunjukkan kebanggaan melalui media sosial.'}
+],correctIndex:2,explain:`Esensinya menjaga persatuan bangsa sebagai wujud syukur atas perjuangan pahlawan.`,explainDesc:''};
+
+questions[8]={number:9,type:'TWK',text:`Banyak nilai budaya lokal mulai terlupakan. Apa yang paling efektif dilakukan untuk mempertahankan budaya lokal sebagai wujud bela negara?`,choices:[
+  {text:'Mengadakan lomba budaya untuk memperkenalkan tradisi kepada masyarakat.'},
+  {text:'Membiasakan penggunaan budaya lokal dalam kehidupan sehari-hari.'},
+  {text:'Membuat konten kreatif di media sosial untuk mempromosikan budaya lokal.'},
+  {text:'Menonton acara budaya lokal untuk meningkatkan wawasan.'},
+  {text:'Mendukung pengembangan budaya lokal agar sesuai dengan minat generasi muda.'}
+],correctIndex:1,explain:`Pembiasaan sehari-hari adalah pelestarian paling konkret dan berkelanjutan.`,explainDesc:''};
+
+questions[9]={number:10,type:'TWK',text:`Sarekat Islam merupakan salah satu organisasi besar di Indonesia yang berperan penting dalam memperjuangkan keadilan sosial dan kemerdekaan bangsa. Apa pelajaran penting dari Sarekat Islam yang dapat diterapkan dalam kehidupan sehari-hari?`,choices:[
+  {text:'Pentingnya solidaritas dan persatuan dalam menghadapi ketidakadilan.'},
+  {text:'Memprioritaskan kesejahteraan anggota sebagai langkah awal menuju kemajuan bersama.'},
+  {text:'Menjalin kerja sama dengan berbagai pihak untuk memperkuat perjuangan bersama.'},
+  {text:'Mengutamakan diskusi dan musyawarah dalam menyelesaikan perbedaan pendapat.'},
+  {text:'Meningkatkan kesadaran kolektif melalui pendidikan dan pengembangan masyarakat.'}
+],correctIndex:0,explain:`Inti gerakan SI adalah persatuan melawan ketidakadilan.`,explainDesc:''};
+
+questions[10]={number:11,type:'TWK',text:`Dalam masyarakat yang beragam, bagaimana cara terbaik mengimplementasikan nilai-nilai UUD 1945?`,choices:[
+  {text:'Menjaga stabilitas masyarakat dengan mengutamakan ketertiban bersama.'},
+  {text:'Menghormati hak dan kewajiban semua warga secara adil.'},
+  {text:'Mengedukasi pentingnya menjaga persatuan.'},
+  {text:'Mengutamakan aspirasi mayoritas.'},
+  {text:'Mengutamakan kerja sama untuk menciptakan harmoni di tengah perbedaan.'}
+],correctIndex:1,explain:`Keadilan hak–kewajiban sesuai semangat UUD 1945.`,explainDesc:''};
+
+questions[11]={number:12,type:'TWK',text:`Dalam masyarakat Indonesia yang beragam, semboyan Bhinneka Tunggal Ika menjadi dasar persatuan bangsa. Namun, di wilayah dengan minim interaksi antarbudaya, apa tantangan terbesar dalam menerapkan nilai-nilai Bhinneka Tunggal Ika?`,choices:[
+  {text:'Dominasi tradisi lokal yang kurang terbuka terhadap budaya lain.'},
+  {text:'Ketimpangan akses informasi tentang keberagaman nasional.'},
+  {text:'Sulitnya memperkenalkan budaya nasional di daerah yang homogen.'},
+  {text:'Kurangnya interaksi dengan masyarakat dari latar belakang berbeda.'},
+  {text:'Rendahnya pemahaman tentang pentingnya persatuan di tengah perbedaan.'}
+],correctIndex:3,explain:`Interaksi adalah kunci tumbuhnya penghargaan pada perbedaan.`,explainDesc:''};
+
+questions[12]={number:13,type:'TWK',text:`Cinta tanah air adalah salah satu nilai yang penting ditanamkan dalam kehidupan sehari-hari. Dalam dunia pendidikan, bagaimana cara terbaik untuk membangun rasa cinta tanah air di kalangan generasi muda`,choices:[
+  {text:'Mengajarkan pentingnya menghormati teman yang berbeda suku dan budaya.'},
+  {text:'Memperkenalkan sejarah perjuangan bangsa secara menarik dan relevan.'},
+  {text:'Mengadakan kegiatan kebudayaan untuk menanamkan rasa bangga terhadap budaya lokal.'},
+  {text:'Mendorong diskusi tentang pentingnya peran generasi muda dalam pembangunan bangsa..'},
+  {text:'Mengembangkan program edukasi yang menanamkan nilai persatuan dan kesatuan.'}
+],correctIndex:1,explain:`Sejarah yang relevan menumbuhkan rasa bangga & cinta tanah air.`,explainDesc:''};
+
+questions[13]={number:14,type:'TWK',
+text:`Di sebuah wilayah sering terjadi pencurian dan permasalahan keamanan lainnya. Sebagai warga negara yang memahami Pasal 30 ayat 1 UUD 1945, bagaimana upaya terbaik untuk mendukung pertahanan dan keamanan negara di tingkat masyarakat?`,choices:[
+{text:'A. Mempercayakan sepenuhnya pengamanan kawasan kepada aparat kepolisian.'},
+{text:'B. Mengusulkan pemasangan teknologi keamanan canggih seperti CCTV di seluruh area.'},
+{text:'C. Membentuk kelompok diskusi untuk membahas ancaman keamanan global.'},
+{text:'D. Membiasakan diri melaporkan setiap kejadian mencurigakan kepada pihak berwenang.'},
+{text:'E. Mengikuti program siskamling untuk menjaga keamanan lingkungan secara bersama-sama. '}
+
+],correctIndex:4,explain:
+`Jawaban yang tepat adalah mengikuti program siskamling untuk menjaga keamanan lingkungan secara bersama-sama, karena langkah ini merupakan bentuk nyata partisipasi aktif warga dalam menjaga keamanan sesuai amanat UUD 1945. Opsi A terlalu bergantung pada aparat. Opsi B teknis tapi tidak melibatkan partisipasi masyarakat. Opsi C global, tidak relevan dengan masalah lokal. Opsi D penting, namun lebih ke individu.`,explainDesc:''};
+
+questions[14]={number:15,type:'TWK',
+text:`Seorang warga ingin melestarikan lingkungan di daerahnya dengan menanam pohon di ruang terbuka hijau. Namun, beberapa warga lain merasa kegiatan tersebut menghambat aktivitas mereka di area tersebut. Dalam situasi ini, bagaimana cara terbaik warga yang ingin menanam pohon menunjukkan rasa cinta kepada tanah air?`,choices:[
+{text:'A. Menjelaskan manfaat penghijauan kepada warga.'},
+{text:'B. Mengedukasi warga tentang pentingnya ruang hijau.'},
+{text:'C. Mengadakan kegiatan yang mendukung penghijauan.'},
+{text:'D. Mengajak warga untuk menanam pohon bersama. '},
+{text:'E. Melibatkan komunitas untuk mendukung penanaman pohon.'}
+
+],correctIndex:3,explain:`Jawaban yang tepat adalah mengajak warga untuk menanam pohon bersama karena langkah ini mencerminkan cinta tanah air dengan membangun kebersamaan dan aksi nyata dalam melestarikan lingkungan. Kegiatan ini juga memperkuat hubungan sosial antarwarga dan menunjukkan sikap produktif serta gotong royong. Opsi A dan B hanya bersifat meningkatkan kesadaran, bukan aksi nyata. Opsi C baik tetapi terlalu umum. Opsi E positif, namun lingkupnya terbatas pada kelompok tertentu.`,explainDesc:''};
+
+questions[15]={number:16,type:'TWK',
+text:`Kongres Pemuda II tahun 1928 menunjukkan semangat persatuan dalam mewujudkan Sumpah Pemuda. Nilai integritas apa yang paling sesuai dengan semangat tersebut untuk diterapkan dalam kehidupan saat ini?`,choices:[
+{text:'A. Kedisiplinan dalam mematuhi aturan organisasi untuk mencapai tujuan bersama.'},
+{text:'B. Keberanian untuk mengemukakan gagasan baru demi kemajuan bangsa.'},
+{text:'C. Tanggung jawab dalam menjalankan peran masing-masing demi menjaga persatuan bangsa. '},
+{text:'D. Kejujuran dalam menyampaikan aspirasi untuk memperkuat saling percaya.'},
+{text:'E. Keadilan dalam memberikan ruang kepada semua pihak untuk berpartisipasi.'}
+
+],correctIndex:2,explain:`Jawaban yang tepat adalah tanggung jawab dalam menjalankan peran masing-masing demi menjaga persatuan bangsa, karena semangat Sumpah Pemuda menekankan pentingnya setiap individu atau kelompok berperan secara bertanggung jawab menjaga persatuan dan kesatuan. Opsi A, B, D, dan E adalah nilai baik, tetapi tidak langsung menggambarkan inti semangat persatuan.`,explainDesc:''};
+
+questions[16]={number:17,type:'TWK',
+text:`Di sekolah, seorang siswa mengalami kesulitan membeli buku pelajaran karena kondisi ekonomi keluarganya. Beberapa siswa berinisiatif membantu dengan cara berbeda, seperti menggalang dana atau memberikan buku bekas. Sikap integritas apa yang paling tercermin dari tindakan ini?`,choices:[
+{text:'A. Kepedulian terhadap kesulitan orang lain. '},
+{text:'B. Membantu sesama dengan tanpa pamrih.'},
+{text:'C. Kejujuran dalam menggalang dana dan menyampaikan tujuan bantuan.'},
+{text:'D. Kerja keras dengan memberikan solusi nyata atas masalah yang dihadapi.'},
+{text:'E. Keadilan dalam memastikan bantuan diterima sesuai kebutuhan.'}
+
+],correctIndex:0,explain:`Jawaban yang tepat adalah kepedulian terhadap kesulitan orang lain, karena tindakan membantu siswa yang kesulitan membeli buku mencerminkan empati dan perhatian mendalam terhadap kondisi sesama. Opsi B positif, tetapi lebih menekankan motivasi, bukan sikap utama. Opsi C, D, dan E adalah nilai tambahan yang baik, tetapi bukan inti dari tindakan ini.`,explainDesc:''};
+
+questions[17]={number:18,type:'TWK',text:
+`Indonesia sebagai negara kepulauan memiliki tantangan geografis dalam menjaga konektivitas dan pemerataan pembangunan. Apa langkah paling strategis untuk mengatasi tantangan tersebut guna mencerminkan semangat NKRI?`,choices:[
+{text:'A. Memberikan perhatian khusus pada pengembangan daerah perbatasan.'},
+{text:'B. Membuka layanan pendidikan dan kesehatan yang merata di seluruh wilayah.'},
+{text:'C. Memperkuat hubungan ekonomi antara wilayah maju dan wilayah tertinggal.'},
+{text:'D. Mengembangkan infrastruktur transportasi untuk menghubungkan pulau-pulau. '},
+{text:'E. Mendorong kerja sama budaya untuk mempererat hubungan antar daerah.'}
+
+],correctIndex:3,explain:`Jawaban yang tepat adalah mengembangkan infrastruktur transportasi untuk menghubungkan pulau-pulau, karena ini solusi utama untuk mengatasi tantangan geografis Indonesia. Dengan infrastruktur transportasi yang memadai, konektivitas antarwilayah akan tercapai sehingga pemerataan pembangunan lebih mudah diwujudkan.`,explainDesc:''};
+
+questions[18]={number:19,type:'TWK',text:`Praktik KKN (Korupsi, Kolusi, dan Nepotisme) dalam politik sering kali merugikan masyarakat dan bertentangan dengan nilai-nilai Pancasila. Apa yang paling mencerminkan penerapan nilai-nilai Pancasila dalam mewujudkan politik yang bersih?`,choices:[
+{text:'A. Memastikan transparansi dalam pengelolaan anggaran negara. '},
+{text:'B. Mendorong masyarakat untuk memilih pemimpin yang berintegritas.'},
+{text:'C. Memberikan hukuman tegas kepada pelaku KKN sesuai aturan hukum.'},
+{text:'D. Mengedukasi generasi muda tentang pentingnya kejujuran dalam politik.'},
+{text:'E. Membuka akses bagi masyarakat untuk mengawasi jalannya pemerintahan.'}
+
+],correctIndex:0,explain:`Jawaban yang tepat adalah memastikan transparansi dalam pengelolaan anggaran negara karena transparansi merupakan prinsip utama dalam mewujudkan pemerintahan yang bersih dan bertanggung jawab sesuai nilai-nilai Pancasila, khususnya sila keempat (musyawarah) dan kelima (keadilan sosial). Opsi B, C, D, dan E adalah langkah baik, tetapi transparansi merupakan inti dari politik yang bersih.`,explainDesc:''};
+
+questions[19]={number:20,type:'TWK',text:
+`Indonesia memiliki beragam produk lokal yang berkualitas, namun sering kali masyarakat lebih memilih produk impor dengan alasan prestise atau harga. Dalam konteks nasionalisme dan upaya mendorong kemajuan bangsa, langkah apa yang paling strategis untuk meningkatkan kecintaan terhadap produk dalam negeri?`,choices:[
+{text:'A. Memberikan edukasi kepada masyarakat tentang pentingnya produk lokal.'},
+{text:'B. Membatasi impor barang yang memiliki produk serupa.'},
+{text:'C. Mengajak masyarakat membeli produk lokal melalui kampanye.'},
+{text:'D. Memberikan dukungan kepada pelaku usaha lokal.'},
+{text:'E. Meningkatkan inovasi dan kualitas produk lokal. '}
+
+],correctIndex:4,explain:`Jawaban yang tepat adalah meningkatkan inovasi dan kualitas produk lokal karena langkah ini memastikan produk dalam negeri mampu bersaing dengan produk impor dalam memenuhi kebutuhan dan harapan masyarakat. Dengan kualitas yang lebih baik, masyarakat akan lebih bangga menggunakan produk lokal sehingga semangat nasionalisme terwujud secara nyata dalam mendukung perekonomian bangsa. Opsi A baik tetapi hanya meningkatkan kesadaran tanpa solusi jangka panjang. Opsi B reaktif dan kurang efektif. Opsi C langkah baik tetapi dampaknya tidak bertahan lama. Opsi D penting, tetapi belum cukup strategis dibandingkan inovasi.`,explainDesc:''};
+
+questions[20]={number:21,type:'TWK',text:`Bagaimana implementasi sila ke-1 Pancasila dalam menjaga keharmonisan di masyarakat yang beragam?`,choices:[
+{text:'A. Menghormati perbedaan keyakinan antarwarga. '},
+{text:'B. Mengutamakan persatuan dengan mengedepankan sikap saling memahami.'},
+{text:'C. Memberikan kebebasan bagi semua orang untuk beribadah.'},
+{text:'D. Menjaga kerukunan dengan tidak membahas perbedaan agama.'},
+{text:'E. Mengadakan kegiatan sosial lintaJawaban yang tepat adalah memastikan transparansi dalam pengelolaan anggaran negara karena transparansi merupakan prinsip utama dalam mewujudkan pemerintahan yang bersih dan bertanggung jawab sesuai nilai-nilai Pancasila, khususnya sila keempat (musyawarah) dan kelima (keadilan sosial). Opsi B, C, D, dan E adalah langkah baik, tetapi transparansi merupakan inti dari politik yang bersih.s agama untuk mempererat hubungan.'}
+
+],correctIndex:0,explain:`Jawaban yang tepat adalah menghormati perbedaan keyakinan antarwarga karena sikap ini mencerminkan inti dari sila ke-1 Pancasila, yaitu penghormatan terhadap keberagaman agama dan kepercayaan dalam masyarakat. Sikap ini menjadi dasar untuk menciptakan keharmonisan dan persatuan di tengah perbedaan. Opsi B baik, tetapi terlalu umum. Opsi C tepat, namun lebih menekankan kebebasan, bukan penghormatan. Opsi D terlalu pasif. Opsi E langkah positif, tetapi tidak menekankan langsung penghormatan pada keyakinan.`,explainDesc:''};
+
+questions[21]={number:22,type:'TWK',text:
+`Amnesti dan abolisi merupakan hak prerogatif Presiden yang diberikan dalam situasi tertentu sesuai dengan ketentuan undang-undang. Dalam konteks penegakan hukum di Indonesia, bagaimana pemberian amnesti dan abolisi dapat mendukung terciptanya keadilan dan kedamaian di masyarakat`,choices:[
+{text:'A. Memberikan amnesti kepada kelompok yang mendukung perdamaian dan stabilitas nasional.'},
+{text:'B. Menggunakan abolisi untuk menghentikan proses hukum yang dapat menimbulkan konflik sosial.'},
+{text:'C. Memastikan amnesti dan abolisi diberikan berdasarkan prinsip keadilan dan persatuan. '},
+{text:'D. Memberikan abolisi untuk kasus hukum tertentu demi mempercepat penyelesaian konflik.'},
+{text:'E. Meningkatkan rasa kepercayaan publik terhadap hukum melalui kebijakan amnesti dan abolisi yang adil.'}
+
+],correctIndex:2,explain:`Jawaban yang tepat adalah memastikan amnesti dan abolisi diberikan berdasarkan prinsip keadilan dan persatuan, karena ini mencerminkan tanggung jawab Presiden dalam menjaga keadilan serta kedamaian di masyarakat. Opsi A, B, dan D bersifat terbatas pada situasi tertentu. Opsi E positif, tetapi hanya dampak, bukan inti kebijakan.`,explainDesc:''};
+
+questions[22]={number:23,type:'TWK',text:
+`Partai Nasional Indonesia (PNI) yang didirikan pada tahun 1927 oleh Ir. Soekarno berjuang untuk memperjuangkan kemerdekaan Indonesia melalui prinsip nasionalisme tanpa bergantung pada bantuan pihak asing. Jika nilai-nilai perjuangan PNI diterapkan pada masa kini, bagaimana cara generasi muda dapat mencerminkan semangat nasionalisme tersebut dalam konteks modern`,choices:[
+{text:'A. Mendukung produk dalam negeri untuk mendorong kemandirian ekonomi bangsa. '},
+{text:'B. Mengembangkan teknologi dengan mengutamakan kolaborasi dengan negara lain.'},
+{text:'C. Menyebarluaskan budaya nasional untuk memperkuat identitas bangsa.'},
+{text:'D. Memperkuat pendidikan karakter di sekolah untuk menanamkan nilai nasionalisme.'},
+{text:'E. Berkontribusi dalam pengembangan sektor kreatif yang berbasis budaya lokal.'}
+
+],correctIndex:0,explain:`Jawaban yang tepat adalah mendukung produk dalam negeri untuk mendorong kemandirian ekonomi bangsa, karena ini langsung mencerminkan inti perjuangan PNI yang menekankan kemandirian tanpa ketergantungan pada pihak asing. Dengan langkah ini, generasi muda dapat memperkuat perekonomian nasional dan membangun kepercayaan diri bangsa.`,explainDesc:''};
+
+questions[23]={number:24,type:'TWK',text:
+`Bagaimana cara terbaik memastikan siswa memahami dan mengamalkan nilai-nilai Pancasila di sekolah?`,choices:[
+{text:'A. Mengadakan kegiatan ekstrakurikuler bertema Pancasila.'},
+{text:'B. Membuat pembelajaran yang melatih kerja sama dan gotong royong. '},
+{text:'C. Mengajak siswa ikut kegiatan sosial di lingkungan sekitar.'},
+{text:'D. Menyusun ulang kurikulum berdasarkan nilai Pancasila.'},
+{text:'E. Memberikan pelatihan guru agar lebih memahami Pancasila.'}
+
+],correctIndex:1,explain:
+`Jawaban yang tepat adalah membuat pembelajaran yang melatih kerja sama dan gotong royong karena langkah ini memberikan pengalaman langsung kepada siswa untuk mengamalkan nilai-nilai Pancasila, seperti persatuan, keadilan, dan kemanusiaan. Opsi A baik, tetapi terbatas pada kegiatan tambahan, bukan inti pembelajaran. Opsi C positif, tetapi tidak selalu mencakup semua siswa. Opsi D administratif dan kurang berpengaruh langsung. Opsi E mendukung guru, tetapi tidak fokus pada siswa.`,explainDesc:''};
+
+questions[24]={number:25,type:'TWK',text:
+`Pemilu di Indonesia diatur dalam Undang-Undang Nomor 7 Tahun 2017. Salah satu prinsip utama dalam pelaksanaan pemilu adalah jujur dan adil. Apa langkah terbaik yang dapat dilakukan untuk memastikan pemilu berjalan sesuai prinsip tersebut?`,choices:[
+{text:'A. Mengawasi jalannya pemilu secara ketat melalui lembaga independen. '},
+{text:'B. Meningkatkan edukasi pemilih untuk memahami hak dan kewajiban dalam pemilu.'},
+{text:'C. Mendorong semua pihak, termasuk kandidat, untuk mematuhi aturan yang berlaku.'},
+{text:'D. Memastikan transparansi dalam proses penghitungan suara.'},
+{text:'E. Menggunakan teknologi untuk meningkatkan akurasi dan efisiensi proses pemilu.'}
+
+],correctIndex:0,explain:
+`Jawaban yang tepat adalah mengawasi jalannya pemilu secara ketat melalui lembaga independen karena pengawasan yang ketat dan independen adalah kunci untuk memastikan prinsip jujur dan adil benar-benar diterapkan serta mencegah terjadinya kecurangan dalam proses pemilu. Opsi B penting, tetapi lebih fokus pada pemilih, bukan pengamanan proses. Opsi C baik, namun normatif dan bergantung pada kesadaran individu. Opsi D penting tetapi hanya mencakup salah satu tahapan. Opsi E mendukung efisiensi, tetapi tidak menjamin prinsip kejujuran dan keadilan.`,explainDesc:''};
+
+questions[25]={number:26,type:'TWK',text:
+`Di beberapa daerah, minimnya kesadaran masyarakat terhadap pengelolaan sampah menyebabkan masalah lingkungan yang serius, seperti banjir dan pencemaran. Apa langkah terbaik yang dapat dilakukan pemerintah untuk menanamkan rasa cinta tanah air melalui pengelolaan sampah`,choices:[
+{text:'A. Menyediakan fasilitas bank sampah di setiap desa untuk mendukung daur ulang.'},
+{text:'B. Mengadakan pelatihan pengelolaan sampah bagi masyarakat di wilayah terdampak.'},
+{text:'C. Mendorong program gotong royong untuk menjaga kebersihan di lingkungan masyarakat. '},
+{text:'D. Meluncurkan kampanye nasional untuk mengurangi penggunaan plastik sekali pakai.'},
+{text:'E. Memberikan insentif bagi masyarakat yang aktif memilah dan mendaur ulang sampah.'}
+
+],correctIndex:2,explain:`Jawaban yang tepat adalah mendorong program gotong royong untuk menjaga kebersihan di lingkungan masyarakat, karena langkah ini mencerminkan nilai Pancasila, terutama sila ketiga (Persatuan Indonesia) dan sila kelima (Keadilan Sosial bagi Seluruh Rakyat Indonesia). Gotong royong menumbuhkan solidaritas, tanggung jawab bersama, serta merupakan bentuk nyata cinta tanah air. Opsi A, B, D, dan E penting, tetapi lebih terbatas pada aspek teknis atau individu.`,explainDesc:''};
+
+questions[26]={number:27,type:'TWK',text:
+`Mahkamah Konstitusi (MK) memiliki wewenang penting untuk menguji undang-undang terhadap UUD 1945 dan melindungi hak-hak konstitusional masyarakat. Apa dampak utama jika MK tidak menjalankan fungsi ini dengan baik?`,choices:[
+{text:'A. Pelanggaran terhadap hak-hak konstitusional masyarakat akan sulit dihentikan. '},
+{text:'B. Kepercayaan terhadap sistem hukum dan demokrasi dapat melemah.'},
+{text:'C. Undang-undang yang bertentangan dengan konstitusi tetap diterapkan tanpa koreksi.'},
+{text:'D. Sengketa hasil pemilu menjadi lebih sering diselesaikan melalui jalur non-hukum.'},
+{text:'E. Konflik kepentingan dalam lembaga negara menjadi semakin sulit untuk dihindari.'}
+
+],correctIndex:0,explain:`Jawaban yang tepat adalah pelanggaran terhadap hak-hak konstitusional masyarakat akan sulit dihentikan, karena fungsi utama MK adalah memastikan undang-undang yang berlaku tidak bertentangan dengan UUD 1945. Jika MK gagal menjalankan tugas ini, hak-hak konstitusional masyarakat, seperti hak atas keadilan dan kebebasan, akan rentan terhadap pelanggaran.`,explainDesc:''};
+
+questions[27]={number:28,type:'TWK',text:
+`Seorang dokter memutuskan untuk membangun rumah sakit di pedalaman dengan menggunakan dana pribadi, demi memberikan akses kesehatan kepada masyarakat yang kurang mampu. Tindakan ini mencerminkan semangat patriotisme dalam bentuk…`,choices:[
+{text:'A. Pelaksanaan tanggung jawab sosial yang diharapkan oleh masyarakat.'},
+{text:'B. Penyediaan fasilitas kesehatan yang setara di seluruh wilayah Indonesia.'},
+{text:'C. Pengabdian kepada bangsa dan negara tanpa pamrih. '},
+{text:'D. Kepedulian terhadap masyarakat yang memiliki keterbatasan ekonomi.'},
+{text:'E. Dukungan terhadap program pemerintah dalam pembangunan daerah terpencil.'}
+],correctIndex:2,explain:
+`Jawaban yang tepat adalah pengabdian kepada bangsa dan negara tanpa pamrih karena tindakan membangun rumah sakit di pedalaman dengan dana pribadi menunjukkan rasa cinta tanah air melalui pengorbanan pribadi demi kepentingan masyarakat.`,explainDesc:''};
+
+questions[28]={number:29,type:'TWK',text:`Pancasila sebagai dasar negara memberikan pedoman dalam kehidupan bermasyarakat, berbangsa, dan bernegara. Bagaimana cara terbaik untuk menerapkan nilai-nilai Pancasila dalam kegiatan sehari-hari yang berkaitan dengan penegakan hukum?`,choices:[
+{text:'A. Melaporkan pelanggaran hukum yang terjadi di lingkungan sekitar.'},
+{text:'B. Menyelesaikan perselisihan secara damai melalui musyawarah bersama.'},
+{text:'C. Mendukung aparat hukum yang bertugas secara adil dan transparan.'},
+{text:'D. Menghindari tindakan yang melanggar hukum meskipun tidak diawasi pihak berwenang.'},
+{text:'E. Mematuhi aturan lalu lintas sebagai bentuk kedisiplinan terhadap hukum. '}
+],correctIndex:4,explain:`Jawaban yang tepat adalah mematuhi aturan lalu lintas sebagai bentuk kedisiplinan terhadap hukum, karena tindakan ini mencerminkan penerapan nilai-nilai Pancasila dalam kehidupan sehari-hari. Mematuhi hukum, termasuk aturan lalu lintas, merupakan bentuk nyata penghormatan terhadap aturan yang dibuat untuk kebaikan bersama, sejalan dengan sila ke-5 Pancasila (Keadilan Sosial).`,explainDesc:''};
+
+questions[29]={number:30,type:'TWK',text:`'Indische Partij merupakan organisasi politik pertama di Indonesia yang memperjuangkan kemerdekaan dan persatuan tanpa membedakan suku, agama, atau ras. Dalam konteks kehidupan masyarakat saat ini, apa nilai yang dapat diteladani dari perjuangan Indische Partij untuk memperkuat persatuan bangsa?`,choices:[
+ {text:'A. Menumbuhkan rasa cinta tanah air melalui kegiatan yang mendukung keutuhan bangsa.'},
+{text:'B. Mengutamakan kepentingan pribadi di atas kepentingan kelompok.'},
+{text:'C. Mengedepankan kerja sama antarwarga dalam menyelesaikan permasalahan bersama.'},
+{text:'D. Membangun solidaritas dengan masyarakat tanpa memandang perbedaan. '},
+{text:'E. Menyebarluaskan budaya lokal sebagai identitas bangsa dalam kehidupan sehari-hari.'}
+],correctIndex:3,explain:`Jawaban yang tepat adalah membangun solidaritas dengan masyarakat tanpa memandang perbedaan, karena ini merupakan nilai inti yang diperjuangkan oleh Indische Partij, yaitu persatuan tanpa membedakan latar belakang suku, agama, atau ras. Sikap ini sangat relevan untuk diterapkan dalam masyarakat modern yang pluralis, guna memperkuat persatuan bangsa di tengah tantangan globalisasi. Opsi A, menumbuhkan cinta tanah air, relevan tetapi lebih umum dan tidak spesifik pada nilai persatuan. Opsi B, mengutamakan kepentingan pribadi, bertentangan dengan semangat kolektif Indische Partij. Opsi C baik, tetapi lebih fokus pada penyelesaian masalah daripada memperkuat persatuan secara menyeluruh. Opsi E penting, tetapi lebih berfokus pada identitas budaya.
+Jawaban: D.
+`,explainDesc:''};
+
+/* ---- TIU 31–39 ---- */
+questions[30]={number:31,type:'TIU',text:
+`Premis 1: Semua kucing yang gemuk memiliki bulu yang lebat.\n\nPremis 2: Semua kucing dengan bulu yang lebat disukai oleh pemiliknya.\n\nPremis 3: Sebagian kucing yang gemuk mengonsumsi makanan sehat.\n\nKesimpulan dari ketiga pernyataan di atas adalah…`,choices:[
+  {text:'Sebagian kucing yang memiliki bulu lebat mengonsumsi makanan sehat.'},
+  {text:'Semua kucing yang disukai pemiliknya memiliki tubuh yang gemuk.'},
+  {text:'Sebagian kucing yang gemuk mengonsumsi makanan sehat dan disukai pemiliknya.'},
+  {text:'Sebagian kucing yang mengonsumsi makanan sehat memiliki bulu yang lebat.'},
+  {text:'Sebagian kucing yang gemuk disukai pemiliknya dan memiliki bulu yang lebat.'}
+],correctIndex:2,explain:
+`Premis 1: Semua kucing yang gemuk memiliki bulu yang lebat.
+\n\nPremis 2: Semua kucing dengan bulu yang lebat disukai oleh pemiliknya.
+\n\nKesimpulan : Semua kucing yang gemuk disukai oleh pemiliknya
+\n\nPremis 3: Sebagian kucing yang gemuk mengonsumsi makanan sehat
+\n\nKesimpulan : Sebagian kucing yang gemuk mengonsumsi makanan sehat dan disukai pemiliknya
+Jawaban: C`,explainDesc:'',extraLines:['','','']};
+
+questions[31]={number:32,type:'TIU',text:`Premis 1: Tidak ada pegawai kantor yang bekerja lebih dari 8 jam sehari tanpa mendapat tambahan gaji.\n\nPremis 2: Beberapa pegawai di perusahaan X bekerja lebih dari 8 jam sehari.\n\nPremis 3: Semua pegawai di perusahaan X adalah pegawai kantor.\n\nKesimpulan dari ketiga premis di atas adalah…`,choices:[
+  {text:'Beberapa pegawai di perusahaan X mendapatkan tambahan gaji.'},
+  {text:'Tidak ada pegawai di perusahaan X yang bekerja lebih dari 8 jam sehari.'},
+  {text:'Tidak semua pegawai di perusahaan X bekerja lebih dari 8 jam sehari.'},
+  {text:'Semua pegawai di perusahaan X mendapatkan tambahan gaji.'},
+  {text:'Beberapa pegawai di perusahaan X bekerja lebih dari 8 jam sehari tanpa tambahan gaji.'}
+],correctIndex:0,explain:
+`Berdasarkan ketiga premis ini, kesimpulan logis adalah bahwa pegawai yang bekerja lebih dari 8 jam di perusahaan X harus mendapatkan tambahan gaji, sesuai dengan premis pertama. Jadi, kesimpulan yang tepat adalah bahwa beberapa pegawai di perusahaan X mendapatkan tambahan gaji karena mereka bekerja lebih dari 8 jam sehari.
+Jawaban : A
+
+`,explainDesc:'',extraLines:['','','']};
+
+questions[32]={number:33,type:'TIU',text:`Jika pantai di daerah X ramai dikunjungi wisatawan, perekonomian masyarakat daerah tersebut meningkat. Jika ekosistem di pantai daerah X tidak dijaga dengan baik, hasil tangkapan nelayan daerah tersebut akan tercemar. Saat ini perekonomian masyarakat daerah X tidak mengalami peningkatan atau hasil tangkapan nelayan daerah X tidak tercemar. Simpulan yang tepat adalah ....`,choices:[
+  {text:'A. Pantai daerah X belum ramai dikunjungi wisatawan, tetapi ekosistem pantai di daerah tersebut tidak dijaga dengan baik.'},
+  {text:'B. Pantai daerah X ramai dikunjungi wisatawan, tetapi ekosistem pantai di daerah tersebut tidak dijaga dengan baik.'},
+  {text:'C. Ekosistem pantai di daerah tersebut dijaga dengan baik karena belum ramai dikunjungi wisatawan.'},
+  {text:'D. Pantai daerah X tidak ramai dikunjungi wisatawan atau ekosistem di pantai daerah tersebut dijaga dengan baik. '},
+  {text:'E. Pantai X belum ramai dikunjungi wisatawan atau ekosistem di pantai daerah tersebut tidak dijaga dengan baik.'}
+],correctIndex:3,explain:
+`Modus Tollens:
+\np → q
+\n~q
+\n∴~p
+
+\n\nPremis 1 = Jika pantai di daerah X ramai dikunjungi wisatawan, perekonomian masyarakat daerah tersebut meningkat
+\np = pantai di daerah X ramai dikunjungi wisatawan
+\nq = perekonomian masyarakat daerah tersebut meningkat
+\nPremis 2 = Saat ini perekonomian masyarakat daerah X tidak mengalami peningkatan
+\n~ q = perekonomian masyarakat daerah X tidak mengalami peningkatan
+\n∴~p = pantai daerah X tidak ramai dikunjungi wisatawan
+
+\n\nPremis 1 = Jika ekosistem di pantai daerah X tidak dijaga dengan baik, hasil tangkapan nelayan daerah tersebut akan tercemar
+\nr = ekosistem di pantai daerah X tidak dijaga dengan baik
+\ns = hasil tangkapan nelayan daerah tersebut akan tercemar
+\nPremis 2 = hasil tangkapan nelayan daerah X tidak tercemar
+\n~ s = hasil tangkapan nelayan daerah X tidak tercemar
+\n∴~r = ekosistem di pantai daerah tersebut dijaga dengan baik
+
+\n\nKesimpulan ~ p ∨~ r
+\nPantai daerah X tidak ramai dikunjungi wisatawan atau ekosistem di pantai daerah tersebut dijaga dengan baik`,explainDesc:''};
+
+questions[33]={number:34,type:'TIU',text:`Rani menyukai minuman manis.
+Rani di kantor bersama rekan kerja, tetapi di kantor hanya tersedia air mineral..\n\nKesimpulan yang tepat?`,choices:[
+  {text:'Rani meminum air mineral di kantor.'},
+  {text:'Rani dan rekan meminum air mineral bersama.'},
+  {text:'Rani tidak minum apa pun di kantor hari ini.'},
+  {text:'Rani mungkin tidak minum air mineral di kantor hari ini.'},
+  {text:'Rani membawa minuman manis sendiri dari rumah ke kantor.'}
+],correctIndex:3,explain:`Kesimpulan yang paling tepat berdasarkan informasi adalah Rani mungkin tidak minum air mineral di kantor hari ini. Hal ini karena Rani menyukai minuman manis tetapi di kantor hanya tersedia air mineral yang tidak sesuai dengan preferensinya. Kalimat ini menggunakan kata "mungkin," yang mencerminkan ketidakpastian apakah Rani memilih minum air mineral atau tidak. Opsi A dan B tidak tepat karena tidak ada informasi yang menyatakan bahwa Rani meminum air mineral. Opsi C terlalu mutlak dan tidak mencerminkan kemungkinan. Opsi E bersifat spekulatif tanpa didukung oleh informasi dalam soal. Oleh karena itu, jawaban yang paling relevan adalah D.`,explainDesc:'',extraLines:['','','']};
+
+questions[34]={number:35,type:'TIU',text:`Mobil : kursi penumpang & bagasi = …`,choices:[
+{text:'Sebuah rumah memiliki kamar tidur dan lemari.'},
+{text:'Sebuah kapal memiliki dek penumpang dan ruang kargo.'},
+{text:'Sebuah restoran memiliki meja pelanggan dan dapur.'},
+{text:'Sebuah komputer memiliki monitor dan hard disk.'},
+{text:'Sebuah sekolah memiliki ruang kelas dan perpustakaan.'},
+],correctIndex:1,explain:
+`Hubungan antara mobil dengan kursi penumpang dan bagasi menggambarkan fasilitas utama untuk penumpang (kursi) dan fasilitas penyimpanan (bagasi). Hubungan serupa terdapat pada kapal dengan dek penumpang dan ruang kargo, di mana dek penumpang berfungsi untuk menampung penumpang, sementara ruang kargo adalah area penyimpanan barang. Opsi lain kurang paralel dengan hubungan ini. Rumah dengan kamar tidur dan lemari (A) tidak sepenuhnya mencerminkan hubungan fasilitas utama dan penyimpanan. Restoran dengan meja pelanggan dan dapur (C) lebih menggambarkan fungsi pelayanan, bukan fasilitas penyimpanan. Komputer dengan monitor dan hard disk (D) tidak relevan karena monitor bukan fasilitas penampung seperti kursi penumpang. Sekolah dengan ruang kelas dan perpustakaan (E) juga tidak menggambarkan hubungan utama dan penyimpanan secara langsung. Oleh karena itu, jawaban yang paling tepat adalah B.`,explainDesc:''};
+
+questions[35]={number:36,type:'TIU',text:`*Burung-burung itu tengah bertengger di atas dahan-dahan pohon.*\nKalimat berpola sama adalah…`,choices:[
+  {text:'Mereka berdua saling berpegangan tangan.'},
+  {text:'Karya seni itu bernafaskan ajaran Islam.'},
+  {text:'Pak Ustad sedang berceramah di depan para jamaah.'},
+  {text:'Mereka sedang berlatih upacara.'},
+  {text:'Perempuan itu menjual beberapa perhiasan miliknya.'}
+],correctIndex:2,explain:`Pola SPK: Subjek–Predikat–Keterangan.`,explainDesc:'',extraLines:['','','']};
+
+questions[36]={number:37,type:'TIU',text:`GELAS : PECAH = BESI : …`,choices:[
+  {text:'Berat'},
+  {text:'Karat'},
+  {text:'Keras'},
+  {text:'Tumpul'},
+  {text:'Padat'}
+],correctIndex:1,explain:`Relasi objek : kerusakan khas ⇒ besi : karat.`,explainDesc:''};
+
+questions[37]={number:38,type:'TIU',text:`SESAK : NAPAS = …`,choices:[
+  {text:'Lapar : Minuman'},
+  {text:'Dahaga : Makanan'},
+  {text:'Letih : Bermain'},
+  {text:'Dingin : Selimut'},
+  {text:'Sakit : Aktivitas'}
+],correctIndex:4,explain:`Sesak mengganggu aktivitas bernapas ⇒ sakit mengganggu aktivitas.`,explainDesc:''};
+
+questions[38]={number:39,type:'TIU',text:`…, 3, 9, 1.5, -4, -28, -38`,choices:[
+  {text:'3'},
+  {text:'6'},
+  {text:'9'},
+  {text:'10'},
+  {text:'15'}
+],correctIndex:3,explain:`10 → −7 → ×3 → ÷6 → −8 → ×7 → −10 ⇒ yang hilang = 10.`,explainDesc:''};
+
+questions[39]={number:40,type:'TIU',text:`2, 2, 0, 0, …, –12, –18`,choices:[
+  {text:'–2'},
+  {text:'–4'},
+  {text:'–6'},
+  {text:'–8'},
+  {text:'–10'}
+],correctIndex:1,explain:`Polanya: ×1, −2, ×2, ×3, −6.`,explainDesc:''};
+
+/* ---- TIU 41–65 (tetap seperti versi sebelumnya) ---- */
+questions[40]={number:41,type:'TIU',text:`2, 5, 11, 23, 47, 95, …`,choices:[{text:'59'},{text:'94'},{text:'101'},{text:'171'},{text:'191'}],correctIndex:4,explain:`×2+1.`,explainDesc:''};
+questions[41]={number:42,type:'TIU',text:`…, …, …, 422, 1.266, 1.280, 3.840`,choices:[{text:'164, 178, 206'},{text:'122, 136, 408'},{text:'136, 408, 173'},{text:'122, 408, 194'},{text:'124, 118, 194'}],correctIndex:1,explain:`+14, ×3 selang-seling.`,explainDesc:''};
+questions[42]={number:43,type:'TIU',text:`¼ + ³/₈ × ⁵/₈ – ½ × ½ = …`,choices:[{text:'⅛'},{text:'¼'},{text:'⅓'},{text:'⅜'},{text:'¾'}],correctIndex:3,explain:`=15/64. \n\n1/4 + 3/8 × 5/8 − 1/2 × 1/2
+= 1/4 + (3/8 × 5/8) − (1/2 × 1/2)
+= 1/4 + 15/64 − 1/4
+= 15/64
+`,explainDesc:''};
+questions[43]={number:44,type:'TIU',text:`2/3 × 5/3 – 1 – 2 × 7/2 = …`,choices:[{text:'–6 8/9'},{text:'–3 8/9'},{text:'3 8/9'},{text:'5 8/9'},{text:'6 8/9'}],correctIndex:0,explain:`2 ÷ 3 × 5 ÷ 3 − 1 − 2 × (7 ÷ 2)\n\n
+= (2 × 5) ÷ (3 × 3) − 1 − 2 × (7 ÷ 2)\n\n
+= 10 ÷ 9 − 1 − 7\n\n
+= 10 ÷ 9 − 8\n\n
+= 10 ÷ 9 − 72 ÷ 9\n\n
+= −62 ÷ 9\n\n
+= −6 8/9\n\n
+`,explainDesc:''};
+questions[44]={number:45,type:'TIU',text:`1/6 + 5 × 1/4 – 1/5 ÷ 3/10 = …`,choices:[{text:'½'},{text:'⅔'},{text:'¾'},{text:'⅚'},{text:'⅘'}],correctIndex:3,explain:`1 ÷ 6 + 5 × (1 ÷ 4) − (1 ÷ 5) ÷ (3 ÷ 10)
+\n\n= 1/6 + 5/4 − (1/5 × 10/3)
+\n\n\= 1/6 + 5/4 − 2/3
+\n\n= 2/12 + 15/12 − 8/12
+\n\n= 9/12
+\n\n= 3/4
+`,explainDesc:''};
+questions[45]={number:46,type:'TIU',text:`Manakah hubungan yang benar antara kuantitas S dan T berdasarkan informasi yang diberikan ....`,image:{src:'46.png',caption:'Soal 46'},choices:[{text:'5S < 2T'},{text:'S < 3T'},{text:'S > 2T'},{text:'3S < T'},{text:'Tidak dapat ditentukan'}],correctIndex:1,explain:`S = 15 + 26 − 4 × 6 = 41 − 24 = 17\n\n
+T = 6 + 10 + 3 × 6 = 16 + 18 = 34\n\n
+S : T = 17 : 34 = 1 : 2\n\n
+`,explainDesc:''};
+questions[46]={number:47,type:'TIU',text:`Bus pertama berangkat dari kota A pukul 07.35 WIB dengan kecepatan 80 km/jam dan tiba di kota B pukul 10.05 WIB. Manakah hubungan yang benar antara kuantitas P dan Q berikut berdasarkan informasi yang diberikan?`,image:{src:'47.png',caption:'Soal 47'},choices:[{text:'⅓P > ½Q'},{text:'2Q > 2P'},{text:'⅔P = 2Q'},{text:'½P = ⅓Q'},{text:'Info kurang'}],correctIndex:2,explain:`Pukul 07.35 WIB ke pukul 10.05 WIB membutuhkan waktu selama 2 jam 30 menit atau 150 menit.\n\n
+Diperoleh,\n\n
+150 menit → 80 km/jam\n\n
+120 menit → x km/jam\n\n
+Oleh karena semakin sedikit waktu yang dibutuhkan untuk menempuh suatu perjalanan, maka semakin cepat kecepatan bus yang dibutuhkan, sehingga menggunakan perbandingan tak senilai.\n\n
+150/120 = x/80\n\n
+5/4 = x/80\n\n
+100 = x\n\n
+Kecepatan bus kedua melaju dari kota B ke kota A selama 120 menit adalah 100 km/jam = P.\n\n
+Maka,\n\n
+P : Q = 100 : 75 (disederhanakan)\n\n
+P : Q = 4 : 3\n\n`,explainDesc:'',explainDesc:'',explainImages:[{src:'471.png',caption:'Langkah 1'}]};
+questions[47]={number:48,type:'TIU',text:`Diketahui nilai x = 2 dan y = 4,\n\nManakah hubungan yang benar antara kuantitas A dan B berikut berdasarkan informasi yang diberikan....`,image:{src:'48.png',caption:'Soal 48'},choices:[{text:'A/2 = B'},{text:'2A < B'},{text:'Tidak dapat ditentukan'},{text:'A > 3B'},{text:'A = 5/2B'}],correctIndex:1,explain:`A=4; B=11.`,explainDesc:'',explainImages:[{src:'481.png',caption:'Analisis panah'}]};
+questions[48]={number:49,type:'TIU',text:`Mobil menempuh jarak 120 km, kecepatan 60 km/jam. berapa jarak yang ditempuh mobil ketika kecepatan 80 km/jam?`,choices:[{text:'150 km'},{text:'160 km'},{text:'170 km'},{text:'180 km'},{text:'190 km'}],correctIndex:1,explain:`X=160 km.`,explainDesc:'',explainImages:[{src:'49.png',caption:'Analisis panah'}]};
+questions[49]={number:50,type:'TIU',text:`Pembangunan sebuah gedung direncanakan akan selesai dalam waktu 30 hari oleh 25 pekerja. Setelah dikerjakan selama 20 hari pekerjaan dihentikan 8 hari karena ada sesuatu hal. Jika kemampuan bekerja setiap orang sama dan agar gedungnya selesai tepat waktu maka banyak pekerja tambahan yang dibutuhkan adalah ... orang.`,choices:[{text:'25'},{text:'50'},{text:'33'},{text:'75'},{text:'100'}],correctIndex:4,explain:`25 orang → 30 hari\n\nSudah dikerjakan 20 hari, libur 8 hari\n\nPenambahan pekerja?\n\nDefinisi: P = Pekerja; Li = Libur; S = Sisa hari\n\nP = 25\n\nLi = 8\n\nS = 30 − 20 − 8 = 2\n\n(+) = (P · Li) / S\n\n(+) = (25 · 8) / 2\n\n(+) = 25 · 4 = 100 orang\n\nJawaban: E`,explainDesc:''};
+questions[50]={number:51,type:'TIU',text:`Seekor kambing dapat menghabiskan rumput di suatu lapangan dalam waktu 4 minggu. Jika seekor sapi dapat menghabiskan rumput di lapangan dalam waktu 3 minggu, berapa lama rumput akan habis jika kambing dan sapi makan bersama-sama di lapangan tersebut?`,choices:[{text:'12 hari'},{text:'18 hari'},{text:'20 hari'},{text:'24 hari'},{text:'28 hari'}],correctIndex:0,explain:`K = Kambing = 4 minggu\n\n
+S = Sapi = 3 minggu\n\n
+W_kerjasama = (K×S)/(K+S) = (4×3)/(4+3) = 12/7 minggu\n\n
+Konversi: 1 minggu = 7 hari\n\n
+(12/7) × 7 hari = 12 hari\n\n
+Jawaban: A`,explainDesc:''};
+questions[51]={number:52,type:'TIU',text:`Sebuah perusahaan travel memiliki data perjalanan dalam sebulan yang mencakup jumlah perjalanan yang jadi berangkat dan jumlah perjalanan yang dibatalkan. Setiap perjalanan yang jadi memberikan keuntungan Rp 50.000,00, sedangkan setiap perjalanan yang dibatalkan memberikan kerugian Rp 20.000,00. Berikut adalah tabel data perjalanan dari tiga cabang travel:\n\nTravel: keuntungan bersih terbesar?`,image:{src:'52.png',caption:'Soal 52'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Keuntungan Bersih = (Perjalanan Berangkat × 50.000) − (Perjalanan Dibatalkan × 20.000)\n\n
+Travel A = (120 × 50.000) − (15 × 20.000) = 6.000.000 − 300.000 = 5.700.000\n\n
+Travel B = (100 × 50.000) − (10 × 20.000) = 5.000.000 − 200.000 = 4.800.000\n\n
+Travel C = (125 × 50.000) − (20 × 20.000) = 6.250.000 − 400.000 = 5.850.000\n\n
+Travel D = (115 × 50.000) − (5 × 20.000) = 5.750.000 − 100.000 = 5.650.000\n\n
+Travel E = (115 × 50.000) − (15 × 20.000) = 5.750.000 − 300.000 = 5.450.000\n\n
+Maka, keuntungan bersih paling banyak = Travel C\n\n
+Jawaban: C
+`,explainDesc:'', extraLines:['','','']};
+questions[52]={number:53,type:'TIU',text:`Terdapat jadwal kegiatan belajar di sekolah yang berlangsung selama 5 hari dari Senin – Jumat dengan satu hari libur di antara hari-hari belajar tersebut. Pada hari senin, ada pelajaran Bahasa Indonesia. Hari selasa adalah Pelajaran Matematika. Sehari setelah belajar Matematika ada pelajaran Fisika. Dua hari setelah belajar Matematika ada pelajaran Biologi. \n\nBerdasarkan jadwal tersebut, Hari yang merupakan hari libur adalah …`,choices:[{text:'Senin'},{text:'Selasa'},{text:'Rabu'},{text:'Kamis'},{text:'Jumat'}],correctIndex:4,explain:`Diketahui,\n\n• Jadwal kegiatan belajar di sekolah berlangsung selama 5 hari dari Senin – Jumat dengan satu hari libur diantara hari-hari belajar tersebut.\n\n• Senin, pelajaran Bahasa Indonesia\n\n• Selasa, pelajaran Matematika\n\n• Sehari setelah belajar Matematika ada pelajaran Fisika, yaitu hari Rabu\n\n• Dua hari setelah belajar Matematika ada pelajaran Biologi, yaitu hari Kamis.\n\nMaka jadwal hari libur terdapat pada hari Jumat\n\nJawaban: E
+`,explainDesc:''};
+questions[53]={number:54,type:'TIU',text:`Jaket warna—aturan; Loli hijau; Abi merah. Benar…`,choices:[{text:'Loli cokelat'},{text:'Abi & Siti merah'},{text:'Loli & Siti hijau'},{text:'Hanya Abi bisa hitam'},{text:'Siti bisa hitam/merah'}],correctIndex:4,explain:`Mengikuti syarat.`,explainDesc:'',extraLines:['','',''],explainImages:[{src:'54-1.jpg',caption:'Graf kemungkinan'},{src:'54-2.jpg',caption:'Eliminasi'}]};
+questions[54]={number:55,type:'TIU',text:`Duduk meja persegi; seberang Nono?`,choices:[{text:'Ucok'},{text:'Ayok'},{text:'Sam'},{text:'Iwan'},{text:'Rudi'}],correctIndex:3,explain:`Penyusunan memenuhi syarat.`,explainDesc:'',explainImages:[{src:'55-1.jpg',caption:'Sketsa meja'},{src:'55-2.jpg',caption:'Penempatan'},{src:'55-3.jpg',caption:'Validasi'}]};
+questions[55]={number:56,type:'TIU',text:`Graf oper bola; jalur ke Fajar…`,choices:[{text:'0'},{text:'1'},{text:'2'},{text:'3'},{text:'4'}],correctIndex:1,explain:`Naufal→Saiful→Jati→Fajar.`,explainDesc:'',explainImages:[{src:'56-1.jpg',caption:'Graf'},{src:'56-2.jpg',caption:'Lintasan'}]};
+
+/* ---- TIU 57–65 (gambar .jpg) ---- */
+questions[56]={number:57,type:'TIU',text:`(Gambar .jpg) Transformasi 1→2; pilih untuk (4).`,image:{src:'57.jpg',caption:'Soal 57'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Dari gambar 1 ke gambar 2, objek diputar 135° berlawanan jarum jam dan dicerminkan vertikal. \n\nKemudian perhatikan objek yang ditandai dengan warna merah \n\nDari gambar 1 ke gambar 2, objek tersebut tidak berubah.\n\nSehingga dengan pola yang sama, opsi yang tepat untuk mengisi gambar ketiga adalah opsi B.`,explainDesc:'',explainImages:[{src:'571.jpg',caption:'Langkah 1'}]};
+questions[57]={number:58,type:'TIU',text:`(Gambar .jpg) Deret panah mengelilingi lingkaran.`,image:{src:'58.jpg',caption:'Soal 58'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Opsi C punya empat panah mengarah ke lingkaran.`,explainDesc:'',explainImages:[{src:'581.jpg',caption:'Analisis panah'}]};
+questions[58]={number:59,type:'TIU',text:`(Gambar .jpg) Pola 4 objek berbeda tiap kotak; tentukan gambar ke-4.`,image:{src:'59.jpg',caption:'Soal 59'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Ikuti perpindahan & perubahan sisi.`,explainDesc:'',explainImages:[{src:'591.jpg',caption:'Objek 1'},{src:'59-2.jpg',caption:'Objek 2'}]};
+questions[59]={number:60,type:'TIU',text:`(Gambar .jpg) Lengkapi pola garis per baris/kolom.`,image:{src:'60.jpg',caption:'Soal 60'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Baris 1 +2 garis per kolom.`,explainDesc:'',explainImages:[{src:'60-1.jpg',caption:'Pola baris 1'},{src:'602.jpg',caption:'Aplikasi'}]};
+questions[60]={number:61,type:'TIU',text:`(Gambar .jpg) Jumlah garis tiap kotak konstan.`,image:{src:'61.jpg',caption:'Soal 61'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:3,explain:`Setiap kotak total 9 garis.`,explainDesc:'',explainImages:[{src:'611.jpg',caption:'Hitung garis'}]};
+questions[61]={number:62,type:'TIU',text:`(Gambar .jpg) Rotasi: garis hitam 45° CCW; panah putih 45° CW.`,image:{src:'62.jpg',caption:'Soal 62'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Aturan rotasi berlawanan.`,explainDesc:'',explainImages:[{src:'621.jpg',caption:'Skema rotasi'}]};
+questions[62]={number:63,type:'TIU',text:`(Gambar .jpg) Kotak hitam 2 langkah CW; lingkaran 1 langkah CW (bisa tertutup).`,image:{src:'63.jpg',caption:'Soal 63'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Lingkaran tak tampak jika tertutup kotak.`,explainDesc:'',explainImages:[{src:'631.jpg',caption:'Lintasan elemen'}]};
+questions[63]={number:64,type:'TIU',text:`(Gambar .jpg) Kotak hitam geser satu langkah & menutupi kotak dilalui.`,image:{src:'64.jpg',caption:'Soal 64'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Gunakan pola baris 1 & 2.`,explainDesc:'',explainImages:[{src:'641.jpg',caption:'Penutupan'}]};
+questions[64]={number:65,type:'TIU',text:`(Gambar .jpg) Kolom 3 = gabungan kolom 1 & 2 (aturan bit).`,image:{src:'65.jpg',caption:'Soal 65'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:3,explain:`Hitam⊕Hitam=Putih; lainnya menyesuaikan.`,explainDesc:'',explainImages:[{src:'651.jpg',caption:'Aturan gabungan'}]};
+
+/* ---- TKP 66–110 (tetap seperti versi sebelumnya; poin 1–5 per opsi) ---- */
+questions[65]={number:66,type:'TIU',text:`(Gambar .jpg) Transformasi 1→2; pilih untuk (4).`,image:{src:'57.jpg',caption:'Soal 57'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Putar 135° CCW + cermin vertikal; penanda tetap.`,explainDesc:'',explainImages:[{src:'57-1.jpg',caption:'Langkah 1'},{src:'57-2.jpg',caption:'Langkah 2'},{src:'57-3.jpg',caption:'Langkah 3'},{src:'57-4.jpg',caption:'Langkah 4'}]};
+questions[66]={number:67,type:'TIU',text:`(Gambar .jpg) Deret panah mengelilingi lingkaran.`,image:{src:'58.jpg',caption:'Soal 58'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Opsi C punya empat panah mengarah ke lingkaran.`,explainDesc:'',explainImages:[{src:'58-1.jpg',caption:'Analisis panah'}]};
+questions[67]={number:68,type:'TIU',text:`(Gambar .jpg) Pola 4 objek berbeda tiap kotak; tentukan gambar ke-4.`,image:{src:'59.jpg',caption:'Soal 59'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Ikuti perpindahan & perubahan sisi.`,explainDesc:'',explainImages:[{src:'59-1.jpg',caption:'Objek 1'},{src:'59-2.jpg',caption:'Objek 2'}]};
+questions[68]={number:69,type:'TIU',text:`(Gambar .jpg) Lengkapi pola garis per baris/kolom.`,image:{src:'60.jpg',caption:'Soal 60'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:2,explain:`Baris 1 +2 garis per kolom.`,explainDesc:'',explainImages:[{src:'60-1.jpg',caption:'Pola baris 1'},{src:'60-2.jpg',caption:'Aplikasi'}]};
+questions[69]={number:70,type:'TIU',text:`(Gambar .jpg) Jumlah garis tiap kotak konstan.`,image:{src:'61.jpg',caption:'Soal 61'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:3,explain:`Setiap kotak total 9 garis.`,explainDesc:'',explainImages:[{src:'61-1.jpg',caption:'Hitung garis'}]};
+questions[70]={number:71,type:'TIU',text:`(Gambar .jpg) Rotasi: garis hitam 45° CCW; panah putih 45° CW.`,image:{src:'62.jpg',caption:'Soal 62'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Aturan rotasi berlawanan.`,explainDesc:'',explainImages:[{src:'62-1.jpg',caption:'Skema rotasi'}]};
+questions[71]={number:72,type:'TIU',text:`(Gambar .jpg) Kotak hitam 2 langkah CW; lingkaran 1 langkah CW (bisa tertutup).`,image:{src:'63.jpg',caption:'Soal 63'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Lingkaran tak tampak jika tertutup kotak.`,explainDesc:'',explainImages:[{src:'63-1.jpg',caption:'Lintasan elemen'}]};
+questions[72]={number:73,type:'TIU',text:`(Gambar .jpg) Kotak hitam geser satu langkah & menutupi kotak dilalui.`,image:{src:'64.jpg',caption:'Soal 64'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:1,explain:`Gunakan pola baris 1 & 2.`,explainDesc:'',explainImages:[{src:'64-1.jpg',caption:'Penutupan'}]};
+questions[73]={number:74,type:'TIU',text:`(Gambar .jpg) Kolom 3 = gabungan kolom 1 & 2 (aturan bit).`,image:{src:'65.jpg',caption:'Soal 65'},choices:[{text:'A'},{text:'B'},{text:'C'},{text:'D'},{text:'E'}],correctIndex:3,explain:`Hitam⊕Hitam=Putih; lainnya menyesuaikan.`,explainDesc:'',explainImages:[{src:'65-1.jpg',caption:'Aturan gabungan'}]};
+
+/* Contoh 75–78 tetap */
+questions[74]={number:75,type:'TKP',text:`Keluhan jalan rusak; koordinasi lemah. Langkah terbaik?`,choices:[{text:'Rapat koordinasi lintas instansi, bagi tanggung jawab',score:5},{text:'PU perbaikan sementara sambil koordinasi',score:4},{text:'Minta warga bersabar',score:1},{text:'Eskalasi ke pusat',score:3},{text:'Serahkan ke pemkot',score:2}],explain:'Koordinasi lintas instansi paling efektif.',explainDesc:''};
+questions[75]={number:76,type:'TKP',text:`ASN baru ingin perluas jejaring.`,choices:[{text:'Minta rekomendasi Kadis',score:2},{text:'Mentoring internasional',score:1},{text:'Pelatihan nasional',score:3},{text:'Konferensi kesehatan nasional',score:4},{text:'Kelompok kerja lintas sektor',score:5}],explain:'Kolaborasi lintas sektor relevan.',explainDesc:''};
+questions[76]={number:77,type:'TKP',text:`Rekan merasa idenya diambil.`,choices:[{text:'Biarkan saja',score:1},{text:'Tarik pengembangan ide',score:2},{text:'Maaf + ingatkan rekan',score:3},{text:'Maaf + jelaskan niat murni',score:5},{text:'Maaf tulus',score:4}],explain:'Maaf + klarifikasi pulihkan trust.',explainDesc:''};
+questions[77]={number:78,type:'TKP',text:`Proyek terhambat karena data terlambat.`,choices:[{text:'Biarkan tertunda',score:1},{text:'Lapor pimpinan',score:2},{text:'Motivasi tim sambil menunggu',score:3},{text:'Selesaikan tanpa data',score:4},{text:'Hubungi dinas terkait percepat data',score:5}],explain:'Komunikasi proaktif.',explainDesc:''};
+
+/* TKP 79–110 (versi sebelumnya lengkap) */
+questions[78]={number:79,type:'TKP',text:`Acara diskusi kampus disponsori organisasi radikal. Tindakan? (Anti Radikalisme)`,choices:[
+  {text:'Menghindari acara & melapor ke pihak berwenang kampus',score:5},
+  {text:'Tetap ikut tapi hanya mendengarkan pasif',score:2},
+  {text:'Memberi masukan agar sponsor lebih netral ke depan',score:4},
+  {text:'Tetap hadir untuk tahu isi diskusi',score:3},
+  {text:'Abaikan info sponsor dan hadir seperti biasa',score:1}
+],explain:'Hindari acara & laporkan menunjukkan kewaspadaan dan tanggung jawab; opsi lain berisiko mendukung.',explainDesc:''};
+/* ... potongan 80–110 tetap sesuai sebelumnya ... */
+questions[79]={number:80,type:'TKP',text:`Diundang jadi pembicara diskusi radikalisme pada akhir pekan waktu belajar. (Anti Radikalisme)`,choices:[
+  {text:'Tetap menjadi pembicara meski mengorbankan waktu belajar/istirahat',score:5},
+  {text:'Meminta izin mengurangi tugas agar bisa hadir',score:1},
+  {text:'Hadir sebagai peserta untuk mendapat wawasan',score:3},
+  {text:'Merekam presentasi & kirim jika tak bisa hadir',score:4},
+  {text:'Diskusi dengan dosen untuk penyesuaian tanggung jawab kuliah',score:2}
+],explain:'Komitmen penuh sebagai pembicara adalah kontribusi tertinggi; alternatif D cukup, lainnya kurang kuat.',explainDesc:''};
+questions[80]={number:81,type:'TKP',text:`Seminar eksternal condong ideologi radikal. (Anti Radikalisme)`,choices:[
+  {text:'Diam saja selama acara',score:1},
+  {text:'Mengingatkan panitia agar hentikan materi radikal',score:5},
+  {text:'Ikut diskusi memahami pandangan mereka',score:2},
+  {text:'Meninggalkan seminar sebagai penolakan',score:3},
+  {text:'Melaporkan ke pihak berwenang instansi setelah acara',score:4}
+],explain:'Tindakan langsung menghentikan penyebaran lebih efektif; laporan menyusul juga baik.',explainDesc:''};
+questions[81]={number:82,type:'TKP',text:`Pegawai mengajak ceramah pilihannya saat jam kerja. (Anti Radikalisme)`,choices:[
+  {text:'Membiarkan karena kebebasan beragama',score:1},
+  {text:'Mengingatkan secara pribadi untuk menghormati keberagaman',score:5},
+  {text:'Melaporkan ke personalia',score:4},
+  {text:'Pengarahan umum ke semua pegawai',score:3},
+  {text:'Instruksikan rekan lain menghindarinya',score:2}
+],explain:'Teguran pribadi menghormati martabat & keberagaman; formalitas dapat menyusul jika berulang.',explainDesc:''};
+questions[82]={number:83,type:'TKP',text:`Debat pilpres mengganggu suasana kerja. (Anti Radikalisme)`,choices:[
+  {text:'Ingatkan untuk jaga netralitas di tempat kerja',score:5},
+  {text:'Laporkan ke atasan untuk arahan',score:4},
+  {text:'Ikut berdiskusi untuk meredakan',score:2},
+  {text:'Abaikan karena tiap orang punya pandangan',score:1},
+  {text:'Ajak dialog santai di luar jam kerja',score:3}
+],explain:'Profesional: jaga netralitas; eskalasi bila perlu.',explainDesc:''};
+questions[83]={number:84,type:'TKP',text:`Diskusi online banyak propaganda radikal. (Anti Radikalisme)`,choices:[
+  {text:'Mengurangi waktu diskusi online',score:1},
+  {text:'Mengasah literasi digital untuk evaluasi kritis',score:5},
+  {text:'Prioritaskan media sosial untuk hiburan saja',score:2},
+  {text:'Berpartisipasi aktif dengan sikap terbuka',score:3},
+  {text:'Pengecekan fakta dari berbagai sumber',score:4}
+],explain:'Peningkatan literasi digital paling berdampak; fact-check penting tetapi hanya salah satu alat.',explainDesc:''};
+questions[84]={number:85,type:'TKP',text:`Siswa baru di sekolah multikultur. (Anti Radikalisme)`,choices:[
+  {text:'Kelompok belajar dengan teman seagama',score:2},
+  {text:'Fokus budaya sendiri',score:1},
+  {text:'Membuka diri memahami perbedaan',score:5},
+  {text:'Hanya ikut kegiatan sesuai minat pribadi',score:3},
+  {text:'Menghadiri acara budaya sekolah',score:4}
+],explain:'Sikap inklusif & memahami perbedaan adalah inti toleransi.',explainDesc:''};
+questions[85]={number:86,type:'TKP',text:`Kepala sekolah menyelenggarakan pelatihan TIK. (TIK)`,choices:[
+  {text:'Pelatihan umum agar mudah diikuti',score:4},
+  {text:'Serahkan penuh ke tim IT',score:1},
+  {text:'Pilih pelatihan relevan sesuai kebutuhan guru',score:5},
+  {text:'Minta guru mencari materi sendiri dulu',score:3},
+  {text:'Susun materi dari pengalaman pribadi',score:2}
+],explain:'Kesesuaian kebutuhan = efektivitas tertinggi.',explainDesc:''};
+questions[86]={number:87,type:'TKP',text:`Tim sibuk kampanye; pesan di luar jam kerja sering datang. (TIK)`,choices:[
+  {text:'Batasi komunikasi di jam resmi saja',score:2},
+  {text:'Ingatkan rekan secara pribadi',score:4},
+  {text:'Tetap respons demi kelancaran',score:3},
+  {text:'Dorong komunikasi luar jam kerja',score:1},
+  {text:'Rapat pola komunikasi efektif',score:5}
+],explain:'Atur pola bersama mencegah burnout & menjaga kolaborasi.',explainDesc:''};
+questions[87]={number:88,type:'TKP',text:`Tugas kelompok pakai aplikasi data; kamu sudah menguasai. (TIK)`,choices:[
+  {text:'Mengajari rekan menggunakan aplikasi',score:5},
+  {text:'Pakai keahlian sendiri agar cepat selesai',score:4},
+  {text:'Sarankan tetap pakai aplikasi & bantu rekan',score:3},
+  {text:'Selesaikan sendiri lalu laporkan',score:1},
+  {text:'Usul metode lain agar cepat',score:2}
+],explain:'Transfer skill meningkatkan kapasitas tim.',explainDesc:''};
+questions[88]={number:89,type:'TKP',text:`Input data sangat penting. (TIK)`,choices:[
+  {text:'Input santai',score:1},
+  {text:'Ajak rekan untuk cek silang',score:4},
+  {text:'Cek berulang demi kesesuaian data asli',score:5},
+  {text:'Minta waktu tambahan',score:3},
+  {text:'Tunggu waktu ideal agar fokus',score:2}
+],explain:'Akurasi prioritas; kolaborasi membantu, tapi verifikasi pribadi wajib.',explainDesc:''};
+questions[89]={number:90,type:'TKP',text:`Kembangkan aplikasi lintas perusahaan. (TIK)`,choices:[
+  {text:'Undang perwakilan berbagai perusahaan (kebutuhan)',score:5},
+  {text:'Fitur berdasarkan pengalaman internal',score:1},
+  {text:'Fokus teknologi terbaru saja',score:2},
+  {text:'Percepat pengembangan sambil jaga keberlanjutan',score:4},
+  {text:'Prioritaskan efisiensi, jaga keamanan',score:3}
+],explain:'Co-design dengan pemangku kepentingan memastikan relevansi.',explainDesc:''};
+questions[90]={number:91,type:'TKP',text:`Magang di Dukcapil diminta bantu warga mendaftar aplikasi. (TIK)`,choices:[
+  {text:'Mengaku belum paham',score:1},
+  {text:'Minta izin cek cara aplikasi dulu',score:4},
+  {text:'Minta bantuan rekan berpengalaman',score:5},
+  {text:'Coba bantu meski belum paham',score:2},
+  {text:'Minta warga kembali lain waktu',score:3}
+],explain:'Pastikan layanan benar & cepat dengan bantuan ahli.',explainDesc:''};
+questions[91]={number:92,type:'TKP',text:`Pengaruh paling bermanfaat medsos bagi Anda? (TIK)`,choices:[
+  {text:'Menjalin komunikasi dengan sahabat lama',score:2},
+  {text:'Menambah pendapatan',score:4},
+  {text:'Cari info sesuai kesenangan pribadi',score:3},
+  {text:'Selalu dapat berita terkini',score:1},
+  {text:'Peroleh pengetahuan & keterampilan baru',score:5}
+],explain:'Pengembangan keterampilan memberi dampak terbesar.',explainDesc:''};
+questions[92]={number:93,type:'TKP',text:`Keluarga pasien keluhkan layanan rekan. (Profesionalisme)`,choices:[
+  {text:'Jelaskan karena tekanan kerja',score:3},
+  {text:'Dengarkan empatik & catat untuk tindak lanjut',score:5},
+  {text:'Bela rekan di depan keluarga',score:1},
+  {text:'Arahkan keluarga bicara ke atasan',score:4},
+  {text:'Janji ambil tindakan langsung tanpa koordinasi',score:2}
+],explain:'Empati + tindak lanjut adalah standar profesional.',explainDesc:''};
+questions[93]={number:94,type:'TKP',text:`Laporan tahunan vs acara penghargaan; data terlambat. (Profesionalisme)`,choices:[
+  {text:'Prioritaskan laporan & verifikasi data terlambat',score:5},
+  {text:'Tim yang selesaikan; Anda hadiri acara',score:2},
+  {text:'Hadiri acara & minta perpanjangan tenggat',score:3},
+  {text:'Susun laporan pakai data tersedia saja',score:4},
+  {text:'Abaikan acara & fokus laporan saja',score:1}
+],explain:'Kualitas & akuntabilitas laporan adalah prioritas utama.',explainDesc:''};
+questions[94]={number:95,type:'TKP',text:`Wakil ketua OSIS diminta sambutan mendadak. (Profesionalisme)`,choices:[
+  {text:'Sambutan spontan',score:2},
+  {text:'Minta waktu tambahan siapkan poin',score:3},
+  {text:'Menolak karena tidak siap',score:1},
+  {text:'Minta ketua OSIS sambut daring',score:4},
+  {text:'Gunakan pengalaman & pengetahuan acara untuk sambutan singkat meyakinkan',score:5}
+],explain:'Ambil peran dengan materi ringkas dan relevan.',explainDesc:''};
+questions[95]={number:96,type:'TKP',text:`Suka divisi pelayanan, tapi ditempatkan di administrasi. (Profesionalisme)`,choices:[
+  {text:'Dedikasi penuh di administrasi bangun pengalaman',score:4},
+  {text:'Optimalkan kinerja adm sambil belajar skill pelayanan',score:5},
+  {text:'Cari info karier & syarat pindah divisi',score:3},
+  {text:'Fokus tingkatkan kualifikasi pendidikan',score:2},
+  {text:'Jaga motivasi sambil menunggu kesempatan',score:1}
+],explain:'Belajar lintas fungsi menyiapkan transisi yang sehat.',explainDesc:''};
+questions[96]={number:97,type:'TKP',text:`Rapat prioritas mendadak berbenturan acara keluarga. (Profesionalisme)`,choices:[
+  {text:'Tolak rapat karena acara keluarga',score:1},
+  {text:'Minta rekan menggantikan memimpin rapat',score:4},
+  {text:'Izin keluarga terlambat demi memimpin rapat',score:5},
+  {text:'Pimpin rapat tapi fokus terganggu',score:2},
+  {text:'Tawarkan penjadwalan ulang',score:3}
+],explain:'Tanggung jawab utama tetap dijalankan sembari menjaga komitmen keluarga.',explainDesc:''};
+questions[97]={number:98,type:'TKP',text:`Pastikan produk memenuhi harapan pelanggan. (Profesionalisme)`,choices:[
+  {text:'Diskusi rutin dengan pelanggan untuk pahami harapan/standar',score:5},
+  {text:'Andalkan evaluasi setelah peluncuran',score:3},
+  {text:'Fokus aspek yang tim anggap penting',score:1},
+  {text:'Riset pasar mendalam',score:4},
+  {text:'Simulasi pelanggan oleh tim',score:2}
+],explain:'Keterlibatan langsung & berkelanjutan dengan pelanggan paling efektif.',explainDesc:''};
+questions[98]={number:99,type:'TKP',text:`Gantikan atasan pimpin rapat koordinasi lintas bidang. (Profesionalisme)`,choices:[
+  {text:'Putuskan sesuai kebiasaan atasan',score:4},
+  {text:'Ambil keputusan sesuai kebijakan resmi instansi',score:5},
+  {text:'Tampung usulan & putuskan berdasar preferensi pribadi',score:1},
+  {text:'Putuskan saat rapat, bisa direvisi atasan',score:3},
+  {text:'Telepon atasan minta arahan',score:2}
+],explain:'Mandiri namun berbasis kebijakan menjaga legitimasi.',explainDesc:''};
+questions[99]={number:100,type:'TKP',text:`Ingin tingkatkan skill & pengetahuan di bidang teknologi. (Profesionalisme)`,choices:[
+  {text:'Invest waktu & biaya ikut kursus online relevan',score:5},
+  {text:'Tunda pelatihan sampai lebih siap',score:1},
+  {text:'Belajar mandiri via buku/artikel',score:2},
+  {text:'Gabung komunitas profesional',score:4},
+  {text:'Evaluasi skill dibutuhkan & fokus kembangkan',score:3}
+],explain:'Belajar terstruktur + praktik mempercepat kemajuan.',explainDesc:''};
+
+questions[100]={number:101,type:'TKP',text:`Guru di desa bantu masyarakat memilah informasi akurat. (Profesionalisme)`,choices:[
+  {text:'Seminar pentingnya periksa sumber',score:4},
+  {text:'Kampanye medsos verifikasi info',score:3},
+  {text:'Kerja sama pemerintah luncurkan program literasi informasi',score:5},
+  {text:'Materi edukasi via cetak & online',score:2},
+  {text:'Selebaran ke rumah warga',score:1}
+],explain:'Program formal & berkelanjutan skalanya lebih luas.',explainDesc:''};
+
+questions[101]={number:102,type:'TKP',text:`Rekan coba akses dokumen rahasia tanpa tugas terkait. (Profesionalisme)`,choices:[
+  {text:'Laporkan ke atasan demi jaga keamanan data',score:5},
+  {text:'Ingatkan pribadi tentang kebijakan keamanan',score:4},
+  {text:'Pantau dulu sebelum bertindak',score:3},
+  {text:'Biarkan karena tidak berniat buruk',score:2},
+  {text:'Diskusikan dengan rekan lain',score:1}
+],explain:'Keamanan informasi prioritas; jalur formal diperlukan.',explainDesc:''};
+
+questions[102]={number:103,type:'TKP',text:`Konflik dua anggota tim beda departemen. (Profesionalisme)`,choices:[
+  {text:'Biarkan mereka selesaikan sendiri',score:1},
+  {text:'Minta mereka saling menghindar',score:2},
+  {text:'Mediasi: fasilitasi berbagi perspektif & solusi bersama',score:5},
+  {text:'Tindakan disipliner ke pihak dianggap sebab',score:4},
+  {text:'Ganti anggota yang konflik',score:3}
+],explain:'Mediasi menyasar akar masalah dan menjaga kerja sama.',explainDesc:''};
+
+questions[103]={number:104,type:'TKP',text:`Fasilitas kerja kurang; anggaran terbatas. (Pelayanan Publik)`,choices:[
+  {text:'Ajukan proposal bantuan ke pemda/lembaga, bertahap',score:5},
+  {text:'Pakai sebagian anggaran operasional lain',score:2},
+  {text:'Maksimalkan fasilitas ada secara inovatif',score:4},
+  {text:'Alihkan ke bagian anggaran cari solusi',score:3},
+  {text:'Tunda hingga anggaran berikutnya',score:1}
+],explain:'Solusi proaktif & realistis, dampak berkelanjutan.',explainDesc:''};
+
+questions[104]={number:105,type:'TKP',text:`Warga lansia butuh akses ramah saat ke loket; fasilitas belum ada. (Pelayanan Publik)`,choices:[
+  {text:'Minta maaf & jelaskan belum tersedia',score:2},
+  {text:'Minta maaf & dampingi langsung ke loket',score:5},
+  {text:'Minta maaf & sarankan isi kotak saran',score:3},
+  {text:'Minta maaf & laporkan kebutuhan jalur akses ke pimpinan',score:4},
+  {text:'Sarankan ke gedung lain yang ada fasilitas',score:1}
+],explain:'Pelayanan langsung + empati sambil dorong perbaikan.',explainDesc:''};
+
+questions[105]={number:106,type:'TKP',text:`Anak magang dianggap tidak berkontribusi & hendak diucilkan. (Jejaring Kerja)`,choices:[
+  {text:'Biarkan; biar belajar tantangan',score:2},
+  {text:'Ingatkan senior agar tidak mengucilkan',score:4},
+  {text:'Beri tugas tambahan untuk buktikan kontribusi',score:3},
+  {text:'Ajak bicara pahami kesulitan & bimbing',score:5},
+  {text:'Sarankan fokus kerja saja, abaikan komentar',score:1}
+],explain:'Pendampingan personal menumbuhkan kapasitas & trust.',explainDesc:''};
+
+questions[106]={number:107,type:'TKP',text:`Pasien minta penjelasan rinci diagnosis & perawatan. (Pelayanan Publik)`,choices:[
+  {text:'Bahasa medis teknis rinci',score:1},
+  {text:'Ilustrasi visual kompleks',score:4},
+  {text:'Bahasa mudah dipahami, hindari istilah sulit',score:5},
+  {text:'Sarankan cari info di internet',score:2},
+  {text:'Jelaskan cepat & singkat lalu Q&A',score:3}
+],explain:'Komunikasi jelas & inklusif adalah kunci.',explainDesc:''};
+
+questions[107]={number:108,type:'TKP',text:`Pegawai baru di pelayanan publik. (Pelayanan Publik)`,choices:[
+  {text:'Pahami prosedur dengan bertanya ke rekan berpengalaman',score:5},
+  {text:'Tetap ikuti prosedur meski masyarakat bingung',score:1},
+  {text:'Berikan info dasar & arahkan ke bagian lain jika sulit',score:3},
+  {text:'Catat pertanyaan untuk dipelajari sebelum menjawab',score:4},
+  {text:'Minta masyarakat bersabar karena masih belajar',score:2}
+],explain:'Pastikan informasi akurat dengan belajar aktif dari yang berpengalaman.',explainDesc:''};
+
+questions[108]={number:109,type:'TKP',text:`Online shop ingin pelayanan efektif & efisien. (Pelayanan Publik)`,choices:[
+  {text:'Chatbot & otomatis; sedia opsi agen manusia',score:2},
+  {text:'Berbagai saluran komunikasi mudah diakses',score:5},
+  {text:'Pengiriman lebih cepat berbiaya tambahan',score:4},
+  {text:'Fokus produk standar efisien',score:1},
+  {text:'Kebijakan retur pro-pelanggan & berkelanjutan',score:3}
+],explain:'Akses kanal yang luas = responsif & inklusif.',explainDesc:''};
+
+questions[109]={number:110,type:'TKP',text:`Pemilih tidak ada di DPT & kesal di TPS. (Pelayanan Publik)`,choices:[
+  {text:'Jelaskan DPT bukan kewenangan Anda; minta pulang',score:1},
+  {text:'Minta lapor ke panitia desa/kecamatan',score:4},
+  {text:'Minta maaf & jelaskan prosedur agar tetap bisa memilih bila memenuhi syarat',score:5},
+  {text:'Isi formulir khusus & info pendaftaran ulang',score:3},
+  {text:'Minta menunggu sampai pemilu selesai',score:2}
+],explain:'Empati + prosedur solusi langsung di TPS adalah layanan terbaik.',explainDesc:''};
+/* ====== STATE ====== */
+const answers = Array(TOTAL).fill(null);
+const saved   = Array(TOTAL).fill(false);
+const flagged = Array(TOTAL).fill(false);
+let current = 0;
+let finished = false;
+let inReview = false;
+let examStarted = false;
+
+/* ====== DOM ====== */
+const introView = document.getElementById('introView');
+const readingView = document.getElementById('readingView');
+const readTimerEl = document.getElementById('readTimer');
+const appEl = document.getElementById('app');
+
+const backdropEl = document.getElementById('backdrop');
+const sidebar = document.querySelector('.sidebar');
+const sidebarToggle = document.getElementById('sidebarToggle');
+const hideSidebarBtn = document.getElementById('hideSidebarBtn');
+const swapGridBtn = document.getElementById('swapGridBtn');
+
+const numGrid = document.getElementById('numGrid');
+const qTitle = document.getElementById('qTitle');
+const qText  = document.getElementById('qText');
+const sectionChip = document.getElementById('sectionChip');
+const statusHint = document.getElementById('statusHint');
+
+const flagBtn = document.getElementById('flagBtn');
+const saveNextBtn = document.getElementById('saveNextBtn');
+const finishBtn = document.getElementById('finishBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+const quizCard = document.getElementById('quizCard');
+const resultView = document.getElementById('resultView');
+const scoreTWK = document.getElementById('scoreTWK');
+const scoreTIU = document.getElementById('scoreTIU');
+const scoreTKP = document.getElementById('scoreTKP');
+const scoreTOTAL = document.getElementById('scoreTOTAL');
+
+const timerEl = document.getElementById('timer');
+const hhEl = document.getElementById('hh');
+const mmEl = document.getElementById('mm');
+const ssEl = document.getElementById('ss');
+
+const finishConfirm = document.getElementById('finishConfirm');
+const confirmYesBtn = document.getElementById('confirmYesBtn');
+const confirmNoBtn  = document.getElementById('confirmNoBtn');
+const startReadingBtn = document.getElementById('startReadingBtn');
+const startExamBtn = document.getElementById('startExamBtn');
+
+/* Review DOM */
+const reviewCard = document.getElementById('reviewCard');
+const reviewHeader = document.getElementById('reviewHeader');
+const reviewQuestion = document.getElementById('reviewQuestion');
+const reviewAnswer = document.getElementById('reviewAnswer');
+const reviewKey = document.getElementById('reviewKey');
+const reviewTKP = document.getElementById('reviewTKP');
+const reviewExplain = document.getElementById('reviewExplain');
+const explainMedia = document.getElementById('explainMedia');
+const reviewPrevBtn = document.getElementById('reviewPrevBtn');
+const reviewNextBtn = document.getElementById('reviewNextBtn');
+
+/* ====== UTIL ====== */
+const addZero = (n,len=2)=>String(n).padStart(len,'0');
+const isMobile = ()=>window.matchMedia('(max-width:960px)').matches;
+
+function setMultiParagraph(el, text){
+  el.innerHTML = '';
+  if(!text){ return; }
+  // Pecah per 1+ baris kosong (dua \n)
+  const paras = String(text).split(/\n\s*\n/);
+  paras.forEach(p => {
+    const par = document.createElement('p');
+    par.textContent = p.trim();
+    el.appendChild(par);
+  });
+}
+
+
+/* ====== GRID NOMOR ====== */
+for (let i=1;i<=TOTAL;i++){
+  const b=document.createElement('button');
+  b.className='num red';
+  b.textContent=i;
+  b.addEventListener('click',()=>{
+    if(finished && inReview){ openReview(i-1); }
+    else { goTo(i-1); }
+    if(isMobile() && appEl.classList.contains('mobile-open')) closeMobileSidebar();
+  });
+  numGrid.appendChild(b);
+}
+const updateNumColor=(idx)=>{
+  const btn=numGrid.children[idx];
+  if(inReview){
+    const counted=(answers[idx]!==null)&&(saved[idx]||flagged[idx]);
+    btn.className=counted?'num green':'num red';
+  }else{
+    if(flagged[idx]) btn.className='num yellow';
+    else if((saved[idx]||flagged[idx]) && answers[idx]!==null) btn.className='num green';
+    else btn.className='num red';
+  }
+};
+const updateAllNumColors=()=>{ for(let i=0;i<TOTAL;i++) updateNumColor(i); };
+
+/* ====== RENDER ====== */
+function sectionOf(n){
+  const no=n+1;
+  if(no<=twkEnd) return `TWK (${no}/30)`;
+  if(no<=tiuEnd) return `TIU (${no-30}/35)`;
+  return `TKP (${no-65}/45)`;
+}
+function render(){
+  const q=questions[current];
+  qTitle.textContent=`Soal #${q?.number ?? current+1}`;
+ // qText.textContent = q?.text ?? '[Soal belum terisi]';
+setMultiParagraph(qText, q?.text ?? '[Soal belum terisi]');
+
+  sectionChip.textContent=`Bagian: ${sectionOf(current)}`;
+
+  const choicesEl=document.getElementById('choices');
+  choicesEl.innerHTML='';
+  const mediaEl=document.getElementById('media');
+  mediaEl.innerHTML='';
+
+  if(q?.image){
+    const fig=document.createElement('figure');
+    const img=document.createElement('img');
+    img.src=q.image.src; img.alt=q.image.caption||'';
+    const cap=document.createElement('figcaption'); cap.textContent=q.image.caption||'';
+    fig.appendChild(img); fig.appendChild(cap); mediaEl.appendChild(fig);
+  }
+
+  (q?.choices || []).forEach((c,idx)=>{
+    const label=document.createElement('label'); label.className='choice';
+    const input=document.createElement('input'); input.type='radio'; input.name='ans';
+    input.checked = answers[current]===idx;
+    input.addEventListener('change',()=>{ answers[current]=idx; statusHint.textContent='Jawaban dipilih. Belum disimpan.'; updateNumColor(current); });
+    const span=document.createElement('span'); span.textContent=c.text;
+    label.appendChild(input); label.appendChild(span); choicesEl.appendChild(label);
+  });
+
+  const qExtra=document.getElementById('qExtra');
+  qExtra.innerHTML='';
+  if(q?.extraLines && q.extraLines.length){
+    const frag=document.createDocumentFragment();
+    q.extraLines.forEach(()=>{ const div=document.createElement('div'); div.className='blank'; frag.appendChild(div); });
+    qExtra.appendChild(frag);
+  }  
+
+  updateNumColor(current);
+  statusHint.textContent = flagged[current] ? 'Soal ditandai ragu-ragu.' :
+    ((saved[current]||flagged[current]) && answers[current]!==null ? 'Jawaban tersimpan.' :
+     (answers[current]!==null ? 'Jawaban dipilih. Belum disimpan.' : ''));
+}
+
+/* ====== NAV (Ujian) ====== */
+function goTo(idx){ if(finished) return; current=Math.max(0,Math.min(TOTAL-1,idx)); render(); }
+prevBtn.addEventListener('click',()=>goTo(current-1));
+nextBtn.addEventListener('click',()=>goTo(current+1));
+
+flagBtn.addEventListener('click',()=>{
+  flagged[current]=!flagged[current];
+  if(flagged[current] && answers[current]!==null){ saved[current]=true; }
+  updateNumColor(current);
+  statusHint.textContent=flagged[current]?'Soal ditandai ragu-ragu.':((saved[current]||flagged[current])&&answers[current]!==null?'Jawaban tersimpan.':'Jawaban belum disimpan.');
+});
+saveNextBtn.addEventListener('click',()=>{
+  if(answers[current]!==null){ saved[current]=true; }
+  updateNumColor(current); goTo(current+1);
+});
+
+/* ====== KONFIRMASI SELESAI ====== */
+finishBtn.addEventListener('click',()=>{
+  if(finished) return;
+  finishConfirm.classList.toggle('hidden');
+  finishBtn.setAttribute('aria-expanded', String(!finishConfirm.classList.contains('hidden')));
+});
+confirmNoBtn.addEventListener('click',()=>{
+  finishConfirm.classList.add('hidden'); finishBtn.setAttribute('aria-expanded','false');
+});
+confirmYesBtn.addEventListener('click',()=>{
+  finishConfirm.classList.add('hidden'); finishBtn.setAttribute('aria-expanded','false'); finish('manual');
+});
+
+/* ====== SKOR ====== */
+function scoreAll(){
+  let sTWK=0,sTIU=0,sTKP=0;
+  questions.forEach((q,idx)=>{
+    const ans=answers[idx];
+    const counted=(ans!==null)&&(saved[idx]||flagged[idx]);
+    if(!counted) return;
+    if(q?.type==='TWK' || q?.type==='TIU'){
+      if(ans===q?.correctIndex){ if(q.type==='TWK') sTWK+=5; else sTIU+=5; }
+    }else if(q?.type==='TKP'){
+      sTKP += q.choices?.[ans]?.score ?? 0;
+    }
+  });
+  return {sTWK,sTIU,sTKP,total:sTWK+sTIU+sTKP};
+}
+function finish(reason='manual'){
+  if(finished) return;
+  finished=true;
+  quizCard.classList.add('hidden');
+  resultView.classList.remove('hidden');
+
+  const {sTWK,sTIU,sTKP,total}=scoreAll();
+  scoreTWK.textContent=String(sTWK);
+  scoreTIU.textContent=String(sTIU);
+  scoreTKP.textContent=String(sTKP);
+  scoreTOTAL.textContent=String(total);
+
+  inReview=true; updateAllNumColors();
+  let firstAnswered=answers.findIndex((a,i)=> (a!==null)&&(saved[i]||flagged[i]));
+  if(firstAnswered<0) firstAnswered=0;
+  openReview(firstAnswered);
+
+  if(rafId) cancelAnimationFrame(rafId);
+  if(reason==='timeout'){
+    hhEl.textContent='00'; mmEl.textContent='00'; ssEl.textContent='00';
+    timerEl.classList.add('warn');
+  }
+}
+
+/* ====== REVIEW ====== */
+let currentReviewIndex = 0;
+function openReview(idx){
+  currentReviewIndex = Math.max(0, Math.min(TOTAL-1, idx));
+  const q=questions[currentReviewIndex] || {};
+  reviewHeader.innerHTML=`<strong>#${q.number ?? (currentReviewIndex+1)}</strong> • ${q.type ?? '—'}`;
+  reviewQuestion.textContent=q.text ?? '—';
+
+  const ansIdx=answers[currentReviewIndex];
+  const counted=(ansIdx!==null)&&(saved[currentReviewIndex]||flagged[currentReviewIndex]);
+  const userText=ansIdx===null?'(kosong)':`(${String.fromCharCode(65+ansIdx)}) ${(q.choices?.[ansIdx]?.text)||''}`;
+  reviewAnswer.innerHTML=`Jawaban Anda: ${userText} • <span class="${counted?'ok':'no'}">${counted?'TERSIMPAN':'TIDAK TERSIMPAN'}</span>`;
+
+  reviewKey.classList.add('hidden'); reviewTKP.classList.add('hidden');
+  if(q.type!=='TKP'){
+    const ok=(ansIdx===q.correctIndex)&&counted;
+    const correctChr=String.fromCharCode(65+(q.correctIndex??0));
+    const correctTxt=q.choices?.[q.correctIndex]?.text ?? '';
+    reviewKey.classList.remove('hidden');
+    reviewKey.innerHTML=`Kunci: (${correctChr}) ${correctTxt} • <span class="${ok?'ok':'no'}">${ok?'BENAR':'SALAH'}</span>`;
+  }else{
+    const scr=(ansIdx!==null)?(q.choices?.[ansIdx]?.score ?? 0):0;
+    reviewTKP.classList.remove('hidden');
+    reviewTKP.textContent=`Skor TKP untuk pilihan Anda: ${scr}`;
+  }
+    /* === TAMPILKAN PEMBAHASAN SETELAH SELESAI === */
+  // Kosongkan dulu kontainer pembahasan
+  reviewExplain.innerHTML = '';
+
+  // Ambil pembahasan dari q.explain (atau q.explainDesc jika tersedia)
+  const pembahasan = (q?.explain && String(q.explain).trim())
+    || (q?.explainDesc && String(q.explainDesc).trim())
+    || '';
+
+  // Jika ada pembahasan, tampilkan; jika tidak, tampilkan placeholder
+  if (pembahasan) {
+    // Pakai helper setMultiParagraph agar rapi per paragraf
+    setMultiParagraph(reviewExplain, `Pembahasan:\n${pembahasan}`);
+  } else {
+    reviewExplain.textContent = 'Pembahasan: —';
+  }
+
+  /* === TAMPILKAN GAMBAR PEMBAHASAN (q.explainImages) === */
+  explainMedia.innerHTML = '';
+  if (Array.isArray(q.explainImages) && q.explainImages.length) {
+    q.explainImages.forEach(img => {
+      const fig = document.createElement('figure');
+      const im  = document.createElement('img');
+      im.src = img.src;
+      im.alt = img.caption || '';
+      im.loading = 'lazy';
+      const cap = document.createElement('figcaption');
+      cap.textContent = img.caption || '';
+      fig.appendChild(im);
+      fig.appendChild(cap);
+      explainMedia.appendChild(fig);
+    });
+  }
+
+
+  updateAllNumColors();
+}
+reviewPrevBtn.addEventListener('click',()=>openReview(currentReviewIndex-1));
+reviewNextBtn.addEventListener('click',()=>openReview(currentReviewIndex+1));
+
+/* ====== TIMER MEMBACA 30s ====== */
+let readRemain=READING_SEC, readInterval=null;
+startReadingBtn.addEventListener('click',()=>{
+  introView.classList.add('hidden'); readingView.classList.remove('hidden');
+  readRemain=READING_SEC; readTimerEl.textContent=`00:${addZero(readRemain)}`;
+  if(readInterval) clearInterval(readInterval);
+  readInterval=setInterval(()=>{
+    readRemain--; readTimerEl.textContent=`00:${addZero(readRemain)}`;
+    if(readRemain<=0){ clearInterval(readInterval); startExam(); }
+  },1000);
+});
+startExamBtn.addEventListener('click',()=>{
+  if(readInterval) clearInterval(readInterval); startExam();
+});
+
+/* ====== TIMER UJIAN (HH:MM:SS) ====== */
+let examEndMs=0, rafId=null;
+function startExam(){
+  if(examStarted) return; examStarted=true;
+  readingView.classList.add('hidden'); appEl.style.display='grid';
+  setInitialSidebarState();
+  render(); updateAllNumColors();
+
+  const now=performance.now();
+  examEndMs = now + EXAM_SEC*1000;
+  tickExam();
+}
+function displayExamTime(msLeft){
+  const totalSec = Math.floor(msLeft/1000);
+  const h = Math.floor(totalSec/3600);
+  const m = Math.floor((totalSec%3600)/60);
+  const s = totalSec%60;
+  hhEl.textContent = addZero(h);
+  mmEl.textContent = addZero(m);
+  ssEl.textContent = addZero(s);
+  if(msLeft<=10*60*1000) timerEl.classList.add('warn'); else timerEl.classList.remove('warn');
+}
+function tickExam(){
+  const now=performance.now();
+  const left=Math.max(0, Math.floor(examEndMs - now));
+  displayExamTime(left);
+  if(left<=0){ finish('timeout'); return; }
+  rafId=requestAnimationFrame(tickExam);
+}
+
+/* ====== TOGGLE SIDEBAR ====== */
+function openMobileSidebar(){ appEl.classList.add('mobile-open'); backdropEl.classList.remove('hidden'); sidebarToggle.setAttribute('aria-expanded','true'); }
+function closeMobileSidebar(){ appEl.classList.remove('mobile-open'); backdropEl.classList.add('hidden'); sidebarToggle.setAttribute('aria-expanded','false'); }
+function toggleSidebar(){
+  if(isMobile()){
+    if(appEl.classList.contains('mobile-open')) closeMobileSidebar(); else openMobileSidebar();
+  }else{
+    const collapsed = appEl.classList.toggle('collapsed');
+    sidebarToggle.setAttribute('aria-expanded', String(!collapsed));
+  }
+}
+function setInitialSidebarState(){
+  if(isMobile()){
+    appEl.classList.remove('collapsed');
+    closeMobileSidebar();
+  }else{
+    appEl.classList.remove('mobile-open');
+    backdropEl.classList.add('hidden');
+    appEl.classList.remove('collapsed');
+    sidebarToggle.setAttribute('aria-expanded','true');
+  }
+}
+sidebarToggle.addEventListener('click', toggleSidebar);
+hideSidebarBtn.addEventListener('click', toggleSidebar);
+backdropEl.addEventListener('click', closeMobileSidebar);
+window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && isMobile() && appEl.classList.contains('mobile-open')) closeMobileSidebar(); });
+window.addEventListener('resize', setInitialSidebarState);
+
+/* ====== SWAP NOMOR (desktop): sembunyikan/tampilkan grid nomor ====== */
+let gridHidden=false;
+swapGridBtn.addEventListener('click', ()=>{
+  gridHidden = !gridHidden;
+  numGrid.style.display = gridHidden ? 'none' : 'grid';
+  swapGridBtn.setAttribute('aria-pressed', String(gridHidden));
+  swapGridBtn.textContent = gridHidden ? 'Tampilkan Nomor' : 'Swap Nomor';
+});
+
+/* ====== INIT (tampilan awal 01:40:00) ====== */
+updateAllNumColors();
+hhEl.textContent='01'; mmEl.textContent='40'; ssEl.textContent='00';
+</script>
+</body>
+</html>
+```
