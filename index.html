@@ -51,7 +51,6 @@
     .top-left{display:flex; align-items:center; gap:10px}
     .top-right{display:flex; flex-direction:column; align-items:flex-end; gap:8px; position:relative}
 
-    /* TIMER ukuran diperkecil 40% */
     .timer{display:flex; align-items:flex-end; gap:8px; padding:6px; border:2px solid #0ea5e9; border-radius:12px; background:#fff; box-shadow:0 1px 2px #0001}
     .timer.warn{border-color:#ef4444}
     .time-box{min-width:42px; padding:4px 8px; border:1px solid var(--line); border-radius:10px; text-align:center; line-height:1}
@@ -59,12 +58,9 @@
     .time-box .unit{font-size:9px; color:var(--muted); margin-top:4px}
     .colon{font-weight:800; font-size:17px; line-height:1; padding-bottom:6px}
 
-    /* Tombol hamburger (3 garis) */
     .hamburger{display:inline-flex; flex-direction:column; gap:4px; padding:8px; border:1px solid var(--line); border-radius:10px; background:#fff; cursor:pointer}
     .hamburger span{width:20px; height:2px; background:#111827; display:block}
-    .hamburger:focus-visible{outline:2px solid #60a5fa; outline-offset:2px}
 
-    /* Tombol SWAP nomor (desktop only) */
     .swap-btn{border:1px dashed #93c5fd; background:#f0f9ff; color:#0369a1; padding:6px 10px; border-radius:10px; font-weight:600; cursor:pointer}
     @media (max-width:960px){ .swap-btn{display:none} }
 
@@ -79,7 +75,6 @@
     .section-chip{display:inline-block; font-size:12px; color:#0369a1; border:1px dashed #93c5fd; padding:4px 8px; border-radius:999px; margin-bottom:10px; background:#f0f9ff}
     .qhead{font-size:18px; font-weight:700; margin:.2rem 0 1rem}
     .media{margin-top:12px; display:grid; gap:12px}
-    .media figure{margin:0}
     .media img{max-width:100%; display:block; border:1px solid var(--line); border-radius:12px}
     .media figcaption{font-size:12px; color:var(--muted); margin-top:4px}
     .choices{display:grid; gap:10px; margin-top:12px}
@@ -105,33 +100,20 @@
     .review-card .qline{margin:6px 0; color:var(--muted)}
     .review-card .ok{color:#16a34a; font-weight:700}
     .review-card .no{color:#ef4444; font-weight:700}
-    .review-media,.explain-media{margin-top:8px; display:grid; gap:10px; grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
-    /* Override supaya gambar pembahasan tampil besar (ukuran asli, responsif) */
-.explain-media{
-  grid-template-columns: 1fr;     /* satu kolom penuh, bukan thumbnail grid */
-}
-.explain-media img{
-  width: auto;                     /* pakai lebar asli */
-  max-width: 100%;                 /* tapi tidak melebihi lebar kontainer */
-  height: auto;                    /* jaga rasio */
-}
-
-	.review-media figure,.explain-media figure{margin:0}
-    .review-media img,.explain-media img{width:100%; border:1px solid var(--line); border-radius:10px; display:block}
-    .review-media figcaption,.explain-media figcaption{font-size:12px; color:var(--muted); margin-top:4px}
+    .explain-media{margin-top:8px; display:grid; gap:10px; grid-template-columns: 1fr;}
+    .explain-media img{width:auto; max-width:100%; height:auto; border:1px solid var(--line); border-radius:10px; display:block}
+    .explain-media figcaption{font-size:12px; color:var(--muted); margin-top:4px}
 
     .review-nav{display:flex; gap:10px; margin-top:14px}
-
     .hidden{display:none}
 
-    /* Mode HP (≤960px) */
     @media (max-width:960px){
       .app{grid-template-columns:1fr}
       .sidebar{
         position:fixed; left:0; top:0; bottom:0;
-        width:min(86vw,320px); max-width:90vw;
+        width:min(86vw,320px); z-index:20;
         transform:translateX(-100%);
-        z-index:20; box-shadow:2px 0 24px rgba(0,0,0,.2);
+        box-shadow:2px 0 24px rgba(0,0,0,.2);
       }
       .app.mobile-open .sidebar{transform:translateX(0)}
       .backdrop{
@@ -140,40 +122,23 @@
       }
       .app.mobile-open .backdrop{display:block}
     }
-	
   </style>
 </head>
 <body>
-<!-- ===== [BARU] Gerbang Kode Akses ===== -->
-  <section id="accessView" class="centerwrap">
-    <div class="intro" style="text-align:center">
-      <h1>Masukkan Kode Akses</h1>
-      <p class="muted">Ketik kode akses yang telah diberikan admin</p>
-      <form id="accessForm" style="margin-top:12px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap">
-        <input id="accessInput" type="password" inputmode="text" autocomplete="off"
-               placeholder="contoh: @157#" style="padding:10px 12px; border:1px solid var(--line); border-radius:10px; min-width:240px;">
-        <button type="submit" class="btn primary">Masuk</button>
-      </form>
-      <div id="accessError" class="muted" style="color:#dc2626; margin-top:8px"></div>
-    </div>
-  </section>
-  <!-- ===== [AKHIR BARU] Gerbang Kode Akses ===== -->
 
-<!-- Intro -->
+<!-- Intro Section -->
 <section id="introView" class="centerwrap">
   <div class="intro">
     <h1>Simulasi SKD — 110 Soal (TWK • TIU • TKP)</h1>
-    <p>Durasi ujian: <strong>100 menit</strong> (timer <em>menit:detik:milidetik</em>). Sebelum mulai, Anda mendapat <strong>30 detik</strong> untuk membaca petunjuk.</p>
+    <p>Durasi ujian: <strong>100 menit</strong>. Sebelum mulai, Anda mendapat <strong>30 detik</strong> untuk membaca petunjuk.</p>
     <p><strong>Cara pengerjaan singkat:</strong></p>
     <ul class="list">
       <li>TWK (1–30), TIU (31–65) → Benar = 5 poin, salah = 0 poin.</li>
-      <li>TKP (66–110) → Tidak ada jawaban salah; skor tiap opsi 1–5 poin.</li>
-      <li>Pilih jawaban, lalu klik <strong>Simpan & Lanjutkan</strong> agar tercatat (nomor menjadi <span style="color:#16a34a;font-weight:700">hijau</span>).</li>
-      <li>Klik <strong>Ragu-ragu</strong> untuk menandai (menjadi <span style="color:#f59e0b;font-weight:700">kuning</span>); jawaban tetap dihitung.</li>
-      <li><span style="color:#dc2626;font-weight:700">Merah</span> = belum tersimpan/terjawab.</li>
-      <li>Klik nomor di kiri untuk lompat ke soal.</li>
-      <li>Ketika waktu ujian ≤ 10 menit, timer berubah <span style="color:#ef4444;font-weight:700">merah</span>.</li>
-      <li>Klik <strong>Selesai</strong> → konfirmasi → hasil & pembahasan per nomor.</li>
+      <li>TKP (66–110) → Skor tiap opsi berkisar 1–5 poin.</li>
+      <li>Pilih jawaban, lalu klik <strong>Simpan & Lanjutkan</strong> (nomor menjadi <span style="color:#16a34a;font-weight:700">hijau</span>).</li>
+      <li>Klik <strong>Ragu-ragu</strong> untuk menandai (menjadi <span style="color:#f59e0b;font-weight:700">kuning</span>).</li>
+      <li>Klik nomor di panel kiri untuk berpindah soal dengan cepat.</li>
+      <li>Klik <strong>Selesai</strong> untuk melihat hasil akhir dan pembahasan.</li>
     </ul>
     <div class="cta">
       <button id="startReadingBtn" class="btn primary">Mulai (Baca 30 Detik)</button>
@@ -181,52 +146,50 @@
   </div>
 </section>
 
-<!-- Reading 30s -->
+<!-- Reading View -->
 <section id="readingView" class="centerwrap hidden">
   <div class="reading">
     <h2>Waktu Membaca Petunjuk</h2>
     <div id="readTimer" class="read-timer">00:30</div>
-    <p class="muted">Gunakan <strong>30 detik</strong> ini untuk memahami cara pengerjaan. Anda bisa <strong>mulai lebih cepat</strong> dengan tombol di bawah.</p>
+    <p class="muted">Gunakan waktu ini untuk memahami instruksi. Tombol "Mulai Sekarang" akan aktif jika Anda sudah siap.</p>
     <div class="cta"><button id="startExamBtn" class="btn primary">Mulai Sekarang</button></div>
   </div>
 </section>
 
-<!-- App -->
+<!-- Main App View -->
 <div class="app" id="app">
-  <div id="backdrop" class="backdrop hidden" aria-hidden="true"></div>
+  <div id="backdrop" class="backdrop hidden"></div>
 
-  <aside class="sidebar" aria-label="Daftar nomor soal">
+  <aside class="sidebar">
     <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px">
-      <div class="brand">Daftar Soal (1–110)</div>
+      <div class="brand">Navigasi Soal</div>
       <div style="display:flex; gap:8px; align-items:center">
-        <button id="swapGridBtn" class="swap-btn" title="Sembunyikan/tampilkan nomor">Swap Nomor</button>
-        <button id="hideSidebarBtn" class="hamburger" title="Sembunyikan daftar" aria-label="Sembunyikan daftar nomor">
+        <button id="swapGridBtn" class="swap-btn">Swap</button>
+        <button id="hideSidebarBtn" class="hamburger">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
     <div class="legend">
-      <span class="badge" id="legendBelum"><span class="dot red"></span> Belum</span>
-      <span class="badge" id="legendHijau"><span class="dot green"></span> Terjawab</span>
-      <span class="badge" id="legendRagu"><span class="dot yellow"></span> Ragu</span>
+      <span class="badge"><span class="dot red"></span> Belum</span>
+      <span class="badge"><span class="dot green"></span> Terjawab</span>
+      <span class="badge"><span class="dot yellow"></span> Ragu</span>
     </div>
-    <div id="numGrid" class="grid" aria-label="Navigasi nomor soal"></div>
+    <div id="numGrid" class="grid"></div>
   </aside>
 
   <main class="main">
     <div class="topbar">
       <div class="top-left">
-        <button id="sidebarToggle" class="hamburger" aria-expanded="true" aria-controls="numGrid" aria-label="Tampilkan atau sembunyikan daftar nomor">
+        <button id="sidebarToggle" class="hamburger">
           <span></span><span></span><span></span>
         </button>
-        <div><strong>Tryout SKD</strong> • <span class="muted"></span></div>
+        <div><strong>Tryout SKD</strong></div>
       </div>
       <div class="top-right">
-        <!-- SUSUNAN: [Selesai] tepat di sebelah kiri [Timer] -->
         <div style="display:flex; align-items:center; gap:10px">
-          <button class="btn danger small" id="finishBtn" aria-expanded="false" aria-controls="finishConfirm">Selesai</button>
-          <!-- TIMER: Jam / Menit / Detik (ukuran 40% lebih kecil) -->
-          <div class="timer" id="timer" role="timer" aria-live="polite">
+          <button class="btn danger small" id="finishBtn">Selesai</button>
+          <div class="timer" id="timer">
             <div class="time-box"><span id="hh" class="value">01</span><div class="unit">Jam</div></div>
             <div class="colon">:</div>
             <div class="time-box"><span id="mm" class="value">40</span><div class="unit">Menit</div></div>
@@ -235,12 +198,12 @@
           </div>
         </div>
 
-        <div id="finishConfirm" class="confirm-box hidden" role="dialog" aria-labelledby="confirmTitle" aria-modal="false">
-          <h3 id="confirmTitle" class="confirm-title">Akhiri pengerjaan?</h3>
-          <p class="confirm-desc">Begitu kamu menekan <strong>“Ya, Saya Yakin”</strong>, semua jawaban akan dinilai dan hasil & pembahasan per nomor langsung ditampilkan.</p>
+        <div id="finishConfirm" class="confirm-box hidden">
+          <h3 class="confirm-title">Akhiri pengerjaan?</h3>
+          <p class="confirm-desc">Pastikan semua soal telah terjawab. Hasil akan langsung dihitung.</p>
           <div class="confirm-actions">
             <button class="btn small" id="confirmNoBtn">Batal</button>
-            <button class="btn danger small" id="confirmYesBtn">Ya, Saya Yakin</button>
+            <button class="btn danger small" id="confirmYesBtn">Ya, Selesai</button>
           </div>
         </div>
       </div>
@@ -261,29 +224,29 @@
         </div>
       </div>
 
-      <!-- Hasil + Pembahasan -->
+      <!-- Result View -->
       <div id="resultView" class="hidden">
         <div class="result">
-          <h2>Hasil</h2>
+          <h2>Statistik Hasil Ujian</h2>
           <div class="sumgrid">
-            <div class="box"><h3>Nilai TWK</h3><div class="score" id="scoreTWK">0</div></div>
-            <div class="box"><h3>Nilai TIU</h3><div class="score" id="scoreTIU">0</div></div>
-            <div class="box"><h3>Nilai TKP</h3><div class="score" id="scoreTKP">0</div></div>
+            <div class="box"><h3>TWK</h3><div class="score" id="scoreTWK">0</div></div>
+            <div class="box"><h3>TIU</h3><div class="score" id="scoreTIU">0</div></div>
+            <div class="box"><h3>TKP</h3><div class="score" id="scoreTKP">0</div></div>
           </div>
-          <div class="box"><h3>Total</h3><div class="score" id="scoreTOTAL">0</div></div>
+          <div class="box"><h3>Skor Total</h3><div class="score" id="scoreTOTAL">0</div></div>
+          
           <div class="review-panel">
             <div class="review-head">
-              <h3 class="review-title">Pembahasan per Nomor</h3>
-              <div class="muted">Klik nomor di kiri atau gunakan tombol navigasi di bawah.</div>
+              <h3 class="review-title">Review & Pembahasan</h3>
             </div>
-            <div id="reviewCard" class="card review-card">
-              <div id="reviewHeader" class="qline"><strong>#—</strong> • —</div>
-              <div id="reviewQuestion" class="qline">—</div>
-              <div id="reviewAnswer" class="qline">—</div>
-              <div id="reviewKey" class="qline hidden">—</div>
-              <div id="reviewTKP" class="qline hidden">—</div>
-              <div id="reviewExplain" class="qline">Pembahasan: —</div>
-			  <div id="explainMedia" class="explain-media"></div>
+            <div id="reviewCard" class="card">
+              <div id="reviewHeader" class="qline"></div>
+              <div id="reviewQuestion" class="qline"></div>
+              <div id="reviewAnswer" class="qline"></div>
+              <div id="reviewKey" class="qline hidden"></div>
+              <div id="reviewTKP" class="qline hidden"></div>
+              <div id="reviewExplain" class="qline"></div>
+              <div id="explainMedia" class="explain-media"></div>
 
               <div class="review-nav">
                 <button id="reviewPrevBtn" class="btn">Sebelumnya</button>
@@ -293,7 +256,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="bottombar">
@@ -304,7 +266,6 @@
 </div>
 
 <script>
-
 /* ====== KONFIG (durasi tetap 100 menit → 1 jam 40 menit) ====== */
 const TOTAL = 110;
 const twkEnd = 30, tiuEnd = 65;
@@ -1187,6 +1148,7 @@ questions[109]={number:110,type:'TKP',text:`Sebagai seorang petugas pemilu, Anda
   {text:'Saya akan meminta pemilih untuk menunggu hingga pemilu selesai agar masalahnya dapat diselesaikan dengan lebih tenang.',score:2}
 ],explain:`Empati dan solusi prosedural langsung di TPS.`};
 
+
 /* ====== STATE ====== */
 const answers = Array(TOTAL).fill(null);
 const saved   = Array(TOTAL).fill(false);
@@ -1561,51 +1523,7 @@ swapGridBtn.addEventListener('click', ()=>{
 /* ====== INIT (tampilan awal 01:40:00) ====== */
 updateAllNumColors();
 hhEl.textContent='01'; mmEl.textContent='40'; ssEl.textContent='00';
+
 </script>
- <script>
-  (() => {
-    const ACCESS_ENABLED = true; // set ke false jika ingin mematikan gerbang akses
-    const ACCESS_CODES   = [' dhxo2+', 'prima', 'edgar', 'Tedy', 'candra', 'bayu'];
-    const norm = s => String(s || '').trim().toLowerCase();
-    const ALLOWED = new Set(ACCESS_CODES.map(norm));
-    const $ = id => document.getElementById(id);
-
-    document.addEventListener('DOMContentLoaded', () => {
-      if (!ACCESS_ENABLED) {
-        // Tampilkan tampilan normal
-        $('accessView')?.classList.add('hidden');
-        $('introView')?.classList.remove('hidden');
-        return;
-      }
-
-      // Saat gerbang aktif: tampilkan layar akses, sembunyikan yang lain
-      $('accessView')?.classList.remove('hidden');
-      $('introView')?.classList.add('hidden');
-      $('readingView')?.classList.add('hidden');
-      $('app')?.classList.add('hidden');
-
-      const form  = $('accessForm');
-      const input = $('accessInput');
-      const error = $('accessError');
-
-      form?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        error.textContent = '';
-
-        const ok = ALLOWED.has(norm(input.value));
-        if (ok) {
-          $('accessView')?.classList.add('hidden');
-          $('introView')?.classList.remove('hidden');
-          // fokus ke tombol mulai biar langsung lanjut
-          setTimeout(() => $('startReadingBtn')?.focus(), 0);
-        } else {
-          error.textContent = 'Kode akses salah. Coba kode akses lainnya.';
-          input.select();
-          input.focus();
-        }
-      });
-    });
-  })();
-  </script>
 </body>
 </html>
